@@ -219,6 +219,11 @@ if(isset($_GET['update'])) {
             <?php // if($action === 'update')
             echo "<hr />" . $phoneEmailAddress; ?>
         </div><!-- end .content -->
+
+        <?php
+        include("includes/footer.php");
+        ?>
+
     </div><!-- end .container -->
     </body>
 </html>

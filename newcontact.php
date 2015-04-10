@@ -186,9 +186,13 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                 <div style="clear: both"></div>
                 <?php if($action === 'update') echo "<hr />" . $phoneEmailAddress; ?>
-
             </div><!-- end .content -->
-        </div><!-- end .container -->
+
+                <?php
+                include("includes/footer.php");
+                ?>
+
+            </div><!-- end .container -->
     </body>
 </html>
 

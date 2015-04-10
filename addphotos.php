@@ -121,6 +121,11 @@ if ($login->login == 0) {
                     <div style="clear:both" ></div>
 
             </div><!-- end .content -->
+
+            <?php
+            include("includes/footer.php");
+            ?>
+
         </div><!-- end .container -->
     </body>
 </html>

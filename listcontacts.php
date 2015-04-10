@@ -66,6 +66,11 @@ $nameList = $mNameList->getAllPerson();
             ?>
         </table>
     </div><!-- end .content -->
+
+    <?php
+    include("includes/footer.php");
+    ?>
+
 </div><!-- end .container -->
 </body>
 </html>

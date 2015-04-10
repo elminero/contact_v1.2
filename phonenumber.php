@@ -149,6 +149,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     </div>
     </div><!-- end .content -->
 
+    <?php
+    include("includes/footer.php");
+    ?>
+
 </div><!-- end .container -->
 </body>
 </html>

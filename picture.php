@@ -70,6 +70,11 @@ $nextHigherImage = $image->nextHigherImageId($displayImage['personId'], $id);
                     </div>
                 </div>
             </div><!-- end .content -->
+
+            <?php
+            include("includes/footer.php");
+            ?>
+
         </div><!-- end .container -->
     </body>
 </html>

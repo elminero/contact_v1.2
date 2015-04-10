@@ -131,8 +131,8 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 
 /* ~~ The footer styles ~~ */
 .footer {
-	padding: 10px 0;
-	background-color: #CCC49F;
+	padding: 10px 5px;
+    background-color:#CCC;
 	position: relative;/* this gives IE6 hasLayout to properly clear */
 	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
 }

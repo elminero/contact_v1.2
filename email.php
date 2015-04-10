@@ -158,6 +158,14 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                         echo "<hr />" . $phoneEmailAddress; ?>
 
             </div><!-- end .content -->
+
+
+
         </div><!-- end .container -->
+
+            <?php
+            include("includes/footer.php");
+            ?>
+
     </body>
 </html>

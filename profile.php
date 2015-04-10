@@ -250,6 +250,10 @@ $contact->getContactById();
 
         </div><!-- end .content -->
 
+        <?php
+        include("includes/footer.php");
+        ?>
+
     </div><!-- end .container -->
 </body>
 </html>
