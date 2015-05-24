@@ -117,6 +117,7 @@ class Person extends Db2 {
                 'state'=>$state, 'iso'=>$iso];
         }
 
+        $stmt->free_result();
         $stmt->close();
 
         return $persons;
