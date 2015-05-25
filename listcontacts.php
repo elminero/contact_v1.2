@@ -12,11 +12,9 @@ if ($login->login == 0) {
 }
 
 
-$mNameList = new Person();
+$person = new Person();
 
-
-
-$nameList = $mNameList->getAllPerson();
+$people = $person->getAllPerson();
 
 
 
@@ -45,6 +43,44 @@ $nameList = $mNameList->getAllPerson();
         <table>
             <?php
 
+
+            while ($row = mysqli_fetch_object($people) ) {
+
+                $nameLastFirstMiddle = $row->first_name . " " . $row->middle_name  . " " . $row->last_name ;
+
+                if($row->alias_name) {
+                    $nameLastFirstMiddle .= " - Alias: " . $row->alias_name;
+                }
+
+                echo
+                    "<tr>" .
+                    "<td>" .
+                    "<a href=\"profile.php?id={$row->id}\">{$nameLastFirstMiddle}</a>" .
+                    "</td>
+                        <td>";
+                //  if($person['state'])
+                //  {
+                //   echo $person['state'] . ", " . $address->getCountryFromIso($person['countryIso']);
+                //  }
+                echo "</td>" .
+                    "</tr>";
+
+
+
+
+
+
+
+
+               // echo $row->id . " " . $row->last_name . " " . $row->first_name . " " . $row->middle_name . " " . $row->alias_name .
+               //     " " . $row->birth_month . " " . $row->birth_day . " " . $row->birth_year . " " . $row->note . " " . $row->state . " " . $row->country_iso . "<br /> ";
+
+            }
+
+
+
+            /*
+
             if($nameList) {
             foreach($nameList as $name)
                 {
@@ -63,6 +99,9 @@ $nameList = $mNameList->getAllPerson();
                     "</tr>";
                 }
             }
+
+            */
+
             ?>
         </table>
     </div><!-- end .content -->

@@ -98,6 +98,40 @@ class Person extends Db2 {
     {
         $persons = null;
 
+
+ $sql = "
+                    SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
+                    person.birth_month, person.birth_day, person.birth_year, person.note,
+                    address.state, address.country_iso
+					FROM person LEFT OUTER JOIN address
+					ON person.id = address.id
+					ORDER BY person.last_name";
+
+        $qResults = $this->mysqli->query($sql);
+
+        /*
+        while ($row = mysqli_fetch_object($qResults) ) {
+
+            $persons[] = [$row->id, $row->last_name, $row->first_name, $row->middle_name, $row->alias_name,
+               $row->birth_month, $row->birth_day, $row->birth_year, $row->note,
+                $row->state, $row->country_iso];
+
+        }
+        */
+
+    //   mysqli_fetch_object();
+
+        /*
+
+    $sql = " SELECT * FROM subdivision WHERE iso = 'us' ";
+
+    $qResults = $dbConnect->query($sql);
+
+    while ($row = mysqli_fetch_object($qResults) ) {
+        echo $row->subdivision . "<br />";
+    }
+
+
         $stmt = $this->mysqli->prepare("
                     SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
                     person.birth_month, person.birth_day, person.birth_year, person.note,
@@ -120,7 +154,14 @@ class Person extends Db2 {
         $stmt->free_result();
         $stmt->close();
 
-        return $persons;
+
+        */
+
+
+
+
+
+        return $qResults;
     }
 
 
@@ -220,7 +261,20 @@ class Person extends Db2 {
 /*
 $person = new Person();
 
+$people = $person->getAllPerson();
 
+while ($row = mysqli_fetch_object($people) ) {
+
+    echo $row->id . " " . $row->last_name . " " . $row->first_name . " " . $row->middle_name . " " . $row->alias_name .
+        " " . $row->birth_month . " " . $row->birth_day . " " . $row->birth_year . " " . $row->note . " " . $row->state . " " . $row->country_iso . "<br /> ";
+
+}
+
+*/
+
+
+
+/*
 $personj =  $person->getPersonById(1);
 
 
