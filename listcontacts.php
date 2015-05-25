@@ -53,11 +53,9 @@ $people = $person->getAllPerson();
                 }
 
                 echo
-                    "<tr>" .
-                    "<td>" .
+                    "<tr><td>" .
                     "<a href=\"profile.php?id={$row->id}\">{$nameLastFirstMiddle}</a>" .
-                    "</td>
-                        <td>";
+                    "</td><td>";
                 //  if($person['state'])
                 //  {
                 //   echo $person['state'] . ", " . $address->getCountryFromIso($person['countryIso']);
