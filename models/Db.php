@@ -33,9 +33,7 @@ abstract class Db2
             define("DB_NAME", "contact");
         }
 
-        $DdParameters = ['server' => DB_SERVER, 'user' => DB_USER, 'password' => DB_PASS, 'name' => DB_NAME];
-
-        $this->mysqli = new mysqli($DdParameters['server'], $DdParameters['user'], $DdParameters['password'], $DdParameters['name']);
+        $this->mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
         if (mysqli_connect_errno()) {
             die("Database connection failed. " . mysqli_connect_error() . ": " . mysqli_connect_errno());
