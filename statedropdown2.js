@@ -7,7 +7,6 @@ function preparePage() {
     var req;
     var reqCity;
 
-
     function getRequestObject() {
 
         if(window.XMLHttpRequest) {
@@ -28,7 +27,7 @@ function preparePage() {
 
                 '<div class="form-block">' +
                 '<span class="form-label">City</span>' +
-                '<input class="input_text" type="text" name="city" size="50" maxlength="40"  />' +
+                '<input style="width:240px;" class="input_text" type="text" name="city" size="50" maxlength="40"  />' +
                 '</div><br />';
 
         } else {
@@ -36,18 +35,11 @@ function preparePage() {
             document.getElementById("city").innerHTML =
 
             '<div class="form-block">' +
-            '<span class="form-label">City</span>' +
-
-            '<select class="input_text" name="city" style="width:245px; color:#CCC;">' +
-                '<option value="" >Select Country and State First</option>' +
-            '</select><br />' +
-
-
+                '<span class="form-label">City</span>' +
+                '<select class="input_text" name="city" style="width:245px; color:#CCC;">' +
+                    '<option value="" >Select Country and State First</option>' +
+                '</select><br />' +
             '</div>';
-
-
-
-
         }
 
 
@@ -57,16 +49,6 @@ function preparePage() {
         req.onreadystatechange = function() {
             if(req.readyState == 4) {
                 document.getElementById("stateSelect").innerHTML = req.responseText;
-
-
-
-
-
-
-
-
-
-
             }
         };
 
@@ -75,11 +57,7 @@ function preparePage() {
     };
 
 
-
-
-
     document.getElementById("stateSelect").onchange = function() {
-
 
         if( document.getElementById("country").value == 'US'  ) {
 

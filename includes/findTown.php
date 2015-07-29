@@ -23,29 +23,17 @@ $cities = $address->getAllCityByState($state);
 <?php if ($state === "notOnList"): ?>
     <div class="form-block">
         <span class="form-label">City</span>
-        <input class="input_text" type="text" name="city" size="50" maxlength="40"  /><br />
+        <input style="width:245px;" class="input_text" type="text" name="city" maxlength="40" value="test"  /><br />
     </div>
 <?php endif; ?>
 
 <?php if ($state != "notOnList"): ?>
 <span class="form-label">City</span>
-<select id="country" class="input_text" name="city" style="width:245px; background-color:#B8F5B1; ">
-
-
-<?php foreach($address->getAllCityByState($state) as $city): ?>
-    <?php $city = ucwords(strtolower($city['city'])); ?>
-    <option value="<?php echo $city; ?>"><?php echo $city; ?></option>";
-
-
-
-
-<?php endforeach; ?>
-
-
-
-
-
-
-
-</select><br />
+<select style="width:245px;" id="country" class="input_text" name="city" >
+    <?php foreach($address->getAllCityByState($state) as $city): ?>
+        <?php $city = ucwords(strtolower($city['city'])); ?>
+        <option value="<?php echo $city; ?>"><?php echo $city; ?></option>";
+    <?php endforeach; ?>
+</select>
+<br />
 <?php endif; ?>

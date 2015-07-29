@@ -121,9 +121,9 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         <option <?php if($phoneData['phoneType'] == 4)echo "selected"; ?> value="4">Other</option>
     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	Phone Number:
-    <input name="phone" type="text" size="23" value="<?php echo $phoneData['phoneNumber'] ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input style="width: 175px" name="phone" type="text" value="<?php echo $phoneData['phoneNumber'] ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     Notes:
-    <input name="note" type="text" size="40" value="<?php echo $phoneData['note'] ?>" /><br />
+    <input style="width: 175px" name="note" type="text" value="<?php echo $phoneData['note'] ?>" /><br />
     
 
     

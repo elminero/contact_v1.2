@@ -38,7 +38,7 @@ class Person extends Db2 {
     }
 
 
-    public function addPerson($person)  // class Person
+    public function addPerson(PersonController $person)  // class Person
     {
 
         self::setPersonParam($person);

@@ -83,7 +83,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                 if($action == "update") {
                     echo "<h3 style='float: left'>Update eMail Address</h3>
             <span style='float: right'>";
-                    echo "<a href=\"controllers/EmailAddressController.php?action=delete&id={$emailData['id']}&personId={$_GET['id']}\">delete</a>";
+                    echo "<a href=\"controllers\EmailAddressController.php?action=delete&id={$emailData['id']}&personId={$_GET['id']}\">delete</a>";
                     echo "</span>";
                 }
 
@@ -128,9 +128,9 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                         <option <?php if($emailData['emailType'] == 5)echo "selected"; ?> value="5">Other</option>
                     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     E-Mail Address:
-                    <input name="emailAddress" type="text" size="25" value="<?php echo $emailData['emailAddress'] ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="emailAddress" type="text" value="<?php echo $emailData['emailAddress'] ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Notes:
-                    <input name="note" type="text" size="38" value="<?php echo $emailData['note'] ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="note" type="text" value="<?php echo $emailData['note'] ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 

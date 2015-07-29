@@ -12,9 +12,12 @@ abstract class Db2
 
     protected $mysqli;
     protected $personId;
+    private static $count=0;
 
     function __construct($personId = null)
     {
+        self::$count++;
+
         $this->personId = $personId;
 
         if (!defined('DB_SERVER')) {
@@ -33,17 +36,22 @@ abstract class Db2
             define("DB_NAME", "contact");
         }
 
-        $this->mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-
-        if (mysqli_connect_errno()) {
-            die("Database connection failed. " . mysqli_connect_error() . ": " . mysqli_connect_errno());
+        if (self::$count <= 20) {
+            $this->mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+            if (mysqli_connect_errno()) {
+                die("Database connection failed. " . mysqli_connect_error() . ": " . mysqli_connect_errno());
+            }
+        } else {
+            header("Location: controllers/LoginController.php?action=logout");
         }
-
     }
-
 }
 
 
 
-
+function __destruct ()
+{
+    $this->mysqli->close();
+    echo "The DB Connection has closed";
+}
 

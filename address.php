@@ -123,7 +123,7 @@ if(isset($_GET['update'])) {
 
                     <div class="form-block">
                         <span class="form-label">Country</span>
-                        <select id="country" class="input_text" name="country_iso" style="width:245px; background-color:#B8F5B1"    >
+                        <select  id="country" class="input_text" name="country_iso" style="width:245px; background-color:#B8F5B1"    >
 
                             <?php if($addressData): ?>
 
@@ -136,29 +136,34 @@ if(isset($_GET['update'])) {
                             <option value="US" > United States </option  >
                             <option value="CA" > Canada </option>
                             <option value="MX" > Mexico </option>
-                            <?php
-                            foreach($address->getAllCountry() as $country)
-                            { ?>
-                            <option value="<?php echo $country['iso']?>" > <?php echo $country['country'] ?> </option>
-                            <?php }?>
+                            <?php foreach($address->getAllCountry() as $country) : ?>
+                                <option value="<?php echo $country['iso']?>" >
+                                <?php echo $country['country'] ?> </option>
+                            <?php endforeach ?>
                         </select><br />
                     </div><!-- end .form-block -->
 
 
                     <div class="form-block">
                     <span class="form-label">Address</span>
-                    <input class="input_text" type="text" name="street" size="37" maxlength="40" value="<?php echo $addressData['street'] ?>" /><br />
+                    <input style="width: 240px"  class="input_text" type="text" name="street" maxlength="40" value="<?php echo $addressData['street'] ?>" /><br />
                     </div>
 
-                    <div class="form-block" id="city">
-                    <span class="form-label">City</span>
 
-                    <!-- <input class="input_text" type="text" name="city" size="50" maxlength="40" /><br /> -->
+
+
+
+
+                    <div class="form-block" id="city">
+
+                        <span class="form-label">City</span>
+
+                        <input style="width:240px;" class="input_text" type="text" name="city" maxlength="40" /><br />
 
 
                     <?php if($action == "update"): ?>
 
-                    <select class="input_text" name="city" style="width:245px;">
+                    <select style="width:240px;" class="input_text" name="city" >
                         <option value="<?php echo $addressData['city'] ?>" ><?php echo $addressData['city'] ?></option>
                     </select>
 
@@ -167,7 +172,7 @@ if(isset($_GET['update'])) {
 
                         <?php if($action == "create"): ?>
 
-                    <select class="input_text" name="city" style="width:245px; color:#CCC;">
+                    <select class="input_text" name="city" style="width:240px; color:#CCC;">
                         <option value="" >Select Country and State First</option>
                     </select>
 
@@ -191,7 +196,7 @@ if(isset($_GET['update'])) {
 
                     <div class="form-block">
                     <span class="form-label">Postal Code</span>
-                    <input class="input_text" type="text" name="postal_code" size="37" maxlength="40" value="<?php echo $addressData['postalCode'] ?>" /><br />
+                    <input style="width: 240px" class="input_text" type="text" name="postal_code" size="37" maxlength="40" value="<?php echo $addressData['postalCode'] ?>" /><br />
                     </div>
 
 

@@ -1,5 +1,11 @@
 <div class="footer">
+    <?php
+    $ip =  "Current IP Address: " . $_SERVER['REMOTE_ADDR'];
+    $date = date("F j, Y");
+    ?>
 
-    Current IP Address: <?php echo $_SERVER['REMOTE_ADDR'] ?>
+    <div style="float:left"><?php echo $ip ?></div>
+    <div style="float:right"><?php echo $date ?></div>
+    <div style="clear: both"></div>
 
 </div>
