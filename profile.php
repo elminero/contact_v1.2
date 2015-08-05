@@ -123,7 +123,7 @@ $contact->getContactById();
                     if($contact->nameDOB->birth_month != 0)
                     {
                         $nameDOB .= " Month: " . $contact->getMonthNameByNumber($contact->nameDOB->birth_month);
-                        if($contact->nameDOB['birthDay'] != 0)
+                        if($contact->nameDOB->birth_day != 0)
                             $nameDOB .= ", ";
                     }
 

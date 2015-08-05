@@ -28,7 +28,7 @@ $contact->getContactById();
 $nameDOB = "Name: " . $contact->nameDOB->last_name . " " . $contact->nameDOB->first_name . " " . $contact->nameDOB->middle_name . "<br />" .
     "Alias: " . $contact->nameDOB->alias_name . "<br />";
 
-if(($contact->nameDOB->birth_year != 0) AND ($contact->nameDOB->birthMonth != 0) AND ($contact->nameDOB->birthDay !=0))
+if(($contact->nameDOB->birth_year != 0) AND ($contact->nameDOB->birthMonth != 0) AND ($contact->nameDOB->birthDay != 0))
 {
     $nameDOB .= "DOB: " . $contact->getMonthNameByNumber($contact->nameDOB->birthMonth)   . " " . $contact->nameDOB->birthDay . ", " . $contact->nameDOB->birth_year . "<br />";
 }
