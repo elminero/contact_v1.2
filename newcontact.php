@@ -26,9 +26,13 @@ if(  isset($_GET['action']) && $_GET['action'] === 'update'  ) {
         $action = "update";
         $id = $_GET['id'];
 
-        $contact = new Person();
+        $contact = new PersonPDO();
 
-        $updateForm = $contact->getPersonById($id);
+
+
+       $updateForm = $contact->getPersonById($id);
+
+
     } else {
         $action = "create";
 }
@@ -92,22 +96,22 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                         <div class="form-block">
                             <span class="form-label">Last</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php echo $updateForm['last']; ?>" /><br />
+                            <input style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php echo $updateForm->last_name; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">First</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="firstName" id="email" size="50" maxlength="40" value="<?php echo $updateForm['first']; ?>" /><br />
+                            <input style="width: 320px" type="text" class="input_text" name="firstName" id="email" size="50" maxlength="40" value="<?php echo $updateForm->first_name; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">Middle</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="middleName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm['middle']; ?>"/><br />
+                            <input style="width: 320px" type="text" class="input_text" name="middleName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm->middle_name; ?>"/><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">Alias</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="aliasName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm['alias']; ?>" /><br />
+                            <input style="width: 320px" type="text" class="input_text" name="aliasName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm->alias_name;; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
@@ -117,7 +121,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                 <?php
 
                                 if($action == 'update') {
-                                    echo "<option value=\"{$updateForm['birthMonth']}\">{$contact->getMonthNameByNumber($updateForm['birthMonth'])}</option>";
+                                    echo "<option value=\"{$updateForm->birth_month}\">{$contact->getMonthNameByNumber($updateForm->birth_month)}</option>";
                                 }
                                     foreach($months as $value => $month)
                                     {

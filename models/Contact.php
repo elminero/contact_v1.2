@@ -15,8 +15,11 @@ class Contact extends Person {
     public function getContactById()
     {
 
-        $person = new Person();
+        $person = new PersonPDO();
         $this->nameDOB = $person->getPersonById($this->personId);
+
+        // $person = new Person();
+        // $this->nameDOB = $person->getPersonById($this->personId);
 
 
         $address = new Address();
@@ -45,36 +48,4 @@ class Contact extends Person {
 }
 
 
-
-/*
-
-$contact = new Contact(40);
-$addressField = ['addressType'=>3, 'countryIso'=>'US', 'state'=>'Arizona', 'street'=>'21 Calle Caliente',
-    'city'=>'Tucson', 'postalCode'=>'28474', 'note'=>'Fucking Hot Here'];
-*/
-
-
-//$contact->addAddress($addressField);
-
-
-
-
-
-// $address->add($addressField);
-
-
-
-
-
-
-// $contact->dumpObject();
-
-
-// $contact->getContactById();
-
-// echo $contact->nameDOB['last'] . " " . $contact->nameDOB['first'] . " " . $contact->nameDOB['middle'];
-//echo "<br/>";
-//echo $contact->nameDOB['birthMonth'] . "/" . $contact->nameDOB['birthDay'] . "/" . $contact->nameDOB['birthYear'];
-//echo "<br/>";
-// echo var_dump($contact->address);
 

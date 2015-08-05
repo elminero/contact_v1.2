@@ -24,6 +24,9 @@ if( isset($_POST['id']) )
 $contact = new Contact($id);
 $contact->getContactById();
 
+// echo $contact->nameDOB->last_name;
+
+
 ?>
 
 
@@ -87,61 +90,61 @@ $contact->getContactById();
                 <?php
 
 
-                $nameDOB = "Name: " . $contact->nameDOB['last'] . " " . $contact->nameDOB['first'] . " " . $contact->nameDOB['middle'] . "<br />" .
-                    "Alias: " . $contact->nameDOB['alias'] . "<br />";
+                $nameDOB = "Name: " . $contact->nameDOB->last_name . " " . $contact->nameDOB->first_name . " " . $contact->nameDOB->middle_name . "<br />" .
+                    "Alias: " . $contact->nameDOB->alias_name . "<br />";
 
-                if(($contact->nameDOB['birthYear'] != 0) AND ($contact->nameDOB['birthMonth'] != 0) AND ($contact->nameDOB['birthDay'] !=0))
+                if(($contact->nameDOB->birth_year != 0) AND ($contact->nameDOB->birth_month != 0) AND ($contact->nameDOB->birth_day !=0))
                 {
-                    $nameDOB .= "DOB: " . $contact->getMonthNameByNumber($contact->nameDOB['birthMonth'])   . " " . $contact->nameDOB['birthDay'] . ", " . $contact->nameDOB['birthYear'] . "<br />";
+                    $nameDOB .= "DOB: " . $contact->getMonthNameByNumber($contact->nameDOB->birth_month)   . " " . $contact->nameDOB->birth_day . ", " . $contact->nameDOB->birth_year . "<br />";
                 }
 
-                if(($contact->nameDOB['birthYear'] == 0) || ($contact->nameDOB['birthMonth'] == 0) || ($contact->nameDOB['birthDay'] == 0)) {
-                    if (($contact->nameDOB['birthYear'] == 0) && ($contact->nameDOB['birthMonth'] == 0) && ($contact->nameDOB['birthDay'] == 0)) {
+                if(($contact->nameDOB->birth_year == 0) || ($contact->nameDOB->birth_month == 0) || ($contact->nameDOB->birth_day == 0)) {
+                    if (($contact->nameDOB->birth_year == 0) && ($contact->nameDOB->birth_month == 0) && ($contact->nameDOB->birth_day == 0)) {
                         $nameDOB .= "DOB: Unknown";
                     }
 
-                    if (($contact->nameDOB['birthYear'] != 0) || ($contact->nameDOB['birthMonth'] != 0) || ($contact->nameDOB['birthDay'] != 0)) {
+                    if (($contact->nameDOB->birth_year != 0) || ($contact->nameDOB->birth_month != 0) || ($contact->nameDOB->birth_day != 0)) {
                         $nameDOB .= "DOB Incomplete : ";
                     }
 
-                    if($contact->nameDOB['birthYear'] != 0)
+                    if($contact->nameDOB->birth_year != 0)
                     {
-                        $nameDOB .= " Year: " . $contact->nameDOB['birthYear'];
-                        if($contact->nameDOB['birthMonth'] != 0)
+                        $nameDOB .= " Year: " . $contact->nameDOB->birth_year;
+                        if($contact->nameDOB->birth_month != 0)
                         {
                             $nameDOB .= ", ";
                         }
-                        if($contact->nameDOB['birthDay'] != 0)
+                        if($contact->nameDOB->birth_day != 0)
                         {
                             $nameDOB .= ", ";
                         }
                     }
 
-                    if($contact->nameDOB['birthMonth'] != 0)
+                    if($contact->nameDOB->birth_month != 0)
                     {
-                        $nameDOB .= " Month: " . $contact->getMonthNameByNumber($contact->nameDOB['birthMonth']);
+                        $nameDOB .= " Month: " . $contact->getMonthNameByNumber($contact->nameDOB->birth_month);
                         if($contact->nameDOB['birthDay'] != 0)
                             $nameDOB .= ", ";
                     }
 
-                    if($contact->nameDOB['birthDay'] != 0)
+                    if($contact->nameDOB->birth_day != 0)
                     {
-                        $nameDOB .= " Day: " . $contact->nameDOB['birthDay'];
+                        $nameDOB .= " Day: " . $contact->nameDOB->birth_day;
                     }
 
                     $nameDOB .= "<br />Age Unknown<br />";
                 }
 
-                if(($contact->nameDOB['birthYear'] != 0) AND ($contact->nameDOB['birthMonth'] != 0) AND ($contact->nameDOB['birthDay'] !=0))
+                if(($contact->nameDOB->birth_year != 0) AND ($contact->nameDOB->birth_month != 0) AND ($contact->nameDOB->birth_day !=0))
                 {
-                    $nameDOB .= "Age: " . $contact->getAge($contact->nameDOB['birthYear'], $contact->nameDOB['birthMonth'],
-                            $contact->nameDOB['birthDay']) . "<br />";
+                    $nameDOB .= "Age: " . $contact->getAge($contact->nameDOB->birth_year, $contact->nameDOB->birth_month,
+                            $contact->nameDOB->birth_day) . "<br />";
                 }
 
-                $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB['note'] . "</div>";
+                $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
                 ?>
 
-                <a href="newcontact.php?id=<?php echo $contact->nameDOB['id'] ?>&action=update"><?php echo $nameDOB ?></a>
+                <a href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
 
 
 

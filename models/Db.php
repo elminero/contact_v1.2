@@ -48,6 +48,15 @@ abstract class Db2
 }
 
 
+abstract class db3
+{
+    protected $pdo;
+
+    function __construct() {
+        $this->pdo = new PDO("mysql:host=localhost;dbname=contact;charset=utf8", "ian", "super1964");
+    }
+}
+
 
 function __destruct ()
 {
