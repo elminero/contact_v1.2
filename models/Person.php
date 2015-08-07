@@ -233,12 +233,10 @@ class PersonPDO extends db3
             ORDER BY person.last_name";
 
         $stmt = $this->pdo->prepare($sql);
-
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt;
     }
-
 
 }
 

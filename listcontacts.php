@@ -1,7 +1,10 @@
 <?php
 // ob_start();
 
-require("models/Contact.php");
+// require("models/Contact.php");
+
+require("models/Person.php");
+
 require("controllers/LoginController.php");
 
 $login = new LoginController();
@@ -12,9 +15,10 @@ if ($login->login == 0) {
 }
 
 
-$person = new Person();
+$contact = new PersonPDO();
 
-$people = $person->getAllPerson();
+
+$stmt = $contact->getAllPerson();
 
 
 
@@ -35,73 +39,22 @@ $people = $person->getAllPerson();
         include("includes/header.php");
     ?>
     <!-- end .header -->
+
     <div class="content">
         <div style="margin-bottom: 9px">
             <b>List</b>
         </div>
         <div style="clear: both"></div>
-        <table>
-            <?php
 
+    <table>
+        <?php while($row = $stmt->fetch(PDO::FETCH_OBJ)): ?>
+            <?php $nameLastFirstMiddle = $row->first_name . " " . $row->middle_name  . " " . $row->last_name ; ?>
+            <tr>
+                <td><a href="profile.php?=<?php echo $row->id; ?>"><?php echo $nameLastFirstMiddle; ?></a>        </td>
+            </tr>
+        <?php endwhile ?>
+    </table>
 
-            while ($row = mysqli_fetch_object($people) ) {
-
-                $nameLastFirstMiddle = $row->first_name . " " . $row->middle_name  . " " . $row->last_name ;
-
-                if($row->alias_name) {
-                    $nameLastFirstMiddle .= " - Alias: " . $row->alias_name;
-                }
-
-                echo
-                    "<tr><td>" .
-                    "<a href=\"profile.php?id={$row->id}\">{$nameLastFirstMiddle}</a>" .
-                    "</td><td>";
-                //  if($person['state'])
-                //  {
-                //   echo $person['state'] . ", " . $address->getCountryFromIso($person['countryIso']);
-                //  }
-                echo "</td>" .
-                    "</tr>";
-
-
-
-
-
-
-
-
-               // echo $row->id . " " . $row->last_name . " " . $row->first_name . " " . $row->middle_name . " " . $row->alias_name .
-               //     " " . $row->birth_month . " " . $row->birth_day . " " . $row->birth_year . " " . $row->note . " " . $row->state . " " . $row->country_iso . "<br /> ";
-
-            }
-
-
-
-            /*
-
-            if($nameList) {
-            foreach($nameList as $name)
-                {
-                    $nameLastFirstMiddle = $name['first'] . " " . $name['middle'] . " " . $name['last'];
-                    echo
-                    "<tr>" .
-                        "<td>" .
-                            "<a href=\"profile.php?id={$name['id']}\">{$nameLastFirstMiddle}</a>" .
-                        "</td>
-                        <td>";
-                      //  if($person['state'])
-                      //  {
-                         //   echo $person['state'] . ", " . $address->getCountryFromIso($person['countryIso']);
-                      //  }
-                        echo "</td>" .
-                    "</tr>";
-                }
-            }
-
-            */
-
-            ?>
-        </table>
     </div><!-- end .content -->
 
     <?php
