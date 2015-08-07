@@ -99,7 +99,7 @@ class Person extends Db2 {
         $persons = null;
 
 
- $sql = "
+        $sql = "
                     SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
                     person.birth_month, person.birth_day, person.birth_year, person.note,
                     address.state, address.country_iso
@@ -221,88 +221,26 @@ class PersonPDO extends db3
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-}
 
+    public function getAllPerson()
+    {
+        $sql = "
+            SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
+            person.birth_month, person.birth_day, person.birth_year, person.note,
+            address.state, address.country_iso
+            FROM person LEFT OUTER JOIN address
+            ON person.id = address.id
+            ORDER BY person.last_name";
 
+        $stmt = $this->pdo->prepare($sql);
 
+        $stmt->execute();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-public function getAll()
-{
-    $stmt = $this->mysqli->prepare("
-                SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
-                person.birth_month, person.birth_day, person.birth_year, person.note,
-                address.state, address.iso
-                FROM person LEFT OUTER JOIN address
-                ON person.id = address.id
-                ORDER BY person.last_name");
-
-    $stmt->execute();
-
-    $stmt->bind_result($_nameId, $_lastName, $_firstName, $_middleName, $_aliasName,
-        $_birthMonth, $_birthDay, $_birthYear, $_note, $_state, $_iso);
-
-    while($stmt->fetch()) {
-
-        $this->_objNameDOB = new Person();
-        $this->_objNameDOB->nameId = $_nameId;
-        $this->_objNameDOB->last = $_lastName;
-        $this->_objNameDOB->first = $_firstName;
-        $this->_objNameDOB->middle = $_middleName;
-        $this->_objNameDOB->alias = $_aliasName;
-        $this->_objNameDOB->birthMonth = $_birthMonth;
-        $this->_objNameDOB->birthDay = $_birthDay;
-        $this->_objNameDOB->birthYear = $_birthYear;
-        $this->_objNameDOB->note = $_note;
-        $this->_objNameDOB->state = $_state;
-        $this->_objNameDOB->countryISO = $_iso;
-
-        $this->_arrayOfObjNameDOB[] = $this->_objNameDOB;
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    $stmt->close();
 
-    return $this->_arrayOfObjNameDOB;
 }
 
-*/
+
+
