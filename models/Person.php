@@ -209,6 +209,21 @@ class Person extends Db2 {
 class PersonPDO extends db3
 {
 
+    private  $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;
+
+    private function setPersonParam(PersonController $person)
+    {
+        $this->_id = $person->getId();
+        $this->_lastName = $person->getLastName();
+        $this->_firstName = $person->getFirstName();
+        $this->_middleName = $person->getMiddleName();
+        $this->_aliasName = $person->getAliasName();
+        $this->_birthMonth = $person->getBirthMonth();
+        $this->_birthDay = $person->getBirthDay();
+        $this->_birthYear = $person->getBirthYear();
+        $this->_note = $person->getNote();
+    }
+
     public function getPersonById($id) {
 
         $stmt =  $this->pdo->prepare("
@@ -237,6 +252,26 @@ class PersonPDO extends db3
 
         return $stmt;
     }
+
+
+    public function addPerson(PersonController $person)  // class Person
+    {
+
+        self::setPersonParam($person);
+
+        $insertId = null;
+
+        $stmt = $this->pdo->prepare("
+				INSERT INTO person
+				  (last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note)
+				VALUES
+				  (:last_name, :first_name, :middle_name, :alias_name, :birth_month, :birth_day, :birth_year, :note)");
+
+        $stmt->execute(array(':last_name'=>$this->_lastName, ':first_name'=>$this->_firstName, ':middle_name'=>$this->_middleName, ':alias_name'=>$this->_aliasName, ':birth_month'=>$this->_birthMonth, ':birth_day'=>$this->_birthDay, ':birth_year'=>$this->_birthYear, ':note'=>$this->_note));
+
+        return $this->pdo->lastInsertId();
+    }
+
 
 }
 

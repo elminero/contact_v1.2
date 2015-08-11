@@ -68,7 +68,7 @@ if(array_key_exists('addNewContact', $_POST))
     $cPerson = new PersonController( (int)$_POST['personId'], trim($_POST['lastName']), trim($_POST['firstName']), trim($_POST['middleName']),
         trim($_POST['aliasName']), (int)$_POST['birthMonth'], (int)$_POST['birthDay'], (int)$_POST['birthYear'], trim($_POST['note'])    );
 
-    $model = new Person();
+    $model = new PersonPDO();
 
 if($cPerson->nameFieldValidate()) {
 
