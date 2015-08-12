@@ -42,7 +42,7 @@ $stmt = $contact->getAllPerson();
             <?php while($row = $stmt->fetch(PDO::FETCH_OBJ)): ?>
                 <?php $nameLastFirstMiddle = $row->first_name . " " . $row->middle_name  . " " . $row->last_name ; ?>
                 <tr>
-                    <td><a href="profile.php?=<?php echo $row->id; ?>"><?php echo $nameLastFirstMiddle; ?></a></td>
+                    <td><a href="profile.php?id=<?php echo $row->id; ?>"><?php echo $nameLastFirstMiddle; ?></a></td>
                 </tr>
             <?php endwhile ?>
         </table>
