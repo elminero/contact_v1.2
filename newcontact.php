@@ -22,15 +22,16 @@ require("controllers/PersonController.php");
 
 $updateForm = null;
 
+// http://localhost/contact_v1.1/newcontact.php?id=1&action=update
+
 if(  isset($_GET['action']) && $_GET['action'] === 'update'  ) {
+
         $action = "update";
-        $id = $_GET['id'];
+        $id = (int)$_GET['id'];
 
         $contact = new PersonPDO();
 
         $updateForm = $contact->getPersonById($id);
-
-
     } else {
         $action = "create";
 }
@@ -88,6 +89,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                         echo "create";
                     }
 
+
                     ?>" method="post" name="addContact">
 
                     <div class="form-content" >
@@ -115,49 +117,46 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                         <div  class="form-block">
                             <span class="form-label">Date of Birth</span>
                             <div align="center">
-                                <select  name="birthMonth" id="birth_month" size="1">
-                                <?php
 
-                                if($action == 'update') {
-                                    echo "<option value=\"{$updateForm->birth_month}\">{$contact->getMonthNameByNumber($updateForm->birth_month)}</option>";
-                                }
-                                    foreach($months as $value => $month)
-                                    {
-                                        echo "<option value=\"{$value}\">{$month}</option>";
-                                    }
-                                    ?>
+                                <select  name="birthMonth" id="birth_month" size="1">
+
+                                    <?php if($action == "update"): ?>
+                                        <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
+                                    <?php endif; ?>
+
+                                    <?php foreach($months as $value => $month): ?>
+                                        <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
+                                    <?php endforeach; ?>
+
                                 </select>
+
                                 <select  name="birthDay" id="birth_day" size="1">
-                                <?php
-                                    if($action == 'update') {
-                                    echo "<option value=\"{$updateForm['birthDay']}\">{$updateForm['birthDay']}</option>";
-                                    }
-                                ?>
+
+                                    <?php if($action == "update"): ?>
+                                        <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
+                                    <?php endif; ?>
+
                                     <option value="0"> </option>
-                                    <?php
-                                    for($i = 1; $i <=31; $i++)
-                                    {
-                                        echo "<option value=\"{$i}\">{$i}</option>";
-                                    }
-                                    ?>
+
+                                    <?php for($i = 1; $i <=31; $i++): ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php endfor; ?>
+
                                 </select>
+
                                 <select  name="birthYear" id="year" size="1">
 
-                                    <?php
-                                    if($action == 'update') {
-                                        echo "<option value=\"{$updateForm['birthYear']}\">{$updateForm['birthYear']}</option>";
-                                    }
-                                    ?>
+                                    <?php if($action == "update"): ?>
+                                        <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
+                                    <?php endif; ?>
 
                                     <option value="0"> </option>
-                                    <?php
-                                    $current_year = date('Y');
-                                    for ($y = $current_year; $y >= $current_year - 110; $y--)
-                                    {
-                                        echo "<option value=\"{$y}\">{$y}</option>";
-                                    }
-                                    ?>
+                                    <?php for ($y = date('Y'); $y >= date('Y') - 110; $y--): ?>
+                                        <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                                    <?php endfor; ?>
+
                                 </select>
+                                
                             </div>
 
                         </div>
@@ -166,18 +165,21 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                             <span  class="form-label">Notes</span>
                             <textarea style="float: right" rows="1" cols="40" name="note" ><?php
                            if($action == 'update') {
-                               echo $updateForm['note'];
+                               echo $updateForm->note;
                            }
                         ?></textarea><br />
                         </div>
                         <div style="clear: both"></div>
                         <div class="form-block" style="margin-top: 10px; float: right">
 
-                            <input type="hidden" name="personId" value="<?php echo $updateForm['id'] ?>" />
-                            <input type="submit" name="addNewContact"
-                                   value="<?php
-                                   if($action == "update"){echo "Update Contact"; }
-                                   if($action == "create"){echo "Add Contact"; }?>" />
+                            <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+                            <input type="submit" name="addNewContact" value="<?php
+                            if($action == "create") {
+                                echo "Create";
+                            }elseif($action == "update") {
+                                echo "Update";
+                            }
+                            ?>" />
                         </div>
                         <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
                         <div style="clear: both"></div>
