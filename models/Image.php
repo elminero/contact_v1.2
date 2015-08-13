@@ -294,6 +294,23 @@ class Image extends Db2 {
 
 class ImagePDO extends db3
 {
+    private $_id, $_personId,  $_pathFile, $_caption, $_avatar, $_visible;
 
+    private function setImageParam(ImageController $image)
+    {
+        $this->_id = $image->getId();
+        $this->_personId = $image->getPersonId();
+        $this->_pathFile = $image->getPathFile();
+        $this->_caption = $image->getCaption();
+        $this->_avatar = $image->getAvatar();
+        $this->_visible = $image->getVisible();
+    }
+
+
+    public function getId(){return $this->_id;}
+    public function getPersonId(){return $this->_personId;}
+    public function getCaption(){return $this->_caption;}
+    public function getAvatar(){return $this->_avatar;}
+    public function getVisible(){return $this->_visible;}
 
 }
