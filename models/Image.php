@@ -292,4 +292,8 @@ class Image extends Db2 {
 }
 
 
+class ImagePDO extends db3
+{
 
+
+}
