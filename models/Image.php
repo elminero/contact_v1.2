@@ -136,9 +136,9 @@ class Image extends Db2 {
         $stmt->fetch();
         $stmt->close();
 
-        $imageObj = new Image();
+//        $imageObj = new Image();
 
-        $imageObj->_personId = $personId;
+//        $imageObj->_personId = $personId;
 
 
         $image = ['id'=>$id, 'personId'=>$personId, 'pathFile'=>$pathFile, 'caption'=>$caption, 'avatar'=>$avatar,
@@ -404,6 +404,52 @@ class ImagePDO extends db3
 
         */
 
+    }
+
+
+    public function getImageById($id)  // class Image
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, person_id, path_file, caption, avatar, visible
+					FROM image
+					WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
+        /*
+
+
+                $stmt =  $this->pdo->prepare("
+            SELECT id, last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note
+            FROM person
+            WHERE id = ?");
+
+        $stmt->execute(array($id));
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
+
+
+
+        $stmt = $this->mysqli->prepare("
+					SELECT id, person_id, path_file, caption, avatar, visible
+					FROM image
+					WHERE id = ?");
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result($id, $personId, $pathFile, $caption, $avatar, $visible);
+        $stmt->fetch();
+        $stmt->close();
+
+        $image = ['id'=>$id, 'personId'=>$personId, 'pathFile'=>$pathFile, 'caption'=>$caption, 'avatar'=>$avatar,
+            'visible'=>$visible];
+
+        return $image;
+
+        */
     }
 
 

@@ -20,7 +20,9 @@ $image = new Image();
 
 $displayImage =  $image->getImageById($id);
 
-// $displayImage->personId;
+$imagePDO = new ImagePDO();
+
+$displayImagePDO =  $imagePDO->getImageById($id);
 
 
 $nextLowerImage = $image->nextLowerImageId($displayImage['personId'], $id);
@@ -62,7 +64,7 @@ $nextHigherImage = $image->nextHigherImageId($displayImage['personId'], $id);
                         <a href="picture.php?id=<?php echo $nextHigherImage ?>" > Next >></a><br />
                     </div>
                     <a href="picture.php?id=<?php echo $nextHigherImage ?>" >
-                        <img src="images/<?php echo $displayImage['pathFile'] ?>.jpg"  />
+                        <img src="images/<?php echo $displayImagePDO->path_file; ?>.jpg"  />
                     </a>
                     <br />
                     <div align="left">
