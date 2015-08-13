@@ -313,4 +313,64 @@ class ImagePDO extends db3
     public function getAvatar(){return $this->_avatar;}
     public function getVisible(){return $this->_visible;}
 
+
+    public function resetAvatarToZero($personId)  // class Image
+    {
+        $stmt = $this->pdo->prepare("UPDATE image
+                                    SET
+                                    avatar = 0
+                                    WHERE person_id = ?");
+
+        $stmt->execute(array($personId));
+
+        /*
+        $stmt = $this->mysqli->prepare("
+                                UPDATE image
+                                SET
+                                avatar = 0
+                                WHERE person_id = ? ");
+
+        $stmt->bind_param("i", $personId);
+        $stmt->execute();
+        $stmt->close();
+
+        */
+    }
+
+
+    public function addImage($image)  // class Image
+    {
+        self::setImageParam($image);
+
+        if($this->_avatar === 1) {
+            self::resetAvatarToZero($this->_personId);
+        }
+
+        $stmt = $this->pdo->prepare("
+                                    INSERT INTO image
+                                    (person_id, path_file, caption, avatar, visible)
+                                    VALUES
+                                    (?, ?, ?, ?, ? )");
+
+        $stmt->execute([$this->_personId, $this->_pathFile, $this->_caption, $this->_avatar, $this->_visible]);
+
+        /*
+
+        $stmt = $this->mysqli->prepare("
+                    INSERT INTO image
+                    (person_id, path_file, caption, avatar, visible)
+                    VALUES
+                    (?, ?, ?, ?, ? )");
+
+        $stmt->bind_param("issii", $this->_personId, $this->_pathFile, $this->_caption, $this->_avatar, $this->_visible);
+        $stmt->execute();
+        $stmt->close();
+
+        */
+
+
+    }
+
+
+
 }

@@ -186,7 +186,7 @@ class ImageController {
 
         self::resizeThumbNail();
 
-        $model = new Image();
+        $model = new ImagePDO();
 
         $model->addImage($cImage);
 
