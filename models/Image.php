@@ -372,5 +372,40 @@ class ImagePDO extends db3
     }
 
 
+    public function updateImage($image)  // class Image
+    {
+
+        self::setImageParam($image);
+
+        if($this->_avatar === 1) {
+            self::resetAvatarToZero($this->_personId);
+        }
+
+        $stmt = $this->pdo->prepare("
+                                UPDATE image
+                                SET
+                                caption = ?,
+                                avatar = ?
+                                WHERE id = ? ");
+
+        $stmt->execute([$this->_caption, $this->_avatar,  $this->_id]);
+
+        /*
+        $stmt = $this->mysqli->prepare("
+                                UPDATE image
+                                SET
+                                caption = ?,
+                                avatar = ?
+                                WHERE id = ? ");
+
+        $stmt->bind_param("sii", $this->_caption, $this->_avatar,  $this->_id);
+        $stmt->execute();
+        $stmt->close();
+
+        */
+
+    }
+
+
 
 }

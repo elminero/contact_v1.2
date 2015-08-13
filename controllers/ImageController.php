@@ -34,28 +34,6 @@ class ImageController {
         $this->_fileType = $fileType;
         $this->_fileTmpName = $fileTmpName;
         $this->_fileSize = $fileSize;
-
-
-/*
-        echo '_id ' . $this->_id;
-        echo "<br />";
-        echo '_personId ' . $this->_personId;
-        echo "<br />";
-        echo '_caption ' . $this->_caption;
-        echo "<br />";
-        echo '_avatar ' . $this->_avatar;
-        echo "<br />";
-        echo '_fileName ' . $this->_fileName;
-        echo "<br />";
-        echo '_fileType ' . $this->_fileType;
-        echo "<br />";
-        echo '_fileTmpName ' . $this->_fileTmpName;
-        echo "<br />";
-        echo '_fileSize ' . $this->_fileSize;
-        echo "<br />";
-
-*/
-
     }
 
 
@@ -246,7 +224,7 @@ if( array_key_exists("imageUpLoad", $_POST)) {
 
 
     if( (isset($_GET['action'])) && ($_GET['action'] === 'update') ) {
-        $model = new Image();
+        $model = new ImagePDO();
         $model->updateImage($cImage);
         header("Location: ../editphotos.php?id=".$_POST['personId']);
     }
