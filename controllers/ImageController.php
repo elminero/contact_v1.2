@@ -251,35 +251,12 @@ if( array_key_exists("imageUpLoad", $_POST)) {
         header("Location: ../editphotos.php?id=".$_POST['personId']);
     }
 
-
-
-
-//
-//  } else {
-//      header("Location: ../addphotos.php?id=".$_POST['personId']);
-//  }
-
-
-
-  //  $model = new Image();
-
-  //  $model->updateImage($cImage);
-
-
-
-
-
 }
-
-
-
 
 
 if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
 
     $deleteId = (int)$_GET['id'];
-
-    echo $deleteId;
 
     $cImage = new Image();
     $cImage->deleteImage($deleteId);
