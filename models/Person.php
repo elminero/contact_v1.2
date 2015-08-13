@@ -273,6 +273,38 @@ class PersonPDO extends db3
     }
 
 
+    public function updatePerson($person)  // class Person
+    {
+
+        self::setPersonParam($person);
+
+        $stmt = $this->pdo->prepare("
+                                UPDATE person
+                                SET
+                                last_name = ?,
+                                first_name = ?,
+                                middle_name = ?,
+                                alias_name = ?,
+                                birth_month = ?,
+                                birth_day = ?,
+                                birth_year = ?,
+                                note = ?
+                                WHERE id = ? ");
+
+        $stmt->execute([$this->_lastName,
+                        $this->_firstName,
+                        $this->_middleName,
+                        $this->_aliasName,
+                        $this->_birthMonth,
+                        $this->_birthDay,
+                        $this->_birthYear,
+                        $this->_note,
+                        $this->_id]);
+        
+                        $affected_rows = $stmt->rowCount();
+    }
+
+
     public function getMonthNameByNumber($monthNumber)
     {
         switch($monthNumber)
