@@ -16,19 +16,11 @@ if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
 
-$image = new Image();
+$image = new ImagePDO();
 
-$displayImage =  $image->getImageById($id);
+$personId = $image->getPersonIdByImageId($id);
 
-$imagePDO = new ImagePDO();
-
-$displayImagePDO =  $imagePDO->getImageById($id);
-
-
-$nextLowerImage = $image->nextLowerImageId($displayImage['personId'], $id);
-
-
-$nextHigherImage = $image->nextHigherImageId($displayImage['personId'], $id);
+$image->setPreviousNextImageId($id);
 
 
 ?>
@@ -48,23 +40,23 @@ $nextHigherImage = $image->nextHigherImageId($displayImage['personId'], $id);
             <!-- end .header -->
             <div class="content">
                 <div style="margin-bottom: 9px">
-                <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $displayImage['personId']; ?>">
+                <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $personId; ?>">
 
-                    Profile</a> >> <a href="addphotos.php?id=<?php echo $displayImage['personId'] ?>"> Portfolio</a> >> <b>Picture</b>
+                    Profile</a> >> <a href="addphotos.php?id=<?php echo $personId; ?>"> Portfolio</a> >> <b>Picture</b>
                 </div>
 
                 <div style="clear: both"></div>
 
 
-                <a href="addphotos.php?id=<?php echo $displayImage['personId']; ?>">View All</a>
+                <a href="addphotos.php?id=<?php echo $personId; ?>">View All</a>
                 <div align="center" style="margin:1px; padding:1px;">
                     <div style="padding:10px;">
-                        <a href="picture.php?id=<?php echo $nextLowerImage ?>" ><< Previous</a>
+                        <a href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
                         &nbsp; &nbsp;
-                        <a href="picture.php?id=<?php echo $nextHigherImage ?>" > Next >></a><br />
+                        <a href="picture.php?id=<?php echo $image->nextImageId; ?>" > Next >></a><br />
                     </div>
-                    <a href="picture.php?id=<?php echo $nextHigherImage ?>" >
-                        <img src="images/<?php echo $displayImagePDO->path_file; ?>.jpg"  />
+                    <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
+                        <img src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
                     </a>
                     <br />
                     <div align="left">

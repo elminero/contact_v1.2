@@ -295,6 +295,7 @@ class Image extends Db2 {
 class ImagePDO extends db3
 {
     private $_id, $_personId,  $_pathFile, $_caption, $_avatar, $_visible;
+    public $previousImageId, $nextImageId;
 
     private function setImageParam(ImageController $image)
     {
@@ -322,19 +323,6 @@ class ImagePDO extends db3
                                     WHERE person_id = ?");
 
         $stmt->execute(array($personId));
-
-        /*
-        $stmt = $this->mysqli->prepare("
-                                UPDATE image
-                                SET
-                                avatar = 0
-                                WHERE person_id = ? ");
-
-        $stmt->bind_param("i", $personId);
-        $stmt->execute();
-        $stmt->close();
-
-        */
     }
 
 
@@ -353,22 +341,6 @@ class ImagePDO extends db3
                                     (?, ?, ?, ?, ? )");
 
         $stmt->execute([$this->_personId, $this->_pathFile, $this->_caption, $this->_avatar, $this->_visible]);
-
-        /*
-
-        $stmt = $this->mysqli->prepare("
-                    INSERT INTO image
-                    (person_id, path_file, caption, avatar, visible)
-                    VALUES
-                    (?, ?, ?, ?, ? )");
-
-        $stmt->bind_param("issii", $this->_personId, $this->_pathFile, $this->_caption, $this->_avatar, $this->_visible);
-        $stmt->execute();
-        $stmt->close();
-
-        */
-
-
     }
 
 
@@ -389,21 +361,6 @@ class ImagePDO extends db3
                                 WHERE id = ? ");
 
         $stmt->execute([$this->_caption, $this->_avatar,  $this->_id]);
-
-        /*
-        $stmt = $this->mysqli->prepare("
-                                UPDATE image
-                                SET
-                                caption = ?,
-                                avatar = ?
-                                WHERE id = ? ");
-
-        $stmt->bind_param("sii", $this->_caption, $this->_avatar,  $this->_id);
-        $stmt->execute();
-        $stmt->close();
-
-        */
-
     }
 
 
@@ -417,41 +374,112 @@ class ImagePDO extends db3
         $stmt->execute([$id]);
 
         return $stmt->fetch(PDO::FETCH_OBJ);
-
-        /*
-
-
-                $stmt =  $this->pdo->prepare("
-            SELECT id, last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note
-            FROM person
-            WHERE id = ?");
-
-        $stmt->execute(array($id));
-
-        return $stmt->fetch(PDO::FETCH_OBJ);
-
-
-
-
-        $stmt = $this->mysqli->prepare("
-					SELECT id, person_id, path_file, caption, avatar, visible
-					FROM image
-					WHERE id = ?");
-
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $pathFile, $caption, $avatar, $visible);
-        $stmt->fetch();
-        $stmt->close();
-
-        $image = ['id'=>$id, 'personId'=>$personId, 'pathFile'=>$pathFile, 'caption'=>$caption, 'avatar'=>$avatar,
-            'visible'=>$visible];
-
-        return $image;
-
-        */
     }
 
 
+    public function getPersonIdByImageId($imageId)
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT person_id
+					FROM image
+					WHERE id = ?");
+
+        $stmt->execute([$imageId]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ)->person_id;
+    }
+
+
+    public function getMaxImageByPersonId($personId)
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT MAX(id) as id
+					FROM image
+					WHERE person_id = ?");
+
+        $stmt->execute([$personId]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+    }
+
+
+    public function getMinImageByPersonId($personId)
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT MIN(id) as id
+					FROM image
+					WHERE person_id = ?");
+
+        $stmt->execute([$personId]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+    }
+
+
+    public function getNextLowerImageId($id)
+    {
+        $personId = self::getPersonIdByImageId($id);
+
+        $stmt = $this->pdo->prepare("
+					SELECT id
+					FROM image
+					WHERE person_id = ?
+					AND id < ?
+					ORDER BY id
+					DESC LIMIT 1");
+
+        $stmt->execute([$personId, $id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+    }
+
+
+    public function getNextHigherImageId($id)
+    {
+        $personId = self::getPersonIdByImageId($id);
+
+        $stmt = $this->pdo->prepare("
+					SELECT id
+					FROM image
+					WHERE person_id = ?
+					AND id > ?
+					ORDER BY id
+					LIMIT 1");
+
+        $stmt->execute([$personId, $id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+    }
+
+
+    public function getPreviousImageId($id)
+    {
+        $nextLowerImageId = self::getnextLowerImageId($id);
+
+        if(!$nextLowerImageId) {
+            $nextLowerImageId = self::getMaxImageByPersonId(self::getPersonIdByImageId($id));
+        }
+
+        return $nextLowerImageId;
+    }
+
+
+    public function getNextImageId($id)
+    {
+        $nextHigherImageId = self::getNextHigherImageId($id);
+
+        if(!$nextHigherImageId) {
+            $nextHigherImageId = self::getMinImageByPersonId(self::getPersonIdByImageId($id));
+        }
+
+        return $nextHigherImageId;
+    }
+
+
+    public function setPreviousNextImageId($id)
+    {
+        $this->previousImageId = self::getPreviousImageId($id);
+        $this->nextImageId = self::getNextImageId($id);
+    }
 
 }
