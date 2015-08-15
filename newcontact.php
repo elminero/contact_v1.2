@@ -96,22 +96,22 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                         <div class="form-block">
                             <span class="form-label">Last</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php echo $updateForm->last_name; ?>" /><br />
+                            <input style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">First</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="firstName" id="email" size="50" maxlength="40" value="<?php echo $updateForm->first_name; ?>" /><br />
+                            <input style="width: 320px" type="text" class="input_text" name="firstName" id="email" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">Middle</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="middleName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm->middle_name; ?>"/><br />
+                            <input style="width: 320px" type="text" class="input_text" name="middleName" id="subject" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->middle_name; ?>"/><br />
                         </div>
 
                         <div  class="form-block">
                             <span class="form-label">Alias</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="aliasName" id="subject" size="50" maxlength="40" value="<?php echo $updateForm->alias_name;; ?>" /><br />
+                            <input style="width: 320px" type="text" class="input_text" name="aliasName" id="subject" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->alias_name;; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
