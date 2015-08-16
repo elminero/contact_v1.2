@@ -315,7 +315,7 @@ class ImagePDO extends db3
     public function getVisible(){return $this->_visible;}
 
 
-    public function resetAvatarToZero($personId)  // class Image
+    private function resetAvatarToZero($personId)  // class Image
     {
         $stmt = $this->pdo->prepare("UPDATE image
                                     SET
@@ -390,7 +390,7 @@ class ImagePDO extends db3
     }
 
 
-    public function getMaxImageByPersonId($personId)
+    private function getMaxImageByPersonId($personId)
     {
         $stmt = $this->pdo->prepare("
 					SELECT MAX(id) as id
@@ -403,7 +403,7 @@ class ImagePDO extends db3
     }
 
 
-    public function getMinImageByPersonId($personId)
+    private function getMinImageByPersonId($personId)
     {
         $stmt = $this->pdo->prepare("
 					SELECT MIN(id) as id
@@ -416,8 +416,10 @@ class ImagePDO extends db3
     }
 
 
-    public function getNextLowerImageId($id)
+    private function getNextLowerImageId($id)
     {
+        $nextLowerImageId = null;
+
         $personId = self::getPersonIdByImageId($id);
 
         $stmt = $this->pdo->prepare("
@@ -430,12 +432,18 @@ class ImagePDO extends db3
 
         $stmt->execute([$personId, $id]);
 
-        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+        if($stmt->rowCount()) {
+            $nextLowerImageId = $stmt->fetchObject()->id;
+        }
+
+        return $nextLowerImageId;
     }
 
 
-    public function getNextHigherImageId($id)
+    private function getNextHigherImageId($id)
     {
+        $nextHigherImageId = null;
+
         $personId = self::getPersonIdByImageId($id);
 
         $stmt = $this->pdo->prepare("
@@ -448,11 +456,15 @@ class ImagePDO extends db3
 
         $stmt->execute([$personId, $id]);
 
-        return $stmt->fetch(PDO::FETCH_OBJ)->id;
+        if($stmt->rowCount()) {
+            $nextHigherImageId = $stmt->fetchObject()->id;
+        }
+
+        return $nextHigherImageId;
     }
 
 
-    public function getPreviousImageId($id)
+    private function getPreviousImageId($id)
     {
         $nextLowerImageId = self::getnextLowerImageId($id);
 
@@ -464,7 +476,7 @@ class ImagePDO extends db3
     }
 
 
-    public function getNextImageId($id)
+    private function getNextImageId($id)
     {
         $nextHigherImageId = self::getNextHigherImageId($id);
 
