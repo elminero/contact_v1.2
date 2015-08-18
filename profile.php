@@ -68,7 +68,7 @@ $contact->getContactById();
 
                 <?php // echo var_dump($contact->avatar['pathFile']);  ?>
 
-                <a href="picture.php?id=<?php echo $contact->avatar['id'] ?>"><img alt="" src="images/<?php echo $contact->avatar['pathFile']; ?>_t.jpg" /></a>
+                <a href="picture.php?id=<?php echo $contact->avatar->id; ?>"><img alt="" src="images/<?php echo $contact->avatar->path_file; ?>_t.jpg" /></a>
 
                 <br />
 

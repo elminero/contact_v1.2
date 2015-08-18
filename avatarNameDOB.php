@@ -15,7 +15,7 @@ object(stdClass)#6 (9) { ["id"]=> string(1) "1" ["last_name"]=> string(6) "Farbe
 
 <!-- div 1 Start Avatar -->
 <div style="float: left">
-    <a href="picture.php?id=<?php echo $contact->avatar['id']; ?>"><img alt="" src="images/<?php echo $contact->avatar['pathFile']; ?>_t.jpg" /></a>
+    <a href="picture.php?id=<?php echo $contact->avatar->id; ?>"><img alt="" src="images/<?php echo $contact->avatar->path_file; ?>_t.jpg" /></a>
     <br />
     <div style="float: left">
         <a href="addphotos.php?id=<?php echo $nameDOB->id; ?>">View All</a>

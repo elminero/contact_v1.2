@@ -107,16 +107,9 @@ if ($login->login == 0) {
                 <div style="clear: both"></div>
                 <hr />
 
-                <?php  if($contact->image):
-
-                foreach($contact->image as $image): ?>
-
-                    <a href="picture.php?id=<?php echo $image['id'] ?>" ><img alt="" src="images/<?php echo $image['pathFile']; ?>_t.jpg" /></a>
-
-                <?php endforeach ?>
-
-                <?php  endif; ?>
-
+                <?php while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
+                    <a href="picture.php?id=<?php echo $row->id; ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /></a>
+                <?php endwhile ?>
 
                     <div style="clear:both" ></div>
 

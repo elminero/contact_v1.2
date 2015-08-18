@@ -35,17 +35,35 @@ class Contact extends Person {
 
         // $this->emailAddress = self::getAllEmailAddressByPersonId($this->personId);
 
-        $image = new Image();
-        $this->avatar = $image->getAvatarImageByPersonId($this->personId);
+//       $image = new Image();
+  //      $this->avatar = $image->getAvatarImageByPersonId($this->personId);
 
+        $image = new ImagePDO();
+        $this->avatar = $image->getAvatarImageByPersonId($this->personId);
 
         // $this->avatar = self::getAvatarImageByPersonId($this->personId);
 
-        $this->image = $image->getAllImageByPersonId($this->personId);
+     $this->image = $image->getAllImageByPersonId($this->personId);
 
     }
 
 }
+/*
+
+$contact= new Contact();
+
+$contact->getContactById();
 
 
+//echo var_dump($contactPDO->image);
 
+while($row = $contact->image->fetch(PDO::FETCH_OBJ)) {
+    echo $row->path_file;
+}
+
+echo "<br />";
+
+// echo var_dump($contactPDO->image);
+
+
+*/

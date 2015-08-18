@@ -108,19 +108,27 @@ $contact->getContactById();
 
 
 
+
+
+
+
         <?php  if($contact->image):
 
-            foreach($contact->image as $image): ?>
+
+
+
+
+        while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
 
                 <?php // echo var_dump($image); ?>
 
 
                 <div style="padding: 5px; ">
-                    <a style="margin: 5px; padding-right: 25px; float: left" href="picture.php?id=<?php echo $image['id'] ?>" ><img alt="" src="images/<?php echo $image['pathFile']; ?>_t.jpg" /></a>
+                    <a style="margin: 5px; padding-right: 25px; float: left" href="picture.php?id=<?php echo $row->id ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /></a>
                     <div style="float: left ">
 
                         <form style="float: right"
-                              action="controllers/ImageController.php?action=update&id=<?php echo $image['personId']; ?>"
+                              action="controllers/ImageController.php?action=update&id=<?php echo $row->person_id;  ?>"
                               method="post" enctype="multipart/form-data" >
 
 
@@ -128,16 +136,16 @@ $contact->getContactById();
                             <div class="form-block">
                                 <span >Avatar</span>
                                 <input name="avatar" type="checkbox" class="" value=""
-                                <?php if($image['avatar'] == 1) echo "checked"; ?>    />
+                                <?php if($row->avatar == 1) echo "checked"; ?>    />
                                 <br />
                             </div>
 
                             <div class="form-block">
                                 <span>Caption</span><span id="error"></span>
-                                <textarea name="caption" rows="5" cols="40"  ><?php echo $image['caption']; ?></textarea><br />
+                                <textarea name="caption" rows="5" cols="40"  ><?php echo $row->caption; ?></textarea><br />
                             </div>
 
-                            <input type="hidden" name="id" value="<?php echo $image['id']; ?>" />
+                            <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
 
                             <input type="hidden" name="personId" value="<?php echo $id; ?>" />
 
@@ -157,12 +165,12 @@ $contact->getContactById();
 
 
 
-                    </div><div style="float: right "><a href="controllers/ImageController.php?action=delete&id=<?php echo $image['id']; ?>&personId=<?php echo $image['personId']; ?>">delete</a></div>
+                    </div><div style="float: right "><a href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
                     <div style="clear: both"></div>
 
                 </div>
 
-            <?php endforeach ?>
+            <?php endwhile ?>
 
         <?php  endif; ?>
 
