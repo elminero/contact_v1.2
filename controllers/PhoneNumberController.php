@@ -56,7 +56,7 @@ if(array_key_exists('addPhone', $_POST))
 
     if($cPhone->phoneFieldValidate()) {
 
-        $model = new PhoneNumber();
+        $model = new PhoneNumberPDO();
 
         if( isset($_GET['action']) && ($_GET['action']  === 'create') ) {
 
