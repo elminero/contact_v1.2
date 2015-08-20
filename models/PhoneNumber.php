@@ -184,7 +184,19 @@ class PhoneNumberPDO extends Db3  {
 
     public function updatePhoneNumber($phone)  // class PhoneNumber
     {
+        self::setPhoneParam($phone);
 
+        $stmt = $this->pdo->prepare("
+                                UPDATE phone_number
+                                SET
+                                phone_number = ?,
+                                phone_type = ?,
+                                note = ?
+                                WHERE id = ? ");
+
+        $stmt->execute([$this->_phoneNumber, $this->_phoneType, $this->_note, $this->_id]);
+
+        return $this->_id;
         /*
 
         self::setPhoneParam($phone);
