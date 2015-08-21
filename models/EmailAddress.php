@@ -15,139 +15,6 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
         note            string
 */
 
-class EmailAddress extends Db2 {
-
-    private $_id, $_personId, $_emailAddress, $_type, $_note;
-
-    public function setEmailParam (EmailAddressController $email) {
-
-        $this->_personId = $email->getPersonId();
-        $this->_emailAddress =  $email->getEmailAddress();
-        $this->_type = $email->getType();
-        $this->_note = $email->getNote();
-        $this->_id = $email->getId();
-    }
-
-
-    public function addEmailAddress($email)  // class EmailAddress
-    {
-        self::setEmailParam($email);
-
-        $insertId = null;
-
-        $stmt = $this->mysqli->prepare("
-					INSERT INTO email_address(
-                    person_id, email_address, email_type, note )
-					VALUES(
-					?,?,?,?)");
-
-        $stmt->bind_param("isis", $this->_personId, $this->_emailAddress, $this->_type, $this->_note );
-        $stmt->execute();
-        $insertId = $this->mysqli->insert_id;
-        $stmt->close();
-
-        return $insertId;
-    }
-
-
-    public function updateEmailAddress($email)  // class EmailAddress
-    {
-        self::setEmailParam($email);
-
-        $stmt = $this->mysqli->prepare("
-                                UPDATE email_address
-                                SET
-                                email_address = ?,
-                                email_type = ?,
-                                note = ?
-                                WHERE id = ? ");
-
-        $stmt->bind_param("sisi", $this->_emailAddress, $this->_type, $this->_note, $this->_id);
-        $stmt->execute();
-        $stmt->close();
-
-        return $this->_id;
-    }
-
-
-    public function getAllEmailAddress()  // class EmailAddress
-    {
-        $emailAddresses = null;
-
-        $stmt = $this->mysqli->prepare("
-                    SELECT id, person_id, email_address, email_type, note
-                    FROM email_address");
-
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $emailAddress, $emailType, $note);
-
-        while($stmt->fetch()) {
-            $emailAddresses[] = ['id'=>$id, 'personId'=>$personId, 'emailAddress'=>$emailAddress,
-                                 'emailType'=>$emailType, 'note'=>$note];
-        }
-
-        $stmt->close();
-
-        return $emailAddresses;
-    }
-
-
-    public function getEmailAddressById($id)  // class EmailAddress
-    {
-        $stmt = $this->mysqli->prepare("
-					SELECT id, person_id, email_address, email_type, note
-					FROM email_address
-					WHERE id = ?");
-
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $emailAddress, $emailType, $note);
-        $stmt->fetch();
-        $stmt->close();
-        $emailAddress = ['id'=>$id, 'personId'=>$personId, 'emailAddress'=>$emailAddress, 'emailType'=>$emailType, 'note'=>$note];
-
-        return $emailAddress;
-    }
-
-
-    public function getAllEmailAddressByPersonId($personId)
-    {
-        $emailAddresses = null;
-
-        $stmt = $this->mysqli->prepare("
-					SELECT id, email_address, email_type, note
-					FROM email_address
-					WHERE person_id = ?");
-
-        $stmt->bind_param("i", $personId);
-        $stmt->execute();
-        $stmt->bind_result($id, $emailAddress, $emailType, $note);
-
-        while($stmt->fetch())
-        {
-            $emailAddresses[] = ['id'=>$id, 'emailAddress'=>$emailAddress, 'emailType'=>$emailType, 'note'=>$note];
-        }
-
-        $stmt->close();
-
-        return $emailAddresses;
-    }
-
-
-    public function deleteEmailAddress($id)  // class EmailAddress
-    {
-        $stmt = $this->mysqli->prepare("
-                    DELETE FROM email_address
-                    WHERE id = ? ");
-
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
-    }
-
-}
-
-
 class EmailAddressPDO extends Db3 {
 
     private $_id, $_personId, $_emailAddress, $_type, $_note;
@@ -183,42 +50,16 @@ class EmailAddressPDO extends Db3 {
         self::setEmailParam($email);
 
         $stmt = $this->pdo->prepare("
-                                UPDATE email_address
-                                SET
-                                email_address = ?,
-                                email_type = ?,
-                                note = ?
-                                WHERE id = ? ");
+                    UPDATE email_address
+                    SET
+                    email_address = ?,
+                    email_type = ?,
+                    note = ?
+                    WHERE id = ? ");
 
         $stmt->execute([$this->_emailAddress, $this->_type, $this->_note, $this->_id]);
 
         return $this->pdo->lastInsertId();
-    }
-
-
-    public function getAllEmailAddress()  // class EmailAddress
-    {
-        /*
-
-        $emailAddresses = null;
-
-        $stmt = $this->mysqli->prepare("
-                    SELECT id, person_id, email_address, email_type, note
-                    FROM email_address");
-
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $emailAddress, $emailType, $note);
-
-        while($stmt->fetch()) {
-            $emailAddresses[] = ['id'=>$id, 'personId'=>$personId, 'emailAddress'=>$emailAddress,
-                'emailType'=>$emailType, 'note'=>$note];
-        }
-
-        $stmt->close();
-
-        return $emailAddresses;
-
-        */
     }
 
 
@@ -238,38 +79,13 @@ class EmailAddressPDO extends Db3 {
     public function getAllEmailAddressByPersonId($personId)
     {
         $stmt = $this->pdo->prepare("
-            SELECT id, email_address, email_type, note
-            FROM email_address
-            WHERE person_id = ?");
+                    SELECT id, email_address, email_type, note
+                    FROM email_address
+                    WHERE person_id = ?");
 
         $stmt->execute([$personId]);
 
         return $stmt;
-
-
-
-       /*
-        $emailAddresses = null;
-
-        $stmt = $this->mysqli->prepare("
-					SELECT id, email_address, email_type, note
-					FROM email_address
-					WHERE person_id = ?");
-
-        $stmt->bind_param("i", $personId);
-        $stmt->execute();
-        $stmt->bind_result($id, $emailAddress, $emailType, $note);
-
-        while($stmt->fetch())
-        {
-            $emailAddresses[] = ['id'=>$id, 'emailAddress'=>$emailAddress, 'emailType'=>$emailType, 'note'=>$note];
-        }
-
-        $stmt->close();
-
-        return $emailAddresses;
-
-       */
     }
 
 
