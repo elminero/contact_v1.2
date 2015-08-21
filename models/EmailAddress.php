@@ -148,4 +148,129 @@ class EmailAddress extends Db2 {
 }
 
 
+class EmailAddressPDO extends Db3 {
+
+    private $_id, $_personId, $_emailAddress, $_type, $_note;
+
+    public function setEmailParam (EmailAddressController $email) {
+
+        $this->_personId = $email->getPersonId();
+        $this->_emailAddress =  $email->getEmailAddress();
+        $this->_type = $email->getType();
+        $this->_note = $email->getNote();
+        $this->_id = $email->getId();
+    }
+
+
+    public function addEmailAddress($email)  // class EmailAddress
+    {
+        self::setEmailParam($email);
+
+        $stmt = $this->pdo->prepare("
+					INSERT INTO email_address(
+                    person_id, email_address, email_type, note )
+					VALUES(
+					?,?,?,?)");
+
+        $stmt->execute([$this->_personId, $this->_emailAddress, $this->_type, $this->_note]);
+
+        return $this->pdo->lastInsertId();
+    }
+
+
+    public function updateEmailAddress($email)  // class EmailAddress
+    {
+        self::setEmailParam($email);
+
+        $stmt = $this->pdo->prepare("
+                                UPDATE email_address
+                                SET
+                                email_address = ?,
+                                email_type = ?,
+                                note = ?
+                                WHERE id = ? ");
+
+        $stmt->execute([$this->_emailAddress, $this->_type, $this->_note, $this->_id]);
+
+        return $this->pdo->lastInsertId();
+    }
+
+
+    public function getAllEmailAddress()  // class EmailAddress
+    {
+        /*
+
+        $emailAddresses = null;
+
+        $stmt = $this->mysqli->prepare("
+                    SELECT id, person_id, email_address, email_type, note
+                    FROM email_address");
+
+        $stmt->execute();
+        $stmt->bind_result($id, $personId, $emailAddress, $emailType, $note);
+
+        while($stmt->fetch()) {
+            $emailAddresses[] = ['id'=>$id, 'personId'=>$personId, 'emailAddress'=>$emailAddress,
+                'emailType'=>$emailType, 'note'=>$note];
+        }
+
+        $stmt->close();
+
+        return $emailAddresses;
+
+        */
+    }
+
+
+    public function getEmailAddressById($id)  // class EmailAddress
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, person_id, email_address, email_type, note
+					FROM email_address
+					WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public function getAllEmailAddressByPersonId($personId)
+    {
+       /*
+        $emailAddresses = null;
+
+        $stmt = $this->mysqli->prepare("
+					SELECT id, email_address, email_type, note
+					FROM email_address
+					WHERE person_id = ?");
+
+        $stmt->bind_param("i", $personId);
+        $stmt->execute();
+        $stmt->bind_result($id, $emailAddress, $emailType, $note);
+
+        while($stmt->fetch())
+        {
+            $emailAddresses[] = ['id'=>$id, 'emailAddress'=>$emailAddress, 'emailType'=>$emailType, 'note'=>$note];
+        }
+
+        $stmt->close();
+
+        return $emailAddresses;
+
+       */
+    }
+
+
+    public function deleteEmailAddress($id)  // class EmailAddress
+    {
+        $stmt = $this->pdo->prepare("
+                    DELETE FROM email_address
+                    WHERE id = ? ");
+
+        $stmt->execute([$id]);
+    }
+
+}
+
 

@@ -24,7 +24,7 @@ ob_end_clean();
 
 require_once('models/EmailAddress.php');
 
-$email = new EmailAddress();
+$email = new EmailAddressPDO();
 
 $emailData = null;
 $action = null;
@@ -80,12 +80,15 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
 
                 <?php
-                if($action == "update") {
-                    echo "<h3 style='float: left'>Update eMail Address</h3>
-            <span style='float: right'>";
-                    echo "<a href=\"controllers\EmailAddressController.php?action=delete&id={$emailData['id']}&personId={$_GET['id']}\">delete</a>";
-                    echo "</span>";
-                }
+                if($action == "update"): ?>
+                    <h3 style='float: left'>Update eMail Address</h3>
+            <span style='float: right'>
+
+<a href="controllers/EmailAddressController.php?action=delete&id=<?php echo $emailData->id; ?>&personId=<?php echo $_GET['id']; ?> ">delete</a>
+                    </span>
+                <?php endif ?>
+
+                <?php
 
                 if($action == "create") {
                     echo "<h3>Add eMail Address</h3>";
@@ -120,17 +123,17 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                     E-Mail
                     Type:
                     <select name="type">
-                        <option <?php if($emailData['emailType'] == 0)echo "selected"; ?> value="0"> </option>
-                        <option <?php if($emailData['emailType'] == 1)echo "selected"; ?> value="1">Business</option>
-                        <option <?php if($emailData['emailType'] == 2)echo "selected"; ?> value="2">Home</option>
-                        <option <?php if($emailData['emailType'] == 3)echo "selected"; ?> value="3">Shared</option>
-                        <option <?php if($emailData['emailType'] == 4)echo "selected"; ?> value="4">Previous</option>
-                        <option <?php if($emailData['emailType'] == 5)echo "selected"; ?> value="5">Other</option>
+                        <option <?php if($emailData->email_type == 0) echo "selected"; ?> value="0"> </option>
+                        <option <?php if($emailData->email_type == 1) echo "selected"; ?> value="1">Business</option>
+                        <option <?php if($emailData->email_type == 2) echo "selected"; ?> value="2">Home</option>
+                        <option <?php if($emailData->email_type == 3) echo "selected"; ?> value="3">Shared</option>
+                        <option <?php if($emailData->email_type == 4) echo "selected"; ?> value="4">Previous</option>
+                        <option <?php if($emailData->email_type == 5) echo "selected"; ?> value="5">Other</option>
                     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     E-Mail Address:
-                    <input style="width: 175px"  name="emailAddress" type="text" value="<?php echo $emailData['emailAddress'] ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="emailAddress" type="text" value="<?php echo $emailData->email_address; ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Notes:
-                    <input style="width: 175px"  name="note" type="text" value="<?php echo $emailData['note'] ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="note" type="text" value="<?php echo $emailData->note; ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 

@@ -34,9 +34,6 @@ class EmailAddressController
             preg_match("/\A[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}\z/",  strtolower($this->_emailAddress)) &&
             preg_match('/^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/', strtolower($this->_emailAddress))
           ) {
-
-
-
             $emailFieldValidate = 1;
         }
 
@@ -54,7 +51,7 @@ if(array_key_exists('addEmail', $_POST))
 
     if($cEmail->emailFieldValidate()) {
 
-        $model = new EmailAddress();
+        $model = new EmailAddressPDO();
 
         if( isset($_GET['action']) && ($_GET['action']  === 'create') ) {
 
@@ -79,8 +76,11 @@ if(array_key_exists('addEmail', $_POST))
 
 if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
 
+
+
+
     $deleteId = (int)$_GET['id'];
-    $model = new EmailAddress();
+    $model = new EmailAddressPDO();
     $model->deleteEmailAddress($deleteId);
     header("Location: ../profile.php?id=".$_GET['personId']);
 }
