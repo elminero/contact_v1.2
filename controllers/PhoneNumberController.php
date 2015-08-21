@@ -85,7 +85,7 @@ if(array_key_exists('addPhone', $_POST))
 if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
 
     $deleteId = (int)$_GET['id'];
-    $model = new PhoneNumber();
+    $model = new PhoneNumberPDO();
     $model->deletePhoneNumber($deleteId);
     header("Location: ../profile.php?id=".$_GET['personId']);
 }

@@ -248,6 +248,16 @@ class PhoneNumberPDO extends Db3  {
 
     public function getPhoneNumberById($id)  // class PhoneNumber
     {
+        $stmt = $this->pdo->prepare("
+					SELECT id, person_id, phone_number, phone_type, note
+					FROM phone_number
+					WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
+
       //  $stmt = $this->pdo
 
         /*
@@ -299,6 +309,13 @@ class PhoneNumberPDO extends Db3  {
 
     public function deletePhoneNumber($id)  // class PhoneNumber
     {
+        $stmt = $this->pdo->prepare("
+                    DELETE FROM phone_number
+                    WHERE id = ? ");
+
+        $stmt->execute([$id]);
+
+
         /*
         $stmt = $this->mysqli->prepare("
                     DELETE FROM phone_number
