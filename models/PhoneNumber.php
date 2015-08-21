@@ -197,52 +197,6 @@ class PhoneNumberPDO extends Db3  {
         $stmt->execute([$this->_phoneNumber, $this->_phoneType, $this->_note, $this->_id]);
 
         return $this->_id;
-        /*
-
-        self::setPhoneParam($phone);
-
-        $stmt = $this->mysqli->prepare("
-                                UPDATE phone_number
-                                SET
-                                phone_number = ?,
-                                phone_type = ?,
-                                note = ?
-                                WHERE id = ? ");
-
-        $stmt->bind_param("sisi", $this->_phoneNumber, $this->_phoneType, $this->_note, $this->_id);
-        $stmt->execute();
-
-        //   $affectedRow = $this->mysqli->affected_rows;
-
-        $stmt->close();
-
-        return $this->_id;
-        */
-    }
-
-
-    public function getAllPhoneNumber()  // class PhoneNumber
-    {
-
-        /*
-        $phoneNumbers = null;
-
-        $stmt = $this->mysqli->prepare("
-                    SELECT id, person_id, phone_number, phone_type, note
-                    FROM phone_number");
-
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $phoneNumber, $phoneType, $note);
-
-        while($stmt->fetch()) {
-            $phoneNumbers[] = ["id"=>$id, "personId"=>$personId, "phoneNumber"=>$phoneNumber, "phoneType"=>$phoneType,
-                "note"=>$note];
-        }
-
-        $stmt->close();
-
-        return $phoneNumbers;
-        */
     }
 
 
@@ -256,54 +210,19 @@ class PhoneNumberPDO extends Db3  {
         $stmt->execute([$id]);
 
         return $stmt->fetch(PDO::FETCH_OBJ);
-
-
-      //  $stmt = $this->pdo
-
-        /*
-        $stmt = $this->mysqli->prepare("
-					SELECT id, person_id, phone_number, phone_type, note
-					FROM phone_number
-					WHERE id = ?");
-
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $phoneNumber, $phoneType, $note);
-        $stmt->fetch();
-        $stmt->close();
-        $phoneNumber = ["id"=>$id, "personId"=>$personId, "phoneNumber"=>$phoneNumber, "phoneType"=>$phoneType, "note"=>$note];
-        return $phoneNumber;
-        */
-
-
     }
 
 
     public function getAllPhoneNumberByPersonId($personId)
     {
-
-        /*
-        $phoneNumbers = null;
-
-        $stmt = $this->mysqli->prepare("
+        $stmt = $this->pdo->prepare("
 					SELECT id, phone_number, phone_type, note
 					FROM phone_number
 					WHERE person_id = ?");
 
-        $stmt->bind_param("i", $personId);
-        $stmt->execute();
-        $stmt->bind_result($id, $phoneNumber, $phoneType, $note);
+        $stmt->execute([$personId]);
 
-        while($stmt->fetch())
-        {
-            $phoneNumbers[] = ["id"=>$id, "phoneNumber"=>$phoneNumber, "phoneType"=>$phoneType, "note"=>$note];
-        }
-
-        $stmt->close();
-
-        return $phoneNumbers;
-
-        */
+        return $stmt;
     }
 
 
@@ -314,34 +233,6 @@ class PhoneNumberPDO extends Db3  {
                     WHERE id = ? ");
 
         $stmt->execute([$id]);
-
-
-        /*
-        $stmt = $this->mysqli->prepare("
-                    DELETE FROM phone_number
-                    WHERE id = ? ");
-
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
-        */
     }
 
 }
-
-
-
-
-
-
-/*
-
-$phone = new PhoneNumber();
-
-$phoneInfo = $phone->getPhoneNumberById(1);
-
-echo var_dump($phoneInfo);
-
-
-
-*/

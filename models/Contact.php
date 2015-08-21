@@ -26,7 +26,7 @@ class Contact extends Person {
         $this->address = $address->getAllAddressByPersonId($this->personId);
 
 
-        $phoneNumber = new PhoneNumber();
+        $phoneNumber = new PhoneNumberPDO();
         $this->phoneNumber = $phoneNumber->getAllPhoneNumberByPersonId($this->personId);
 
 

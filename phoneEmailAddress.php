@@ -17,10 +17,11 @@ $contact->getContactById();
 
     <?php // echo var_dump($contact->phoneNumber); ?>
 
-    <?php foreach($contact->phoneNumber as $phoneNumber): ?>
-        <?php $phoneLine = /*$phoneNumber['phoneType'] . " " .*/ $phoneNumber['phoneNumber'] . " " . $phoneNumber['note'] . "<br />"; ?>
-        <a href="phonenumber.php?id=<?php echo $id; ?>&update=<?php echo $phoneNumber['id']; ?>"><?php echo $phoneLine; ?></a>
-    <?php endforeach; ?>
+    <?php while($row = $contact->phoneNumber->fetch(PDO::FETCH_OBJ)): ?>
+        <?php $phoneLine = /*$phoneNumber['phoneType'] . " " . */$row->phone_number . " " . $row->note . "<br />"; ?>
+        <a href="phonenumber.php?id=<?php echo $id; ?>&update=<?php echo $row->id; ?>"><?php echo $phoneLine; ?></a>
+    <?php endwhile; ?>
+
     <?php echo "<hr />"; ?>
 
 <?php endif; ?>
