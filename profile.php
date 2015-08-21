@@ -181,15 +181,12 @@ $contact->getContactById();
             <!--  ["emailAddress"]=> string(16) "elminero@cox.net" ["emailType"]=> int(0) ["note"]=> string(14) -->
             <?php
             if($contact->emailAddress): ?>
-                <?php foreach($contact->emailAddress as $email): ?>
 
-                    <?php $emailLine = $email['emailAddress'] . " " . /*$email['emailType'] . " " . */$email['note'] . "<br />"; ?>
+                <?php while($row = $contact->emailAddress->fetch(PDO::FETCH_OBJ)): ?>
+                    <?php $emailLine = $row->email_address . " " . /*$email['emailType'] . " " . */$row->note . "<br />"; ?>
+                    <a href="email.php?id=<?php echo $id; ?>&update=<?php echo $row->id; ?>"><?php echo $emailLine; ?></a>
+                <?php endwhile ?>
 
-
-                    <a href="email.php?id=<?php echo $id; ?>&update=<?php echo $email['id']; ?>"><?php echo $emailLine; ?></a>
-
-
-                <?php endforeach ?>
                 <?php echo "<hr />"; ?>
 
             <?php endif;  ?>

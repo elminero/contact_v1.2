@@ -237,6 +237,17 @@ class EmailAddressPDO extends Db3 {
 
     public function getAllEmailAddressByPersonId($personId)
     {
+        $stmt = $this->pdo->prepare("
+            SELECT id, email_address, email_type, note
+            FROM email_address
+            WHERE person_id = ?");
+
+        $stmt->execute([$personId]);
+
+        return $stmt;
+
+
+
        /*
         $emailAddresses = null;
 

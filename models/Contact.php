@@ -30,7 +30,7 @@ class Contact extends Person {
         $this->phoneNumber = $phoneNumber->getAllPhoneNumberByPersonId($this->personId);
 
 
-        $emailAddress = new EmailAddress();
+        $emailAddress = new EmailAddressPDO();
         $this->emailAddress = $emailAddress->getAllEmailAddressByPersonId($this->personId);
 
         // $this->emailAddress = self::getAllEmailAddressByPersonId($this->personId);
