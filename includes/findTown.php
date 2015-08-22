@@ -23,7 +23,7 @@ $cities = $address->getAllCityByState($state);
 <?php if ($state === "notOnList"): ?>
     <div class="form-block">
         <span class="form-label">City</span>
-        <input style="width:245px;" class="input_text" type="text" name="city" maxlength="40" value="test"  /><br />
+        <input style="width:245px;" class="input_text" type="text" name="city" maxlength="40" value=""  /><br />
     </div>
 <?php endif; ?>
 

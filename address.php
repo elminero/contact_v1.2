@@ -161,8 +161,11 @@ if(isset($_GET['update'])) {
 
                         <span class="form-label">City</span>
 
+                        <?php if(!$addressData->city): ?>
+
                         <input style="width:240px;" class="input_text" type="text" name="city" maxlength="40" /><br />
 
+                        <?php endif; ?>
 
                     <?php if($action == "update"): ?>
 
