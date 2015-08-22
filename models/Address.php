@@ -587,32 +587,16 @@ class AddressPDO extends Db3 {
     }
 
 
-
-    public function getState($iso)
+    public function getStatesByCountry($iso)
     {
-        /*
-        $states = null;
-
-        $stmt = $this->mysqli->prepare("
+        $stmt = $this->pdo->prepare("
                     SELECT subdivision, iso
                     FROM subdivision
                     WHERE iso = ?");
 
-        $stmt->bind_param("s", $iso);
+        $stmt->execute([$iso]);
 
-        $stmt->execute();
-
-        $stmt->bind_result($subdivision, $iso);
-
-        while($stmt->fetch())
-        {
-            $states[] = ['subdivision'=>$subdivision, 'iso'=>$subdivision];
-        }
-
-        $stmt->close();
-
-        return $states;
-        */
+        return $stmt;
     }
 
 
@@ -813,7 +797,6 @@ class AddressPDO extends Db3 {
 
 
 }
-
 
 
 
