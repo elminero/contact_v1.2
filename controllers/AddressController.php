@@ -56,7 +56,7 @@ if(array_key_exists('addAddress', $_POST))
 
     if($cAddress->addressFieldValidate()) {
 
-        $model = new Address();
+        $model = new AddressPDO();
 
         if( isset($_GET['action']) && ($_GET['action']  === 'create') ) {
 
