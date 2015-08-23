@@ -496,15 +496,11 @@ class AddressPDO extends Db3 {
 
     public function deleteAddress($id)  // class Address
     {
-        /*
-        $stmt = $this->mysqli->prepare("
+        $stmt = $this->pdo->prepare("
                     DELETE FROM address
                     WHERE id = ? ");
 
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
-        */
+        $stmt->execute([$id]);
     }
 
 

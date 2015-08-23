@@ -82,7 +82,7 @@ if(array_key_exists('addAddress', $_POST))
 if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
     $deleteId = (int)$_GET['id'];
 
-    $cAddress = new Address();
+    $cAddress = new AddressPDO();
     $cAddress->deleteAddress($deleteId);
     header("Location: ../profile.php?id=".$_GET['personId']);
 }
