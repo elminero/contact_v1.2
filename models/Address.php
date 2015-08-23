@@ -481,32 +481,6 @@ class AddressPDO extends Db3 {
     }
 
 
-    public function getAllAddress()  // class Address
-    {
-        /*
-
-        $addresses = null;
-
-        $stmt = $this->mysqli->prepare("
-                    SELECT id, person_id, address_type, country_iso, state, street, city, postal_code, note
-                    FROM address");
-
-        $stmt->execute();
-        $stmt->bind_result($id, $personId, $addressType, $countryIso, $state, $street, $city, $postalCode, $note);
-
-        while($stmt->fetch()) {
-            $addresses[] = ["id"=>$id, "personId"=>$personId, "addressType"=>$addressType, "countryIso"=>$countryIso,
-                "state"=>$state, "street"=>$street, "city"=>$city, "postalCode"=>$postalCode, "note"=>$note];
-        }
-
-        $stmt->close();
-
-        return $addresses;
-
-        */
-    }
-
-
     public function getAddressById($id)  // class Address
     {
         $stmt = $this->pdo->prepare("
@@ -517,34 +491,6 @@ class AddressPDO extends Db3 {
         $stmt->execute([$id]);
 
         return $stmt->fetch(PDO::FETCH_OBJ);
-    }
-
-
-    public function getAllAddressByPersonId($personId)  // class Address
-    {
-        /*
-        $addresses = null;
-
-        $stmt = $this->mysqli->prepare("
-					SELECT id, address_type, country_iso, state, street, city, postal_code, note
-					FROM address
-					WHERE person_id = ?");
-
-        $stmt->bind_param("i", $personId);
-        $stmt->execute();
-        $stmt->bind_result($addressId, $addressType, $countryIso, $state, $street, $city, $postalCode, $note);
-
-        while($stmt->fetch())
-        {
-            $addresses[] = ["addressId"=>$addressId, "addressType"=>$addressType, "countryIso"=>$countryIso,
-                "state"=>$state, "street"=>$street, "city"=>$city, "postalCode"=>$postalCode, "note"=>$note];
-
-        }
-
-        $stmt->close();
-
-        return $addresses;
-        */
     }
 
 
@@ -759,8 +705,6 @@ class AddressPDO extends Db3 {
                 break;
             default:
                 $stateAbbr = "notOnList";
-
-
         }
 
         return $stateAbbr;
@@ -770,63 +714,15 @@ class AddressPDO extends Db3 {
 
     public function getAllCityByState($stateAbbr)
     {
-       /*
-        $cities = null;
+        $stmt = $this->pdo->prepare("
+                        SELECT DISTINCT city
+                        FROM us_zip_code
+                        WHERE state = ?
+                        AND zip_code_type  = 'STANDARD' ORDER BY city;");
 
-        $stmt = $this->mysqli->prepare("
-                    SELECT DISTINCT city
-                    FROM us_zip_code
-                    WHERE state = ?
-                    AND zip_code_type  = 'STANDARD' ORDER BY city;");
+        $stmt->execute([$stateAbbr]);
 
-        $stmt->bind_param("s", $stateAbbr);
-        $stmt->execute();
-        $stmt->bind_result($city);
-
-        while($stmt->fetch())
-        {
-            $cities[] = ['city'=>$city];
-        }
-
-        $stmt->close();
-
-        return $cities;
-       */
+        return $stmt;
     }
-
-
-
 }
 
-
-
-/*      For testing purposes
-
-$address = new Address();
-
-$addressData = $address->getAllAddressByPersonId(1);
-
-echo var_dump($addressData);
-
-
-
-
-
-        echo $this->_id;
-        echo "<br />";
-        echo $this->_personId;
-        echo "<br />";
-        echo $this->_addressType;
-        echo "<br />";
-        echo $this->_countryIso;
-        echo "<br />";
-        echo $this->_state;
-        echo "<br />";
-        echo $this->_street;
-        echo "<br />";
-        echo $this->_city;
-        echo "<br />";
-        echo $this->_postalCode;
-        echo "<br />";
-        echo $this->_note;
-*/

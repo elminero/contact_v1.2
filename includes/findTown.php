@@ -2,7 +2,7 @@
 ob_start();
 require("../models/Address.php");
 
-$address = new Address();
+$address = new AddressPDO();
 
 
 //$city = new City();
@@ -15,7 +15,7 @@ $state = $address->getStateAbbr($_GET['state']);
 
 
 
-$cities = $address->getAllCityByState($state);
+$qCities = $address->getAllCityByState($state);
 
 ?>
 
@@ -30,10 +30,12 @@ $cities = $address->getAllCityByState($state);
 <?php if ($state != "notOnList"): ?>
 <span class="form-label">City</span>
 <select style="width:245px;" id="country" class="input_text" name="city" >
-    <?php foreach($address->getAllCityByState($state) as $city): ?>
-        <?php $city = ucwords(strtolower($city['city'])); ?>
+
+    <?php while($row = $qCities->fetch(PDO::FETCH_OBJ)): ?>
+        <?php $city = ucwords(strtolower($row->city)); ?>
         <option value="<?php echo $city; ?>"><?php echo $city; ?></option>";
-    <?php endforeach; ?>
+    <?php endwhile; ?>
+
 </select>
 <br />
 <?php endif; ?>
