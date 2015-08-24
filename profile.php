@@ -198,48 +198,27 @@ $contact->getContactById();
                 <?php $i = 4; $b = 1; ?>
 
 
-                <?php
-                /*
-                    ["$addressId"=>$addressId, "addressType"=>$addressType, "countryIso"=>$countryIso,
-                    "state"=>$state, "street"=>$street, "city"=>$city, "postalCode"=>$postalCode, "note"=>$note]
-                */
 
-                if($contact->address) {
-                    foreach($contact->address as $address)
-                    {
-                        $addressTd = $address['street'] . "<br />" .
-                            $address['city'] . ", " . $address['state'] . " " . $address['postalCode'] . " " . $address['countryIso'] . "<br />" .
-                            $address['note'];
+                <?php  if($contact->address): ?>
 
+                    <?php while ($row = $contact->address->fetch(PDO::FETCH_OBJ)): ?>
 
-                        if(($i % 4) == 0)
-                        {
-                            echo "<tr>";
-                        }
+                        <?php $addressTd = $row->street . "<br />" .
+                            $row->city . ", " . $row->state . " " . $row->postal_code . " " . $row->country_iso . "<br />" .
+                            $row->note;
 
+                                echo "<tr>";
                         ?>
-
                         <td style="padding-right: 20px">
 
+                            <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
 
+                                <?php echo "</tr>"; ?>
 
+                    <?php endwhile; ?>
 
-                            <a href="address.php?id=<?php echo $id . "&update=". $address['addressId']; ?>"><?php echo $addressTd; ?></a>
+                <?php endif; ?>
 
-
-                        </td>
-
-                        <?php
-                        if(($b % 4) == 0)
-                        {
-                            echo "</tr>";
-                        }
-
-                        $i++; $b++;
-
-                    }
-                }
-                ?>
             </table>
 
 

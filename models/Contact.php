@@ -22,7 +22,7 @@ class Contact extends Person {
         // $this->nameDOB = $person->getPersonById($this->personId);
 
 
-        $address = new Address();
+        $address = new AddressPDO();
         $this->address = $address->getAllAddressByPersonId($this->personId);
 
 
