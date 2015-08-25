@@ -14,11 +14,11 @@ class LoginController {
 
                 $id = $_COOKIE["phpContact"];
 
-                $cUser = new User();
+                $cUser = new UserPDO();
 
                 $user = $cUser->getUserByid($id);
 
-            if ( $_COOKIE["phpContact"] ===  $user['passHash']  ) {
+            if ( $_COOKIE["phpContact"] ===  $user->pass_hash  ) {
 
                 $this->login = 1;
             } else {
@@ -35,8 +35,6 @@ class LoginController {
 
 if( array_key_exists("login", $_POST) ) {
 
- //   array(3) { ["userName"]=> string(8) "elminero" ["password"]=> string(6) "super8" ["login"]=> string(5) "login" }
-
     $password = htmlspecialchars(trim($_POST['password']));
 
     $userName = htmlspecialchars(trim($_POST['userName'])) ;
@@ -48,14 +46,14 @@ if( array_key_exists("login", $_POST) ) {
     ];
 
 
-    $cUser = new User();
+    $cUser = new UserPDO();
 
     $user = $cUser->getUserByName($userName);
 
 
  //   echo var_dump($user);
 
-    if (password_verify($password, $user['passHash'])) {
+    if (password_verify($password, $user->pass_hash)) {
 
         $options = [
             'cost' => 11,
@@ -66,9 +64,9 @@ if( array_key_exists("login", $_POST) ) {
 
         if(setrawcookie("phpContact", $passHash, 0, "/")) { // time() + (86400 * 30)
 
-            setrawcookie("phpContactId", $user['id'], 0, "/");
+            setrawcookie("phpContactId", $user->id, 0, "/");
 
-            setrawcookie("phpContact", $user['passHash'], 0, "/");
+            setrawcookie("phpContact", $user->pass_hash, 0, "/");
 
             //         echo var_dump($_COOKIE);
 
