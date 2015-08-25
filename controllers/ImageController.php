@@ -236,7 +236,7 @@ if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
 
     $deleteId = (int)$_GET['id'];
 
-    $cImage = new Image();
+    $cImage = new ImagePDO();
     $cImage->deleteImage($deleteId);
 
     header("Location: ../editphotos.php?id=".$_GET['personId']);

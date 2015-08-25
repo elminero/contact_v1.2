@@ -244,9 +244,17 @@ class ImagePDO extends db3
 
 
             $stmt->execute([$personId]);
-
-
         return $stmt;
+    }
+
+
+    public function deleteImage($id)
+    {
+        $stmt = $this->pdo->prepare("
+                DELETE FROM image
+                WHERE id = ?");
+
+        $stmt->execute([$id]);
     }
 
 }
