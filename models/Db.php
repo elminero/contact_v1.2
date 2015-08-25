@@ -52,7 +52,8 @@ abstract class db3
 {
     protected $pdo;
 
-    function __construct() {
+    function __construct($personId = null) {
+        $this->personId = $personId;
         $this->pdo = new PDO("mysql:host=localhost;dbname=contact;charset=utf8", "ian", "super1964");
     }
 }

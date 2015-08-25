@@ -97,7 +97,7 @@ if($cPerson->nameFieldValidate()) {
  */
 if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
     $deleteId = (int)$_GET['id'];
-    $cPerson = new Person();
+    $cPerson = new PersonPDO();
     $cPerson->deletePerson($deleteId);
     header("Location: ../listcontacts.php");
 }

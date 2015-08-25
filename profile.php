@@ -24,6 +24,7 @@ if( isset($_POST['id']) )
 $contact = new Contact($id);
 $contact->getContactById();
 
+
 // echo $contact->nameDOB->last_name;
 
 
@@ -139,6 +140,7 @@ $contact->getContactById();
                 {
                     $nameDOB .= "Age: " . $contact->getAge($contact->nameDOB->birth_year, $contact->nameDOB->birth_month,
                             $contact->nameDOB->birth_day) . "<br />";
+
                 }
 
                 $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
