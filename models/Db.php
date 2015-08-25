@@ -5,6 +5,9 @@
 
 
 // require("tDebug.php");
+
+/*
+
 abstract class Db2
 {
 
@@ -46,7 +49,7 @@ abstract class Db2
         }
     }
 }
-
+*/
 
 abstract class db3
 {
@@ -61,7 +64,6 @@ abstract class db3
 
 function __destruct ()
 {
-    $this->mysqli->close();
-    echo "The DB Connection has closed";
+
 }
 
