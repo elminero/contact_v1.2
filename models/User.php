@@ -82,8 +82,78 @@ class User extends Db2  {
         return $user;
     }
 
+}
 
 
+
+class UserPDO extends Db3  {
+
+    public function addUser($user)  // class Person
+    {
+        /*
+        $insertId = null;
+
+        $stmt = $this->mysqli->prepare("
+				INSERT INTO user
+				  (username, pass_hash, role, note, date_last_login, ip_last_login)
+				VALUES
+				  (?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param("ssisss", $user['username'], $user['passHash'], $user['role'], $user['note'], $user['dateLastLogin'], $user['ipLastLogin']);
+        $stmt->execute();
+        $stmt->close();
+
+        $insertId = $this->mysqli->insert_id;
+
+        return $insertId;
+
+        */
+    }
+
+    public function getUserByName($userName)
+    {
+        /*
+        $stmt = $this->mysqli->prepare("
+                SELECT id, username, pass_hash, role, note, date_last_login, ip_last_login
+                FROM user
+                WHERE username = ?");
+
+        $stmt->bind_param("s", $userName);
+        $stmt->execute();
+        $stmt->bind_result($id, $username, $passHash, $role, $note, $dateLastLogin, $ipLastLogin);
+        $stmt->fetch();
+
+        $user = ['id'=>$id, 'username'=>$username, 'passHash'=>$passHash, 'role'=>$role, 'note'=>$note,
+            'dateLastLogin'=>$dateLastLogin, 'ipLastLogin'=>$ipLastLogin];
+
+        $stmt->close();
+
+        return $user;
+        */
+    }
+
+
+    public function getUserById($id)
+    {
+        /*
+        $stmt = $this->mysqli->prepare("
+                SELECT id, username, pass_hash, role, note, date_last_login, ip_last_login
+                FROM user
+                WHERE pass_hash = ?");
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result($id, $username, $passHash, $role, $note, $dateLastLogin, $ipLastLogin);
+        $stmt->fetch();
+
+        $user = ['id'=>$id, 'username'=>$username, 'passHash'=>$passHash, 'role'=>$role, 'note'=>$note,
+            'dateLastLogin'=>$dateLastLogin, 'ipLastLogin'=>$ipLastLogin];
+
+        $stmt->close();
+
+        return $user;
+        */
+    }
 
 }
 
