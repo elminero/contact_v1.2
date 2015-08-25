@@ -57,46 +57,28 @@ if($contact->emailAddress): ?>
 
 <table>
     <?php $i = 4; $b = 1; ?>
-
-    <?php
-    /*
-        ["$addressId"=>$addressId, "addressType"=>$addressType, "countryIso"=>$countryIso,
-        "state"=>$state, "street"=>$street, "city"=>$city, "postalCode"=>$postalCode, "note"=>$note]
-    */
-
-    if($contact->address) {
-        foreach($contact->address as $address)
-        {
-            $addressTd = $address['street'] . "<br />" .
-                $address['city'] . ", " . $address['state'] . " " . $address['postalCode'] . " " . $address['countryIso'] . "<br />" .
-                $address['note'];
-
-
+    <?php  if($contact->address): ?>
+        <?php while ($row = $contact->address->fetch(PDO::FETCH_OBJ)): ?>
+            <?php $addressTd = $row->street . "<br />" .
+                    $row->city . ", " . $row->state . " " . $row->postal_code . " " . $row->country_iso . "<br />" .
+                    $row->note;
             if(($i % 4) == 0)
             {
                 echo "<tr>";
             }
-
             ?>
-
             <td style="padding-right: 20px">
-                <a href="address.php?id=<?php echo $id; ?>&update=<?php echo $address['addressId']; ?>"><?php echo $addressTd; ?></a>
-            </td>
-
+            <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
             <?php
             if(($b % 4) == 0)
             {
                 echo "</tr>";
             }
-
             $i++; $b++;
-
-        }
-    }
-    ?>
+            ?>
+        <?php endwhile; ?>
+    <?php endif; ?>
 </table>
-
-
 <!-- End Address -->
 
 

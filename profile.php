@@ -196,34 +196,31 @@ $contact->getContactById();
 
             <!-- Start Address -->
             <h3><a href="address.php?id=<?php echo $_GET['id'] ?>">Add Address</a></h3>
+
             <table>
                 <?php $i = 4; $b = 1; ?>
-
-
-
                 <?php  if($contact->address): ?>
-
-                    <?php while ($row = $contact->address->fetch(PDO::FETCH_OBJ)): ?>
-
-                        <?php $addressTd = $row->street . "<br />" .
-                            $row->city . ", " . $row->state . " " . $row->postal_code . " " . $row->country_iso . "<br />" .
-                            $row->note;
-
-                                echo "<tr>";
-                        ?>
-                        <td style="padding-right: 20px">
-
-                            <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
-
-                                <?php echo "</tr>"; ?>
-
+                <?php while ($row = $contact->address->fetch(PDO::FETCH_OBJ)): ?>
+                <?php $addressTd = $row->street . "<br />" .
+                    $row->city . ", " . $row->state . " " . $row->postal_code . " " . $row->country_iso . "<br />" .
+                    $row->note;
+                if(($i % 4) == 0)
+                {
+                    echo "<tr>";
+                }
+                ?>
+                <td style="padding-right: 20px">
+                    <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
+                    <?php
+                    if(($b % 4) == 0)
+                    {
+                        echo "</tr>";
+                    }
+                    $i++; $b++;
+                    ?>
                     <?php endwhile; ?>
-
-                <?php endif; ?>
-
+                    <?php endif; ?>
             </table>
-
-
             <!-- End Address -->
 
 
