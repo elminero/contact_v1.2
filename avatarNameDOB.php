@@ -93,9 +93,9 @@ $name.="Note: " . "<div style=\"  width: 200px;   \">" . $nameDOB->note . "</div
            <!-- <a href="newcontact.php?id=<?php // echo $nameDOB->id; ?>&action=update"><?php // echo  $nameDOB->id; ?></a> -->
         <?php endif; ?>
 
-        <?php if( isset($_GET['action'])  &&   ($_GET['action'] == 'update')           ): ?>
+        <?php // if( isset($_GET['action'])  &&   ($_GET['action'] == 'update')           ): ?>
             <a href="profile.php?id=<?php echo $nameDOB->id; ?>"><?php echo $name; ?></a>
-        <?php endif; ?>
+        <?php // endif; ?>
 
         </div>
 <!-- End NameDOB -->
