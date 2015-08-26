@@ -46,6 +46,15 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <script type="text/javascript">
+            function confirmDelete()
+            {
+                return confirm('Are your sure?');
+                //if(answer){
+                //	document.getElementById("formid").submit()
+                //}
+            }
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="" rel="stylesheet" type="text/css" />
         <title>Add a New Contact</title>
@@ -66,18 +75,17 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                     <div style="clear: both"></div>
                     <?php echo $avatarNameDOB; ?>
                 <?php endif; ?>
-                <?php
-                if($action == "update") {
-                    echo "<h3 style='float: left'>Update Contact</h3>
-                    <span style='float: right'>";
-                    echo "<a href=\"controllers/PersonController.php?action=delete&id={$id}\">delete</a>";
-                    echo "</span>";
-                }
+                <?php if($action == "update"): ?>
+                    <h3 style='float: left'>Update Contact</h3>
+                    <span style='float: right'>
+                    <a href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+                    </span>
+                <?php endif; ?>
 
-                if($action == "create") {
-                    echo "<h3>Create a New Contact</h3>";
-                }
-                ?>
+                <?php if($action == "create"): ?>
+                    <h3>Create a New Contact</h3>
+                <?php endif; ?>
+
                     <div style="<?php  if($action === 'update') echo "float: right" ?>">
                     <form action="controllers/PersonController.php?action=<?php
 

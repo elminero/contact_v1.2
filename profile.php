@@ -44,7 +44,6 @@ $contact->getContactById();
             //}
         }
     </script>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Show Contact</title>
 </head>
