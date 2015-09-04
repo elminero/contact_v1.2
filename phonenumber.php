@@ -114,16 +114,16 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
 	Phone Type:
     <select name="type">
-    	<option <?php if($phoneData->phone_type == 0)echo "selected"; ?> value="0"> </option>
-        <option <?php if($phoneData->phone_type == 1)echo "selected"; ?> value="1">Business</option>
-        <option <?php if($phoneData->phone_type == 2)echo "selected"; ?> value="2">Home</option>
-        <option <?php if($phoneData->phone_type == 3)echo "selected"; ?> value="3">Fax</option>
-        <option <?php if($phoneData->phone_type == 4)echo "selected"; ?> value="4">Other</option>
+    	<option <?php if(($action == "update") && ($phoneData->phone_type == 0)) {echo "selected";} ?> value="0"> </option>
+        <option <?php if(($action == "update") && ($phoneData->phone_type == 1)) {echo "selected";} ?> value="1">Business</option>
+        <option <?php if(($action == "update") && ($phoneData->phone_type == 2)) {echo "selected";} ?> value="2">Home</option>
+        <option <?php if(($action == "update") && ($phoneData->phone_type == 3)) {echo "selected";} ?> value="3">Fax</option>
+        <option <?php if(($action == "update") && ($phoneData->phone_type == 4)) {echo "selected";} ?> value="4">Other</option>
     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	Phone Number:
-    <input style="width: 175px" name="phone" type="text" value="<?php echo $phoneData->phone_number; ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input style="width: 175px" name="phone" type="text" value="<?php if($action == "update") {echo $phoneData->phone_number;} ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     Notes:
-    <input style="width: 175px" name="note" type="text" value="<?php echo $phoneData->note; ?>" /><br />
+    <input style="width: 175px" name="note" type="text" value="<?php if($action == "update") {echo $phoneData->note;} ?>" /><br />
     
 
     
