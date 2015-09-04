@@ -37,9 +37,6 @@ if(isset($_GET['update'])) {
     $_GET['update'] = null;
 }
 
-//
-
-//
 
 if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     $validate = "error";
@@ -47,16 +44,14 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     $validate = null;
 }
 
-
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Phone Numbers</title>
 </head>
 
 <body>
@@ -73,27 +68,20 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         </div>
         <div style="clear: both"></div>
 
-<?php
-        echo $avatarNameDOB;
-?>
-
+<?php echo $avatarNameDOB; ?>
         <div style="clear: both"></div>
         <hr />
 
+<?php if($action == "update"): ?>
+            <h3 style='float: left'>Update Phone Number</h3>
+            <span style='float: right'>
+            <a id="delete" href="controllers/PhoneNumberController.php?action=delete&id=<?php echo $phoneData->id; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
+            </span>
+<?php endif; ?>
 
-
-<?php
-        if($action == "update") {
-            echo "<h3 style='float: left'>Update Phone Number</h3>
-            <span style='float: right'>";
-            echo "<a href=\"controllers/PhoneNumberController.php?action=delete&id={$phoneData->id}&personId={$_GET['id']}\">delete</a>";
-            echo "</span>";
-        }
-
-        if($action == "create") {
-            echo "<h3>Add Phone Number</h3>";
-        }
-?>
+<?php if($action == "create"): ?>
+            <h3>Add Phone Number</h3>
+<?php endif; ?>
 
 <div style="clear: both"></div>
 <!-- array(4) { ["personId"]=> int(37) ["phoneNumber"]=> string(12) "914-331-8584" ["phoneType"]=> int(2) ["note"]=> string(2) "NY" } -->
@@ -154,5 +142,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     ?>
 
 </div><!-- end .container -->
+<script type="text/javascript">
+    window.onload = function() {
+        prepareEventHandlers();
+    };
+</script>
 </body>
 </html>
