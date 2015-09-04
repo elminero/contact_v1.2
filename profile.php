@@ -10,9 +10,7 @@ if ($login->login == 0) {
     header("Location: login.php?");
 }
 
-
 $id = NULL;
-
 
 if( isset($_GET['id']) )
     $id = $_GET['id'];
@@ -20,16 +18,9 @@ if( isset($_GET['id']) )
 if( isset($_POST['id']) )
     $id = $_POST['id'];
 
-
 $contact = new Contact($id);
 $contact->getContactById();
-
-
-// echo $contact->nameDOB->last_name;
-
-
 ?>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,8 +48,6 @@ $contact->getContactById();
             <!-- div 1 Start Avatar -->
             <div  style="float: left">
 
-                <?php // echo var_dump($contact->avatar['pathFile']);  ?>
-
                 <a href="picture.php?id=<?php echo $contact->avatar->id; ?>"><img alt="" src="images/<?php echo $contact->avatar->path_file; ?>_t.jpg" /></a>
 
                 <br />
@@ -70,7 +59,6 @@ $contact->getContactById();
                 <div style="float: right">
                     <a href="editphotos.php?id=<?php echo $id ?>">Edit</a>
                 </div>
-
 
             </div>
 
@@ -132,15 +120,9 @@ $contact->getContactById();
                             $contact->nameDOB->birth_day) . "<br />";
 
                 }
-
                 $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
                 ?>
-
                 <a  id = "mainTitle" href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
-
-
-
-
 
             </div>
             <div style="clear: both;"></div>
@@ -163,7 +145,6 @@ $contact->getContactById();
                 <?php echo "<hr />"; ?>
 
             <?php endif; ?>
-
 
             <!-- End Phone Numbers -->
 
@@ -212,28 +193,14 @@ $contact->getContactById();
                     <?php endif; ?>
             </table>
             <!-- End Address -->
-
-
-
-
         </div><!-- end .content -->
-
         <?php
         include("includes/footer.php");
         ?>
-
     </div><!-- end .container -->
-    <script type="text/javascript">
-        var mainTitle = document.getElementById("mainTitle");
-        console.log(mainTitle.nodeType);
-        console.log(mainTitle.innerHTML);
-        console.log(mainTitle.childNodes.length);
-
-    </script>
 </body>
 </html>
 
 <?php
-//mysqli_close($mysqli);
 ob_end_flush();
 ?>
