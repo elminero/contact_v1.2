@@ -51,6 +51,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <script src="javascript/event_handlers.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Add E-Mail Address</title>
     </head>
@@ -84,7 +85,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                     <h3 style='float: left'>Update eMail Address</h3>
             <span style='float: right'>
 
-<a href="controllers/EmailAddressController.php?action=delete&id=<?php echo $emailData->id; ?>&personId=<?php echo $_GET['id']; ?> ">delete</a>
+<a id="delete" href="controllers/EmailAddressController.php?action=delete&id=<?php echo $emailData->id; ?>&personId=<?php echo $_GET['id']; ?> ">delete</a>
                     </span>
                 <?php endif ?>
 
@@ -151,7 +152,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                         <div style="float: right; margin-top: 10px;">
                             <input type="submit" name="addEmail"
                                    value="<?php if($action == "update"){echo "Update eMail Address"; }
-                                   if($action == "create"){echo "Add an eMail Address"; }?>" />
+                                   if($action == "create"){echo "Add an eMail Address"; }?>"
+
+                                   id="<?php echo $action?>"
+                                />
                             <br />
                         </div>
                 </form>
@@ -169,6 +173,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
             <?php
             include("includes/footer.php");
             ?>
-
+            <script type="text/javascript">
+                window.onload = function() {
+                    prepareEventHandlers();
+                };
+            </script>
     </body>
 </html>
