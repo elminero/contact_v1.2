@@ -29,6 +29,7 @@ $contact->getContactById();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Add Photos</title>
 </head>
@@ -114,24 +115,16 @@ $contact->getContactById();
 
         <?php  if($contact->image):
 
-
-
-
-
         while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
 
                 <?php // echo var_dump($image); ?>
 
-
                 <div style="padding: 5px; ">
                     <a style="margin: 5px; padding-right: 25px; float: left" href="picture.php?id=<?php echo $row->id ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /></a>
                     <div style="float: left ">
-
                         <form style="float: right"
                               action="controllers/ImageController.php?action=update&id=<?php echo $row->person_id;  ?>"
                               method="post" enctype="multipart/form-data" >
-
-
 
                             <div class="form-block">
                                 <span >Avatar</span>
@@ -149,23 +142,11 @@ $contact->getContactById();
 
                             <input type="hidden" name="personId" value="<?php echo $id; ?>" />
 
-
-
-
-
-
-
                             <div class="form-block" style="margin-top: 10px; float: right">
-                                <input type="submit" name="imageUpLoad" value="Update Image" />
+                                <input id="update" type="submit" name="imageUpLoad" value="Update Image" />
                             </div>
-
-
-
                         </form>
-
-
-
-                    </div><div style="float: right "><a href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
+                    </div><div style="float: right "><a id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
                     <div style="clear: both"></div>
 
                 </div>
@@ -173,40 +154,6 @@ $contact->getContactById();
             <?php endwhile ?>
 
         <?php  endif; ?>
-
-
-
-
-
-
-        <!-- <img src="images/15/01/29/14/4ffce04d_t.jpg" /> --?
-            <!--
-
-            <div style="width:550px">
-                <a href="picture.php?pic=">
-                    <img style="margin:15px; float:left;" src="images/" />
-                </a><br />
-                <div align="center" style="margin-bottom:10px; float:right;">
-                    <form style=" display:inline;" action="addphotos.php" method="post" name="captionEdit" >
-                        <textarea rows="5" cols="36" name="caption" ></textarea>
-                        <input type="hidden" name="insert_id" value="" />
-                        <input type="hidden" name="caption_edit_image_id" value="" /><br />
-                        <input type="submit" name="captionEdit" value="Add Caption" />
-                    </form>
-                    <form style=" display:inline;" action="addphotos.php" method="post" name="set_avatar" >
-                        <input type="hidden" name="insert_id" value="" />
-                        <input type="hidden" name="set_image_id" value="" />
-                        <input type="submit" name="avatar" value="Set as Avatar" />
-                    </form>
-                    <form style=" display:inline;" action="addphotos.php" method="post" name="delete_image" >
-                        <input type="hidden" name="insert_id" value="" />
-                        <input type="hidden" name="delete_image_id" value="" />
-                        <input type="submit" name="delete_image" value="Delete Image" />
-                    </form>
-                </div>
-            </div>
-
-            -->
         <div style="clear:both" ></div>
 
     </div><!-- end .content -->
@@ -216,5 +163,10 @@ $contact->getContactById();
     ?>
 
 </div><!-- end .container -->
+<script type="text/javascript">
+    window.onload = function() {
+        prepareEventHandlers();
+    };
+</script>
 </body>
 </html>
