@@ -35,15 +35,6 @@ $contact->getContactById();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript">
-        function confirmDelete()
-        {
-            return confirm('Are your sure?');
-            //if(answer){
-            //	document.getElementById("formid").submit()
-            //}
-        }
-    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Show Contact</title>
 </head>
@@ -145,7 +136,7 @@ $contact->getContactById();
                 $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
                 ?>
 
-                <a href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
+                <a  id = "mainTitle" href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
 
 
 
@@ -232,6 +223,13 @@ $contact->getContactById();
         ?>
 
     </div><!-- end .container -->
+    <script type="text/javascript">
+        var mainTitle = document.getElementById("mainTitle");
+        console.log(mainTitle.nodeType);
+        console.log(mainTitle.innerHTML);
+        console.log(mainTitle.childNodes.length);
+
+    </script>
 </body>
 </html>
 

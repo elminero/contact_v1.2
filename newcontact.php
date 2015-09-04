@@ -46,15 +46,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
-        <script type="text/javascript">
-            function confirmDelete()
-            {
-                return confirm('Are your sure?');
-                //if(answer){
-                //	document.getElementById("formid").submit()
-                //}
-            }
-        </script>
+        <script src="javascript/event_handlers.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="" rel="stylesheet" type="text/css" />
         <title>Add a New Contact</title>
@@ -78,7 +70,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                 <?php if($action == "update"): ?>
                     <h3 style='float: left'>Update Contact</h3>
                     <span style='float: right'>
-                    <a href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+                    <a id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
                     </span>
                 <?php endif; ?>
 
@@ -187,7 +179,15 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                             }elseif($action == "update") {
                                 echo "Update";
                             }
-                            ?>" />
+                            ?>"
+                            id="<?php
+                            if($action == "create") {
+                                echo "create";
+                            }elseif($action == "update") {
+                                echo "update";
+                            }
+                            ?>"
+                                />
                         </div>
                         <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
                         <div style="clear: both"></div>
@@ -205,6 +205,11 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                 ?>
 
             </div><!-- end .container -->
+            <script type="text/javascript">
+                window.onload = function() {
+                    prepareEventHandlers();
+                };
+            </script>
     </body>
 </html>
 
