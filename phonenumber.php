@@ -125,7 +125,11 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
             <div style="float: right; margin-top: 10px;">
         <input type="submit" name="addPhone"
                value="<?php if($action == "update"){echo "Update Phone Number"; }
-                            if($action == "create"){echo "Add a Phone Number"; }?>" />
+                            if($action == "create"){echo "Add a Phone Number"; }?>"
+
+               id="<?php if($action == "update"){echo "update"; }
+               if($action == "create"){echo "create"; }?>"
+            />
         <br />
     </div>
 </form>
