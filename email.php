@@ -123,17 +123,17 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                     E-Mail
                     Type:
                     <select name="type">
-                        <option <?php if($emailData->email_type == 0) echo "selected"; ?> value="0"> </option>
-                        <option <?php if($emailData->email_type == 1) echo "selected"; ?> value="1">Business</option>
-                        <option <?php if($emailData->email_type == 2) echo "selected"; ?> value="2">Home</option>
-                        <option <?php if($emailData->email_type == 3) echo "selected"; ?> value="3">Shared</option>
-                        <option <?php if($emailData->email_type == 4) echo "selected"; ?> value="4">Previous</option>
-                        <option <?php if($emailData->email_type == 5) echo "selected"; ?> value="5">Other</option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 0)) {echo "selected";}  ?> value="0"> </option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 1)) {echo "selected";} ?> value="1">Business</option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 2)) {echo "selected";} ?> value="2">Home</option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 3)) {echo "selected";} ?> value="3">Shared</option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 4)) {echo "selected";} ?> value="4">Previous</option>
+                        <option <?php if(($action == "update") && ($emailData->email_type == 5)) {echo "selected";} ?> value="5">Other</option>
                     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     E-Mail Address:
-                    <input style="width: 175px"  name="emailAddress" type="text" value="<?php echo $emailData->email_address; ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="emailAddress" type="text" value="<?php if($action == "update") {echo $emailData->email_address;} ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Notes:
-                    <input style="width: 175px"  name="note" type="text" value="<?php echo $emailData->note; ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input style="width: 175px"  name="note" type="text" value="<?php if($action == "update") {echo $emailData->note;} ?>" /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
