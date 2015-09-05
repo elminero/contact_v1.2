@@ -46,10 +46,7 @@ if(isset($_GET['update'])) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
-
         <script src="statedropdown2.js"></script>
-
-
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Address</title>
@@ -81,17 +78,16 @@ if(isset($_GET['update'])) {
             <div>
 
                 <?php
-                if($action == "update") {
-                    echo "<h3 style='float: left'>Update Address</h3>
-            <span style='float: right'>";
-                    echo "<a href=\"controllers/AddressController.php?action=delete&id={$updateId}&personId={$_GET['id']}\">delete</a>";
-                    echo "</span>";
-                }
+                if($action == "update"): ?>
+                    <h3 style='float: left'>Update Address</h3>
+            <span style='float: right'>
+                    <a id="delete" href="controllers/AddressController.php?action=delete&id=<?php echo $updateId; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
+                    </span>
+                <?php endif; ?>
 
-                if($action == "create") {
-                    echo "<h3>Add an Address</h3>";
-                }
-                ?>
+                <?php if($action == "create"): ?>
+                    <h3>Add an Address</h3>
+                <?php endif; ?>
 
                 <div style="clear: both"></div>
 
@@ -187,7 +183,9 @@ if(isset($_GET['update'])) {
                         <input type="submit" name="addAddress"
                                value="<?php
                                if($action == "update"){echo "Update Address"; }
-                               if($action == "create"){echo "Add Addresses"; }?>" />
+                               if($action == "create"){echo "Add Addresses"; }?>"
+                               id="<?php echo $action?>"
+                            />
 
                     </div>
                 </div><!-- end .form-content -->

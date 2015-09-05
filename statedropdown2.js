@@ -55,7 +55,19 @@ function preparePage() {
 
 
 
+    document.getElementById("delete").onclick = function()
+    {
+        if (!confirm('Delete ?')) {
+            return false;
+        }
+    };
 
+    document.getElementById("update").onclick = function()
+    {
+        if (!confirm('Update ?')) {
+            return false;
+        }
+    };
 
 
 
