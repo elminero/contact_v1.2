@@ -20,20 +20,17 @@ function preparePage() {
 
     document.getElementById("country").onclick = function() {
 
+
+        /*
         if( document.getElementById("country").value != 'US'  ) {
 
             document.getElementById("city").innerHTML =
-
-
                 '<div class="form-block">' +
                 '<span class="form-label">City</span>' +
                 '<input style="width:240px;" class="input_text" type="text" name="city" size="50" maxlength="40"  />' +
                 '</div><br />';
-
         } else {
-
             document.getElementById("city").innerHTML =
-
             '<div class="form-block">' +
                 '<span class="form-label">City</span>' +
                 '<select class="input_text" name="city" style="width:245px; color:#CCC;">' +
@@ -41,7 +38,7 @@ function preparePage() {
                 '</select><br />' +
             '</div>';
         }
-
+        */
 
         var strURL = "includes/findState.php?country="+document.getElementById("country").value;
 
@@ -57,28 +54,7 @@ function preparePage() {
     };
 
 
-    document.getElementById("stateSelect").onchange = function() {
 
-        if( document.getElementById("country").value == 'US'  ) {
-
-            var strURLCity = "includes/findTown.php?state=" + document.getElementById("stateSelect").value;
-            reqCity = getRequestObject();
-
-            reqCity.onreadystatechange = function () {
-
-                if (reqCity.readyState == 4) {
-                    document.getElementById("city").innerHTML = reqCity.responseText;
-                }
-
-            };
-
-            reqCity.open("GET", strURLCity, true);
-            reqCity.send(null);
-
-
-        }
-
-    };
 
 
 
