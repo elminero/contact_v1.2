@@ -27,6 +27,7 @@ object(stdClass)#6 (9) { ["id"]=> string(1) "1" ["last_name"]=> string(6) "Farbe
 </div>
 
 <!-- End Avatar -->
+
 <!-- Start NameDOB -->
     <div style="margin-left: 10px; float: left; width: 200px">
 

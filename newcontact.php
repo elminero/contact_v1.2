@@ -8,10 +8,14 @@ if ($login->login == 0) {
     header("Location: login.php");
 }
 
-ob_start();
-require("avatarNameDOB.php");
-$avatarNameDOB = ob_get_contents();
-ob_end_clean();
+require("models/Contact.php");
+
+$contact = new Contact($_GET['id']);
+$contact->getContactById();
+
+$nameDOB =  $contact->nameDOB;
+
+
 
 ob_start();
 require("phoneEmailAddress.php");
@@ -65,7 +69,32 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                     <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $id; ?>" >Profile</a> >> <b>Update</b>
                 </div>
                     <div style="clear: both"></div>
-                    <?php echo $avatarNameDOB; ?>
+
+
+                    <!-- div 1 Start Avatar -->
+                    <div  style="float: left">
+<!-- /images/15/09/04/20/70a539e2_t.jpg -->
+                        <a href="picture.php?id=<?php echo "22"; ?>"><img alt="" src="images/15/09/04/20/70a539e2_t.jpg" /></a>
+
+                        <br />
+
+                        <div style="float: left">
+                            <a href="addphotos.php?id=<?php echo $id ?>">View All</a>
+                        </div>
+
+                        <div style="float: right">
+                            <a href="editphotos.php?id=<?php echo $id ?>">Edit</a>
+                        </div>
+
+                    </div>
+                    <!-- End Avatar -->
+
+                    <div style="margin-left: 10px; float: left; width: 200px">
+                        <?php require("name_dob.php"); ?>
+                    </div>
+
+
+
                 <?php endif; ?>
                 <?php if($action == "update"): ?>
                     <h3 style='float: left'>Update Contact</h3>
