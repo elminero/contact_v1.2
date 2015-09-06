@@ -2,7 +2,7 @@
  * Created by Ian on 9/4/2015.
  */
 
-function prepareEventHandlers() {
+function preparePage() {
     document.getElementById("delete").onclick = function()
     {
         if (!confirm('Delete ?')) {
@@ -18,3 +18,8 @@ function prepareEventHandlers() {
     };
 
 }
+
+window.onload = function() {
+    preparePage();
+};
+

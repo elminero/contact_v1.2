@@ -163,10 +163,5 @@ $contact->getContactById();
     ?>
 
 </div><!-- end .container -->
-<script type="text/javascript">
-    window.onload = function() {
-        prepareEventHandlers();
-    };
-</script>
 </body>
 </html>

@@ -166,17 +166,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
             </div><!-- end .content -->
 
-
-
         </div><!-- end .container -->
 
             <?php
             include("includes/footer.php");
             ?>
-            <script type="text/javascript">
-                window.onload = function() {
-                    prepareEventHandlers();
-                };
-            </script>
     </body>
 </html>
