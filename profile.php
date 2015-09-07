@@ -18,10 +18,6 @@ if( isset($_GET['id']) )
 if( isset($_POST['id']) )
     $id = $_POST['id'];
 
-
-
-
-
 $contact = new Contact($id);
 $contact->getContactById();
 ?>
@@ -50,21 +46,7 @@ $contact->getContactById();
             <div style="clear: both"></div>
 
             <!-- div 1 Start Avatar -->
-            <div  style="float: left">
-
-                <a href="picture.php?id=<?php echo $contact->avatar->id; ?>"><img alt="" src="images/<?php echo $contact->avatar->path_file; ?>_t.jpg" /></a>
-
-                <br />
-
-                <div style="float: left">
-                    <a href="addphotos.php?id=<?php echo $id ?>">View All</a>
-                </div>
-
-                <div style="float: right">
-                    <a href="editphotos.php?id=<?php echo $id ?>">Edit</a>
-                </div>
-
-            </div>
+            <?php require("avatar.php"); ?>
             <!-- End Avatar -->
 
             <!-- div 2 Start Name and DOB -->

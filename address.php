@@ -68,11 +68,35 @@ if(isset($_GET['update'])) {
             <div style="clear: both"></div>
 
             <div style="clear: both"></div>
-           <div>
+
+
+
             <?php
-            echo $avatarNameDOB;
+            $id = NULL;
+
+            if( isset($_GET['id']) )
+                $id = $_GET['id'];
+
+            if( isset($_POST['id']) )
+                $id = $_POST['id'];
+
+            $contact = new Contact($id);
+            $contact->getContactById();
             ?>
+
+
+            <!-- div 1 Start Avatar -->
+            <?php require("avatar.php"); ?>
+            <!-- End Avatar -->
+
+            <div style="margin-left: 10px; float: left; width: 200px">
+                <?php require("name_dob.php"); ?>
             </div>
+
+
+
+
+
             <div style="clear: both" ></div>
             <hr />
             <div>

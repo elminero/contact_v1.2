@@ -68,7 +68,37 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         </div>
         <div style="clear: both"></div>
 
-<?php echo $avatarNameDOB; ?>
+
+
+        <?php
+        $id = NULL;
+
+        if( isset($_GET['id']) )
+            $id = $_GET['id'];
+
+        if( isset($_POST['id']) )
+            $id = $_POST['id'];
+
+        $contact = new Contact($id);
+        $contact->getContactById();
+        ?>
+
+
+        <!-- div 1 Start Avatar -->
+        <?php require("avatar.php"); ?>
+        <!-- End Avatar -->
+
+
+        <!-- div 2 Start Name and DOB -->
+        <?php require("name_dob.php"); ?>
+        <!-- End Name and DOB -->
+
+
+
+
+
+
+
         <div style="clear: both"></div>
         <hr />
 
