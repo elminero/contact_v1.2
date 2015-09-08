@@ -87,7 +87,7 @@ if(isset($_GET['update'])) {
             <?php require("avatar.php"); ?>
             <!-- End Avatar -->
 
-            <div style="margin-left: 10px; float: left; width: 200px">
+            <div style="float: left; width: 200px">
                 <?php require("name_dob.php"); ?>
             </div>
 
