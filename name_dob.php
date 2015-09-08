@@ -69,7 +69,22 @@ $nameDOB =  $contact->nameDOB;
     }
     $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
     ?>
-    <a  id = "mainTitle" href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
+
+    <?php
+        if (isset($_GET["action"]) &&  $_GET["action"] == "update") {
+            $nameDOB =  wordwrap($nameDOB, 30, "<br />");
+        }
+    ?>
+
+
+    <?php if(isset($_GET["action"]) &&  $_GET["action"] == "update"): ?>
+        <a href="profile.php?id=<?php echo $contact->nameDOB->id; ?>"><?php echo $nameDOB ?></a>
+    <?php endif; ?>
+
+
+    <?php if(!isset($_GET["action"])) : ?>
+        <a href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
+    <?php endif; ?>
 
 </div>
 <div style="clear: both;"></div>

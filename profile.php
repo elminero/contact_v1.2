@@ -53,7 +53,7 @@ $contact->getContactById();
             <?php require("name_dob.php"); ?>
             <!-- End Name and DOB -->
 
-
+            <hr />
             <!-- Start Phone Numbers -->
             <h3><a href="phonenumber.php?id=<?php echo $_GET['id'] ?>">Add Phone Number</a></h3>
 

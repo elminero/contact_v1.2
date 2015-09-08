@@ -8,11 +8,9 @@ if ($login->login == 0) {
     header("Location: login.php");
 }
 
+require("models/Contact.php");
 
-ob_start();
-require("avatarNameDOB.php");
-$avatarNameDOB = ob_get_contents();
-ob_end_clean();
+
 
 ob_start();
 require("phoneEmailAddress.php");
