@@ -91,10 +91,6 @@ if(isset($_GET['update'])) {
                 <?php require("name_dob.php"); ?>
             </div>
 
-
-
-
-
             <div style="clear: both" ></div>
             <hr />
             <div>
