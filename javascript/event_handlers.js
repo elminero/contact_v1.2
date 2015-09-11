@@ -17,6 +17,9 @@ function preparePage() {
         }
     };
 
+
+
+
 }
 
 window.onload = function() {

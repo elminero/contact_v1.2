@@ -118,7 +118,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                         <div class="form-block">
                             <span class="form-label">Last</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+                            <input id ="lastName" style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
                         </div>
 
                         <div  class="form-block">
