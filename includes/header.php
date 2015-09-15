@@ -8,9 +8,9 @@
 </div><!-- end .header -->
 
 <script>
-        var time = 300;
-        var maxTime = 301;
 
+        var time = 300;
+        var maxTime = time + 1;
 
         function getDisplayTime() {
             var minutes = Math.floor(time / 60);
@@ -25,21 +25,23 @@
             return minutes.toString() + ":" + seconds;
         }
 
-        
+
         function timer() {
+
             time--;
 
             if (time > 0) {
-
                 document.getElementById("timer").innerHTML = "Time Remaining Before Logout " + getDisplayTime();
-
             } else {
                 clearInterval(intervalHandler );
+                // var url = "http://www.google.com/";
+                // window.location = url;
+                // window.location.replace (url);
+                // window.location.replace('index.php');
                 window.location = "controllers/LoginController.php?action=logout";
             }
 
         }
-
 
         var intervalHandler = setInterval(timer, 1000);
 
@@ -56,6 +58,22 @@
         document.onkeydown = function() {
             time = maxTime;
         };
+
+
+        document.onscroll = function() {
+            time = maxTime;
+        };
+
+        document.onmousewheel  = function() {
+            time = maxTime;
+        };
+        
+        document.addEventListener("wheel", reStart);
+
+        function reStart() {
+            time = maxTime;
+        }
+
 </script>
 
 <!--
