@@ -1,6 +1,7 @@
 <div class="header"><!-- Start Header -->
     <ul  class="nav">
         <li><a href="listcontacts.php">List of All Contacts</a></li>
+        <li><a href="search.php">Search By Name</a></li>
         <li><a href="newcontact.php">New Contact</a></li>
         <li><a href="controllers/LoginController.php?action=logout">Log Out</a></li>
         <li id="timer" style="float: right; margin-right: 10px;">Time Remaining Before Logout 5:00</li>
