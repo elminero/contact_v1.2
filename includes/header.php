@@ -27,17 +27,12 @@
 
 
         function timer() {
-
             time--;
 
             if (time > 0) {
                 document.getElementById("timer").innerHTML = "Time Remaining Before Logout " + getDisplayTime();
             } else {
                 clearInterval(intervalHandler );
-                // var url = "http://www.google.com/";
-                // window.location = url;
-                // window.location.replace (url);
-                // window.location.replace('index.php');
                 window.location = "controllers/LoginController.php?action=logout";
             }
 
@@ -45,34 +40,15 @@
 
         var intervalHandler = setInterval(timer, 1000);
 
-        document.onmousemove = function() {
-            time = maxTime;
-        };
-
-
-        document.onclick = function() {
-            time = maxTime;
-        };
-
-
-        document.onkeydown = function() {
-            time = maxTime;
-        };
-
-
-        document.onscroll = function() {
-            time = maxTime;
-        };
-
-        document.onmousewheel  = function() {
-            time = maxTime;
-        };
-        
-        document.addEventListener("wheel", reStart);
-
         function reStart() {
             time = maxTime;
         }
+
+        document.addEventListener("keydown", reStart);
+        document.addEventListener("scroll", reStart);
+        document.addEventListener("click", reStart);
+        document.addEventListener("mousemove", reStart);
+        document.addEventListener("wheel", reStart);
 
 </script>
 
