@@ -15,26 +15,84 @@ require("models/Contact.php");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+
+
+
+    <!-- JS file -->
+    <script src="node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="node_modules/easy-autocomplete/dist/easy-autocomplete.min.css">
+
+    <!-- Additional CSS Themes file - not required-->
+    <link rel="stylesheet" href="node_modules/easy-autocomplete/dist/easy-autocomplete.themes.min.css">
+
+
+
+
+
+
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="" rel="stylesheet" type="text/css" />
+
     <title>Search By Name</title>
 </head>
 <body>
 <div class="container" >
-    <div class="header">
-        <!-- Start Header -->
+    <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
-        <!-- end .header -->
+    </div><!-- end .header -->
 
         <div class="content">
 
 
-            <form action="controllers/PersonController.php" method="post" name="">
+            <form action="controllers/PersonController.php" method="post" name="search">
                 <div class="form-content" >
-                    <div class="form-block">
-                        <span class="form-label">Search</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                        <input id ="SearchName" style="width: 320px" name="SearchName" type="text" class="input_text" id="last_name"  maxlength="40" value="" /><br />
+                    <div >
+                        <span class="">Search</span>
+                        <input id ="match"  name="search_name"  /><br />
+                        <script>
+                            var options = {
+                                url: "" +
+                                "node_modules/easy-autocomplete/demo/resources/countries.json",
+
+                                getValue: "name",
+
+                              //  data: ["Clark Kent", "Diana Prince", "Tony Stark", "Bruce Wayne", "Selina Kyle"],
+                                list: {
+                                    maxNumberOfElements: 15,
+                                    showAnimation: {
+                                        type: "fade", //normal|slide|fade
+                                        time: 400,
+                                        callback: function() {}
+                                    },
+
+                                    hideAnimation: {
+                                        type: "slide", //normal|slide|fade
+                                        time: 400,
+                                        callback: function() {}
+                                    },
+
+
+                                    match: {
+                                        enabled: true
+                                    }
+
+                                },
+
+                                theme: "plate-dark"
+
+                            };
+
+                            $("#match").easyAutocomplete(options);
+
+                        </script>
+
+
                     </div>
 
                     <div class="form-block">

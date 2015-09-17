@@ -33,11 +33,9 @@ $image->setPreviousNextImageId($id);
     </head>
     <body>
         <div class="container" >
-            <!-- Start Header -->
-            <?php
-                include("includes/header.php");
-            ?>
-            <!-- end .header -->
+            <div class="header"><!-- Start Header -->
+                <?php include("includes/header.php"); ?>
+            </div><!-- end .header -->
             <div class="content">
                 <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $personId; ?>">

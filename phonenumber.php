@@ -56,11 +56,9 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
 <body>
 <div class="container">
-    <!-- Start Header -->
-    <?php
-        include("includes/header.php");
-    ?>
-    <!-- end .header -->
+    <div class="header"><!-- Start Header -->
+        <?php include("includes/header.php"); ?>
+    </div><!-- end .header -->
     <div class="content">
         <div style="margin-bottom: 9px">
         <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a> >>
@@ -87,17 +85,12 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         <!-- div 1 Start Avatar -->
         <?php require("avatar.php"); ?>
         <!-- End Avatar -->
-
-
+        
         <!-- div 2 Start Name and DOB -->
-        <?php require("name_dob.php"); ?>
+        <div style="float: left; width: 200px">
+            <?php require("name_dob.php"); ?>
+        </div>
         <!-- End Name and DOB -->
-
-
-
-
-
-
 
         <div style="clear: both"></div>
         <hr />

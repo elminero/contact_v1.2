@@ -58,11 +58,9 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
     <body>
         <div class="container">
-            <!-- Start Header -->
-            <?php
-                include("includes/header.php");
-            ?>
-            <!-- end .header -->
+            <div class="header"><!-- Start Header -->
+                <?php include("includes/header.php"); ?>
+            </div><!-- end .header -->
             <div class="content">
 
                 <div style="margin-bottom: 9px">

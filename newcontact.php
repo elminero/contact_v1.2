@@ -51,13 +51,12 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     </head>
     <body>
         <div class="container" >
-            <div class="header">
-                <!-- Start Header -->
-                <?php
-                    include("includes/header.php");
-                ?>
-                <!-- end .header -->
-            <div class="content">
+            <div class="header"><!-- Start Header -->
+                <?php include("includes/header.php"); ?>
+            </div><!-- end .header -->
+
+
+                <div class="content">
                 <?php if($action === 'update'):?>
                 <div style="margin-bottom: 9px">
                     <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $id; ?>" >Profile</a> >> <b>Update</b>

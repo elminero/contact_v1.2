@@ -5,6 +5,10 @@
 
 // VARIABLES: $id, $lastName, $firstName, $middleName, $aliasName, $birthMonth, $birthDay, $birthYear, $note
 
+
+// echo var_dump($_POST);
+
+
 class PersonController
 {
     private $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;
