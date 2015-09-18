@@ -16,25 +16,7 @@ require("models/Contact.php");
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
-
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
-
-
-
-    <!-- JS file -->
-    <script src="node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script>
-
-    <!-- CSS file -->
-    <link rel="stylesheet" href="node_modules/easy-autocomplete/dist/easy-autocomplete.min.css">
-
-    <!-- Additional CSS Themes file - not required-->
-    <link rel="stylesheet" href="node_modules/easy-autocomplete/dist/easy-autocomplete.themes.min.css">
-
-
-
-
-
 
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,43 +37,6 @@ require("models/Contact.php");
                     <div >
                         <span class="">Search</span>
                         <input id ="match"  name="search_name"  /><br />
-                        <script>
-                            var options = {
-                                url: "" +
-                                "node_modules/easy-autocomplete/demo/resources/countries.json",
-
-                                getValue: "name",
-
-                              //  data: ["Clark Kent", "Diana Prince", "Tony Stark", "Bruce Wayne", "Selina Kyle"],
-                                list: {
-                                    maxNumberOfElements: 15,
-                                    showAnimation: {
-                                        type: "fade", //normal|slide|fade
-                                        time: 400,
-                                        callback: function() {}
-                                    },
-
-                                    hideAnimation: {
-                                        type: "slide", //normal|slide|fade
-                                        time: 400,
-                                        callback: function() {}
-                                    },
-
-
-                                    match: {
-                                        enabled: true
-                                    }
-
-                                },
-
-                                theme: "plate-dark"
-
-                            };
-
-                            $("#match").easyAutocomplete(options);
-
-                        </script>
-
 
                     </div>
 
