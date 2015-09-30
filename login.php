@@ -45,7 +45,7 @@
     </div><!-- end .content -->
 
     <?php
-    include("includes/footer.php");
+//    include("includes/footer.php");
     ?>
 
 </div><!-- end .container -->

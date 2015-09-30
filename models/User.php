@@ -12,6 +12,7 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
         id              integer
         username        string
+        timezone        integer
         pass_hash       string
         roles           string
         note            string
@@ -27,11 +28,11 @@ class UserPDO extends Db3  {
     {
         $stmt = $this->pdo->prepare("
 				INSERT INTO user
-				  (username, pass_hash, role, note, date_last_login, ip_last_login)
+				  (username, timezone, pass_hash, role, note, date_last_login, ip_last_login)
 				VALUES
-				  (?, ?, ?, ?, ?, ?)");
+				  (?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->execute([$user['username'], $user['passHash'], $user['role'], $user['note'], $user['dateLastLogin'], $user['ipLastLogin']]);
+        $stmt->execute([$user['username'], $user['timezone'], $user['passHash'], $user['role'], $user['note'], $user['dateLastLogin'], $user['ipLastLogin']]);
 
         return $this->pdo->lastInsertId();
     }
@@ -61,12 +62,87 @@ class UserPDO extends Db3  {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+
+    private function getTimeZoneByInt($timeZoneInt)
+    {
+
+        switch($timeZoneInt) {
+            case 0:
+                $timeZone = "trouble";
+                break;
+
+            case 1:
+                $timeZone = "America/New_York";
+                break;
+            case 2:
+                $timeZone = "America/Chicago";
+                break;
+            case 3:
+                $timeZone = "America/Denver";
+                break;
+            case 4:
+                $timeZone = "America/Phoenix";
+                break;
+            case 5:
+                $timeZone = "America/Los_Angeles";
+                break;
+            case 6:
+                $timeZone = "America/Anchorage";
+                break;
+            case 7:
+                $timeZone = "America/Adak";
+                break;
+            case 8:
+                $timeZone = "Pacific/Honolulu";
+                break;
+            case 9:
+                $timeZone = "America/Los_Angeles";
+                break;
+            default:
+                $timeZone = "America/Los_Angeles";
+                break;
+        }
+        return $timeZone;
+    }
+
+
+    public function getTimeZoneByUserId($id)
+    {
+        $stmt = $this->pdo->prepare("
+               SELECT timezone
+               FROM user
+               WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return self::getTimeZoneByInt($stmt->fetch(PDO::FETCH_OBJ)->timezone);
+    }
+
 }
+
+
+
+
+
+/*
+
+
+Eastern ........... America/New_York
+Central ........... America/Chicago
+Mountain .......... America/Denver
+Mountain no DST ... America/Phoenix
+Pacific ........... America/Los_Angeles
+Alaska ............ America/Anchorage
+Hawaii ............ America/Adak
+Hawaii no DST ..... Pacific/Honolulu
+*/
+
+
 
 /*
 $userModel = new UserPDO();
 
-$password = "super9";
+$password = "super8";
 
 
 $options = [
@@ -83,11 +159,11 @@ $dateLastLogin = $date->format('Y-m-d H:i:s');
 echo $dateLastLogin;
 
 $userField =
-['username'=>'Robert', 'passHash'=>$passHash, 'role'=>'1', 'note'=>'The sly fox', 'dateLastLogin'=>$dateLastLogin,
+['username'=>'elminero', 'timezone'=>9, 'passHash'=>$passHash, 'role'=>'1', 'note'=>'The sly fox', 'dateLastLogin'=>$dateLastLogin,
     'ipLastLogin'=>$_SERVER['REMOTE_ADDR']];
 
 
- $userModel->addUser($userField);
+$userModel->addUser($userField);
 
 
 
