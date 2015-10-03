@@ -1,11 +1,6 @@
 <?php
-// require dirname(__DIR__).'/models/User.php';
 require dirname(__DIR__).'/vendor/autoload.php';
-
 use Carbon\Carbon;
-
-$timeZone = new UserPDO();
-
 ?>
 
 <div class="footer">
@@ -15,9 +10,14 @@ $timeZone = new UserPDO();
     ?>
 
     <div style="float:left"><?php echo $ip; ?></div>
-    <div style="float:right"><?php echo carbon::now($timeZone->getTimeZoneByUserId(1))->format('l jS \\of F Y'); ?></div>
+        <div style="float:right"><?php
+            if (isset($login->login) && ($login->login) == 1) {
+                $timeZone = new UserPDO();
+                echo carbon::now($timeZone->getTimeZoneByUserId($_COOKIE["phpContactId"]))->format('l jS \\of F Y');
+            }
+            ?>
+        </div>
     <div style="clear: both"></div>
-
 </div>
 
 

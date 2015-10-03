@@ -20,7 +20,7 @@
 
         <form action="controllers/LoginController.php" method="post" >
 
-        <div style="width: 250px">
+        <div style="width: 270px">
 
             <div style="padding: 5px">
                 User Name
@@ -45,7 +45,7 @@
     </div><!-- end .content -->
 
     <?php
-//    include("includes/footer.php");
+    include("includes/footer.php");
     ?>
 
 </div><!-- end .container -->
