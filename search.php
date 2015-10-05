@@ -16,7 +16,8 @@ require("models/Contact.php");
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,32 +29,20 @@ require("models/Contact.php");
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-
         <div class="content">
-
-
             <form action="controllers/PersonController.php" method="post" name="search">
                 <div class="form-content" >
                     <div >
                         <span class="">Search</span>
                         <input id ="match"  name="search_name"  /><br />
-
                     </div>
-
                     <div class="form-block">
-
                         <input id ="SearchName" name="SearchName" type="submit" class="input_text" id="last_name"  value="Profile" /><br />
                     </div>
-
                 </div>
             </form>
-
-
-
         </div><!-- end .content -->
-
         <?php include("includes/footer.php"); ?>
-
     </div><!-- end .container -->
 </body>
 </html>
