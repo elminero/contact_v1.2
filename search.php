@@ -16,9 +16,43 @@ require("models/Contact.php");
 <head>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(function() {
+            var availableTags = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        });
+    </script>
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -34,7 +68,7 @@ require("models/Contact.php");
                 <div class="form-content" >
                     <div >
                         <span class="">Search</span>
-                        <input id ="match"  name="search_name"  /><br />
+                        <input id ="tags"  name="search_name"  /><br />
                     </div>
                     <div class="form-block">
                         <input id ="SearchName" name="SearchName" type="submit" class="input_text" id="last_name"  value="Profile" /><br />
