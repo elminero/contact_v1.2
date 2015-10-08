@@ -12,15 +12,6 @@ require("models/Contact.php");
 
 ?>
 
-
-<?php
-
-var_dump($_POST);
-
-?>
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,6 +28,8 @@ var_dump($_POST);
 
     <script>
         $(function() {
+
+            var action;
             var availableTags = [
 
                 {
@@ -49,68 +42,15 @@ var_dump($_POST);
                     value: "AppleScript",
                     label: "AppleScript",
                     id: "2"
-                },
-
-                {
-                    value: "Asp",
-                    label: "Asp",
-                    id: "3"
-                },
-
-                {
-                    value: "BASIC",
-                    label: "BASIC",
-                    id: "4"
-                },
-
-                {
-                    value: "C",
-                    label: "C",
-                    id: "5"
-                },
-
-                {
-                    value: "C++",
-                    label: "C++",
-                    id: "7"
-                },
-
-                {
-                    value: "Clojure",
-                    label: "Clojure",
-                    id: "8"
-                },
-
-                {
-                    value: "COBOL",
-                    label: "COBOL",
-                    id: "9"
-                },
-
-                {
-                    value: "ColdFusion",
-                    label: "ColdFusion",
-                    id: "10"
-                },
-
-                {
-                    value: "Erlang",
-                    label: "Erlang",
-                    id: "11"
-                },
-
-                {
-                    value: "Groovy",
-                    label: "Groovy",
-                    id: "12"
                 }
+
             ];
 
                 $("#tags").autocomplete({
 
-                  //  minLength: 0,
+                    minLength: 2,
 
-                    source: availableTags,
+                    source: "source.php",
 
                     focus: function (event, ui) {
                         $("#topics").val(ui.item.label);
@@ -123,6 +63,11 @@ var_dump($_POST);
                     //    $("#results").text(ui.item.value);
 
                         $("#tagValue").val(ui.item.id);
+
+                        action = "profile.php?id="+ui.item.id;
+
+
+                        document.getElementById("searchForm").setAttribute("action", action);
 
                     }
 
@@ -149,18 +94,18 @@ var_dump($_POST);
     </div><!-- end .header -->
         <div class="content">
                 <p id ="qwerty"></p>
-            <form action="search.php" method="post" name="search">
+            <form id="searchForm" action="search.php" method="post" name="search">
 
             <!--<form action="controllers/PersonController.php" method="post" name="search">-->
 
-                <div class="form-content" >
+                <div style="width: 490px" >
                     <div >
-                        <span class="">Search</span>
-                        <input id="tags" type="text"  name="name"/>
+                        <span style="float: left; padding-right: 10px" >Search</span>
+                        <input style="float: left" id="tags" type="text" size="45"  name="name"/>
                         <input name="value" type="hidden" id="tagValue" />
                     </div>
                     <div class="form-block">
-                        <input id ="SearchName" name="SearchName" type="submit" class="input_text" value="Profile" /><br />
+                        <input style="float: right" id ="SearchName" name="SearchName" type="submit" class="input_text" value="Profile" /><br />
                     </div>
                 </div>
             </form>
