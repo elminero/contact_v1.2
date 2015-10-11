@@ -40,7 +40,7 @@ $image->setPreviousNextImageId($id);
                 <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $personId; ?>">
 
-                    Profile</a> >> <a href="addphotos.php?id=<?php echo $personId; ?>"> Portfolio</a> >> <b>Picture</b>
+                    Profile</a> >> <a href="addphotos.php?id=<?php echo $personId; ?>&action=update"> Portfolio</a> >> <b>Picture</b>
                 </div>
 
                 <div style="clear: both"></div>

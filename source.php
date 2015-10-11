@@ -23,19 +23,6 @@ class SearchPDO extends db3
 
 $term = trim(strip_tags($_GET['term']));//retrieve the search term that autocomplete sends
 
-/*
-$qstring = "SELECT description as value,id FROM test WHERE description LIKE '%".$term."%'";
-$result = mysql_query($qstring);//query the database for entries containing the term
-
-while ($row = mysql_fetch_array($result,MYSQL_ASSOC))//loop through the retrieved values
-{
-    $row['value']=htmlentities(stripslashes($row['value']));
-    $row['id']=(int)$row['id'];
-    $row_set[] = $row;//build an array
-}
-*/
-
-
 $search = new SearchPDO();
 
 $qResults = $search->getSearchResults($term);
@@ -63,15 +50,26 @@ while($row = $qResults->fetch(PDO::FETCH_OBJ)) {
 
     $fullName .= $row->alias_name;
 
-//   echo $fullName;
-    $searchResult['value']= $fullName;
-    $searchResult['label'] = $fullName;
-    $searchResult['id']= $row->id;
+    $searchResult['value']= htmlentities(stripslashes($fullName));
+    $searchResult['label'] = htmlentities(stripslashes($fullName));
+    $searchResult['id']= (int)$row->id;
     $searchResultSet[] = $searchResult;
 }
 
+echo json_encode($searchResultSet);//format the array into json data
+
 
 /*
+$qstring = "SELECT description as value,id FROM test WHERE description LIKE '%".$term."%'";
+$result = mysql_query($qstring);//query the database for entries containing the term
+
+while ($row = mysql_fetch_array($result,MYSQL_ASSOC))//loop through the retrieved values
+{
+    $row['value']=htmlentities(stripslashes($row['value']));
+    $row['id']=(int)$row['id'];
+    $row_set[] = $row;//build an array
+}
+
 $row['value']= "ActionScript";
 $row['label'] = "ActionScript";
 $row['id']= 1;
@@ -88,4 +86,4 @@ $array = ["value"=>"ActionScript", "label"=>"ActionScript", "id"=>"1"];
 
 
 
-echo json_encode($searchResultSet);//format the array into json data
+

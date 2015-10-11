@@ -6,7 +6,7 @@
     <title>Online Contacts</title>
 </head>
 <body>
-<div class="container">
+<div class="container" >
     <div class="header">
         <div class="header"><!-- Start Header -->
             <ul  class="nav">
@@ -14,11 +14,16 @@
                 <li><a href="login.php">Login</a></li>
             </ul>
         </div><!-- end .header -->
+
+        <img src="test/dark_road_forest850c.jpg" />
+<!--
         <div class="content">
             <div style="margin-bottom: 9px">
             </div>
             <div style="clear: both"></div>
         </div><!-- end .content -->
+
+    
     </div><!-- end .container -->
     <?php
     include("includes/footer.php");

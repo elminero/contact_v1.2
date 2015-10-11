@@ -215,9 +215,9 @@ if( array_key_exists("imageUpLoad", $_POST)) {
 
       if(($validate['jpeg'] === 1) && ($validate['fileSize'] === 1) ) {
           $cImage->upload($cImage);
-          header("Location: ../addphotos.php?id=".$_POST['personId']);
+          header("Location: ../addphotos.php?id=".$_POST['personId']."&action=update");
       } else {
-          header("Location: ../addphotos.php?id=".$_POST['personId']."&validate=error");
+          header("Location: ../addphotos.php?id=".$_POST['personId']."&validate=error&action=update");
       }
 
   }
@@ -226,7 +226,7 @@ if( array_key_exists("imageUpLoad", $_POST)) {
     if( (isset($_GET['action'])) && ($_GET['action'] === 'update') ) {
         $model = new ImagePDO();
         $model->updateImage($cImage);
-        header("Location: ../editphotos.php?id=".$_POST['personId']);
+        header("Location: ../editphotos.php?id=".$_POST['personId']."&action=update");
     }
 
 }
