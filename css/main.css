@@ -18,7 +18,6 @@ body
 /* ~~ This fixed width container surrounds all other divs ~~ 	width: 960px;*/
 .container {
 	width: 850px;
-	background-color: #FFFFFF;
 	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
 }
 
@@ -26,15 +25,16 @@ body
 /* ~~ The header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo. ~~ */
 .header {
 	background-color: #93adcc;
+/*	background-image: url('dark_road_forest850c.jpg'); */
 }
 
 
 .content {
-
 	padding: 25px;
 	width: 800px;
 	float: left;
-	background-color: ghostwhite;
+	color: white;
+	background-color: black;
 }
 
 
@@ -59,15 +59,16 @@ a img { /* this selector removes the default blue border displayed in some brows
 
 /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
 a:link {
-	color: #42413C;
+	color: #ffffff;
 	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
 }
 a:visited {
-	color: #6E6C64;
+	color: #ffffff;
 	text-decoration: none;
 }
 a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
 	text-decoration: none;
+	color: #6E6C64;
 }
 
 
@@ -85,19 +86,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
 
 */
-.sidebar1 {
-	float: left;
-	width: 180px;
-	background-color: #EADCAE;
-	padding-bottom: 10px;
-}
 
-.sidebar2 {
-	float: left;
-	width: 180px;
-	background-color: #EADCAE;
-	padding: 10px 0;
-}
 
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
 .content ul, .content ol {
@@ -120,7 +109,7 @@ ul.nav li {
 ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
 	padding: 5px 5px 5px 15px;
 	display: block; /* this gives the anchor block properties so it fills out the whole LI that contains it so that the entire area reacts to a mouse click. */
-	width: 155px;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	width: 188px;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
 	text-decoration: none;
 	background-color: #C6D580;
 }
@@ -131,6 +120,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 
 /* ~~ The footer styles ~~ */
 .footer {
+	color: black;
 	padding: 10px 50px;
     background-color: #93adcc;
 	position: relative;/* this gives IE6 hasLayout to properly clear */

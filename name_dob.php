@@ -12,7 +12,7 @@ $nameDOB =  $contact->nameDOB;
 
 
 <!-- div 2 Start Name and DOB -->
-<div style="margin-left: 10px; float: left">
+<div style="margin-left: 10px; float: left;">
     <?php
 
 

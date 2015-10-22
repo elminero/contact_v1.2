@@ -6,7 +6,7 @@
     <title>Online Contacts</title>
 </head>
 <body>
-<div class="container" >
+<div class="container">
     <div class="header">
         <div class="header"><!-- Start Header -->
             <ul  class="nav">

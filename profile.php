@@ -47,7 +47,7 @@ $contact->getContactById();
             <!-- End Avatar -->
 
             <!-- div 2 Start Name and DOB -->
-            <div style="float: left; width: 200px">
+            <div style="float: left; width: 200px;">
                 <?php require("name_dob.php"); ?>
             </div>
             <!-- End Name and DOB -->
