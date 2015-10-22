@@ -239,6 +239,6 @@ if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
     $cImage = new ImagePDO();
     $cImage->deleteImage($deleteId);
 
-    header("Location: ../editphotos.php?id=".$_GET['personId']);
+    header("Location: ../editphotos.php?id=".$_GET['personId']."&action=update");
 
 }
