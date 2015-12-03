@@ -6,16 +6,16 @@
     <title>Online Contacts</title>
 </head>
 <body>
-<div class="container">
+<div class="container"><!-- start .container -->
     <div class="header">
-        <div class="header"><!-- Start Header -->
+        <div class="header"><!-- Start .header -->
             <ul  class="nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="login.php">Login</a></li>
             </ul>
         </div><!-- end .header -->
 
-        <img src="test/dark_road_forest850c.jpg" />
+        <img src="css/dark_road_forest850c.jpg" />
 <!--
         <div class="content">
             <div style="margin-bottom: 9px">
