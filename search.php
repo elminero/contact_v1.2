@@ -27,24 +27,14 @@ require("models/Contact.php");
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
 
     <script>
+
+
+
         $(function() {
 
             var action;
-            var availableTags = [
 
-                {
-                    value: "ActionScript",
-                    label: "ActionScript",
-                    id: "1"
-                },
-
-                {
-                    value: "AppleScript",
-                    label: "AppleScript",
-                    id: "2"
-                }
-
-            ];
+            document.getElementById("tags").focus();
 
                 $("#tags").autocomplete({
 
