@@ -7,7 +7,7 @@
 body
 {
 	font-family: "Helvetica Nueue", Arial, Helvetica, sans-serif;
-/*	color:#222222; */
+	color: azure;
 	font-size:14px;
 	line-height:1.5;
 	background-color: rgba(0, 0, 0, 0.8);

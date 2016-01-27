@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Online Contacts</title>
 </head>
 <body>
     <div class="container"><!-- start .container -->
-
+        <div class="header">
+            <ul class="nav">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="login.php">Login</a></li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-md-2">
                 <h1>Headline</h1>
@@ -26,7 +31,6 @@
                     have to happen. We all make choices in life. Sometimes our choices go
                 </p>
             </div>
-
             <div class="col-md-2">
                 <h1>Headline</h1>
                 <p>
@@ -39,7 +43,6 @@
                     have to happen. We all make choices in life. Sometimes our choices go
                 </p>
             </div>
-
             <div class="col-md-2">
                 <h1>Headline</h1>
                 <p>
@@ -52,30 +55,10 @@
                     have to happen. We all make choices in life. Sometimes our choices go
                 </p>
             </div>
-
-
-
         </div>
-
-
-
-
-        <!--
-        <div class="header">
-            <ul  class="nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </div>
-        <img src="css/dark_road_forest850c.jpg" />-->
-        <?php // include("includes/footer.php"); ?>
-
-
+        <!--<img src="css/dark_road_forest850c.jpg" />-->
+        <?php include("includes/footer.php"); ?>
     </div><!-- end .container -->
-
-
-
-
     <script src="js/jquery-1.12.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
