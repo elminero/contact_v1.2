@@ -40,16 +40,18 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/main.css"/>
-        <script src="javascript/event_handlers.js" type="text/javascript"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="" rel="stylesheet" type="text/css" />
-        <title>Add a New Contact</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <title>Add a New Contact</title>
+</head>
+<body>
         <div class="container" >
             <div class="header"><!-- Start Header -->
                 <?php include("includes/header.php"); ?>
@@ -87,20 +89,19 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
 
 
-                <?php endif; ?>
-                <?php if($action == "update"): ?>
-                    <h3 style='float: left'>Update Contact</h3>
-                    <span style='float: right'>
-                    <a id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
-                    </span>
-                <?php endif; ?>
+
 
                 <?php if($action == "create"): ?>
                     <h3>Create a New Contact</h3>
                 <?php endif; ?>
 
-                    <div style="<?php  if($action === 'update') echo "float: right" ?>">
-                    <form action="controllers/PersonController.php?action=<?php
+            <div style="<?php  if($action === 'update') echo "float: right" ?>">
+
+                <div class="row">
+                    <section class="col-xs-12">
+
+
+                <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
 
                     if($action == "update") {
                         echo "update";
@@ -113,27 +114,50 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                     ?>" method="post" name="addContact">
 
-                    <div class="form-content" >
 
-                        <div class="form-block">
-                            <span class="form-label">Last</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input id ="lastName" style="width: 320px" name="lastName" type="text" class="input_text" id="last_name"  maxlength="40" value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+
+                    <?php endif; ?>
+                    <?php if($action == "update"): ?>
+                        <h3 style='float: left'>Update Contact</h3>
+                        <span style='float: right'>
+                    <a id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+                    </span>
+                        <div style="clear: both"></div>
+                    <?php endif; ?>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                            <div class="col-sm-10">
+                                <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+                            </div>
                         </div>
 
-                        <div  class="form-block">
-                            <span class="form-label">First</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="firstName" id="email" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
-                        </div>
 
-                        <div  class="form-block">
-                            <span class="form-label">Middle</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="middleName" id="subject" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->middle_name; ?>"/><br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="firstName">First<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="firstName" type="text" class="form-control" id="firstName"  value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
                         </div>
+                    </div>
 
-                        <div  class="form-block">
-                            <span class="form-label">Alias</span><span id="error"><?php if($error == 1) {echo "*";} ?></span>
-                            <input style="width: 320px" type="text" class="input_text" name="aliasName" id="subject" size="50" maxlength="40" value="<?php if($action == "update") echo $updateForm->alias_name;; ?>" /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="middleName">Middle<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="middleName" type="text" class="form-control" id="middleName"  value="<?php if($action == "update") echo $updateForm->middle_name; ?>" /><br />
                         </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="aliasName">Alias<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="aliasName" type="text" class="form-control" id="aliasName"  value="<?php if($action == "update") echo $updateForm->alias_name; ?>" /><br />
+                        </div>
+                    </div>
+
+
 
                         <div  class="form-block">
                             <span class="form-label">Date of Birth</span>
@@ -184,7 +208,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                         <div class="form-block">
                             <span  class="form-label">Notes</span>
-                            <textarea style="float: right" rows="1" cols="40" name="note" ><?php
+                            <textarea style="" rows="1" cols="40" name="note" ><?php
                            if($action == 'update') {
                                echo $updateForm->note;
                            }
@@ -213,19 +237,23 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                         <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
                         <div style="clear: both"></div>
 
-                    </div>
+
                 </form>
-                    </div>
+            </div>
 
                 <div style="clear: both"></div>
                 <?php if($action === 'update') echo "<hr />" . $phoneEmailAddress; ?>
             </div><!-- end .content -->
 
+                    <div style="clear:both"></div>
                 <?php
                 include("includes/footer.php");
                 ?>
 
             </div><!-- end .container -->
+        <script src="js/jquery-1.12.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
 

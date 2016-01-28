@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Online Contacts</title>
 </head>
 <body>

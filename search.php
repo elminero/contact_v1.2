@@ -12,68 +12,61 @@ require("models/Contact.php");
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-1.12.0.min.js"></script>
 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
 
     <script src="javascript/event_handlers.js" type="text/javascript"></script>
 
     <script>
 
+            $(function() {
+                var action;
+                document.getElementById("tags").focus();
+
+                    $("#tags").autocomplete({
+
+                        minLength: 2,
+
+                        source: "source.php",
+
+                        focus: function (event, ui) {
+                            $("#topics").val(ui.item.label);
+                            return false;
+                        },
+
+                        select: function( event, ui ) {
 
 
-        $(function() {
+                        //    $("#results").text(ui.item.value);
 
-            var action;
+                            $("#tagValue").val(ui.item.id);
 
-            document.getElementById("tags").focus();
-
-                $("#tags").autocomplete({
-
-                    minLength: 2,
-
-                    source: "source.php",
-
-                    focus: function (event, ui) {
-                        $("#topics").val(ui.item.label);
-                        return false;
-                    },
-
-                    select: function( event, ui ) {
+                            action = "profile.php?id="+ui.item.id;
 
 
-                    //    $("#results").text(ui.item.value);
+                            document.getElementById("searchForm").setAttribute("action", action);
 
-                        $("#tagValue").val(ui.item.id);
+                        }
 
-                        action = "profile.php?id="+ui.item.id;
+                    });
+            });
 
-
-                        document.getElementById("searchForm").setAttribute("action", action);
-
-                    }
-
-                });
-
-
-        });
     </script>
-
-
-
-
-
-
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>Search By Name</title>
 </head>
@@ -83,19 +76,14 @@ require("models/Contact.php");
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
         <div class="content">
-                <p id ="qwerty"></p>
             <form id="searchForm" action="search.php" method="post" name="search">
-
-            <!--<form action="controllers/PersonController.php" method="post" name="search">-->
-
-                <div style="width: 490px" >
-                    <div >
-                        <span style="float: left; padding-right: 10px" >Search</span>
-                        <input style="float: left" id="tags" type="text" size="45"  name="name"/>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="tags" class="form-control" placeholder="Search For Name" name="name" >
                         <input name="value" type="hidden" id="tagValue" />
-                    </div>
-                    <div class="form-block">
-                        <input style="float: right" id ="SearchName" name="SearchName" type="submit" class="input_text" value="Profile" /><br />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Search</button>
+                        </span>
                     </div>
                 </div>
             </form>

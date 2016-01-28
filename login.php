@@ -1,8 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
     <title>Login</title>
 </head>
 <body>
@@ -13,35 +17,35 @@
             <li><a href="login.php">Login</a></li>
         </ul>
     </div><!-- end .header -->
-
     <div class="content">
+    <div class="row">
+        <section class="col-xs-12">
+            <form class="form-horizontal" action="controllers/LoginController.php" method="post">
+                <!--<fieldset disabled>-->
+                <fieldset>
+                    <legend>Login</legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputName">User Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="inputName" placeholder="elminero" value="elminero" name="userName"  >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputEmail">Password</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="password" id="inputEmail" placeholder="Email" value="super8" name="password">
+                        </div>
+                    </div>
 
-        <h1>Login</h1>
-
-        <form action="controllers/LoginController.php" method="post" >
-
-        <div style="width: 270px">
-
-            <div style="padding: 5px">
-                User Name
-                <input style="float: right" type="text" name="userName" value="elminero" /><br />
-            </div>
-
-            <div style="padding: 5px">
-                Password
-                <input style="float: right" type="password" name="password" value="super8" /><br />
-            </div>
-
-            <div style="padding: 5px">
-                <input style="float: right" type="submit" name="login" value="login"/>
-            </div>
-
-        </div>
-
-        </form>
-
-
-
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <input type="submit" class="btn btn-default" value="Login" name="login">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </div><!-- row -->
     </div><!-- end .content -->
 
     <?php
@@ -49,5 +53,8 @@
     ?>
 
 </div><!-- end .container -->
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
