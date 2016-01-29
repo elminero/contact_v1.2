@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-4">
                 <h1>Headline</h1>
                 <p>
                     Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in
@@ -30,7 +30,7 @@
                     have to happen. We all make choices in life. Sometimes our choices go
                 </p>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-4">
                 <h1>Headline</h1>
                 <p>
                     Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in
@@ -42,7 +42,7 @@
                     have to happen. We all make choices in life. Sometimes our choices go
                 </p>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-4">
                 <h1>Headline</h1>
                 <p>
                     Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in

@@ -58,14 +58,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     </div><!-- end .header -->
 
 
-
-
-
-
-
-
-
-
+    <div class="content">
 
         <div class="row">
             <section class="col-xs-12">
@@ -113,7 +106,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
         <?php endif; ?>
 
         <div style="<?php  if($action === 'update') echo "float: right" ?>">
-            <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
+            <form action="controllers/PersonController.php?action=<?php
 
             if($action == "update") {
                 echo "update";
@@ -127,41 +120,44 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
             ?>" method="post" name="addContact">
 
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+                        </div>
                     </div>
-                </div>
 
 
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="firstName">First<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="firstName" type="text" class="form-control" id="firstName"  value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="firstName">First<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="firstName" type="text" class="form-control" id="firstName"  value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="middleName">Middle<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="middleName" type="text" class="form-control" id="middleName"  value="<?php if($action == "update") echo $updateForm->middle_name; ?>" /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="middleName">Middle<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="middleName" type="text" class="form-control" id="middleName"  value="<?php if($action == "update") echo $updateForm->middle_name; ?>" /><br />
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="aliasName">Alias<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="aliasName" type="text" class="form-control" id="aliasName"  value="<?php if($action == "update") echo $updateForm->alias_name; ?>" /><br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="aliasName">Alias<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="aliasName" type="text" class="form-control" id="aliasName"  value="<?php if($action == "update") echo $updateForm->alias_name; ?>" /><br />
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthMonth">Month</label>
-                    <div class="col-sm-10">
-                        <select name="birthMonth" class="form-control" id="birthMonth">
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label" for="birthMonth" >DOB</label>
+
+                            <div class="col-sm-10">
+                            <select  name="birthMonth" id="birthMonth" size="1">
+
                                 <?php if($action == "update"): ?>
                                     <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
                                 <?php endif; ?>
@@ -169,14 +165,11 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                 <?php foreach($months as $value => $month): ?>
                                     <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
                                 <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthDay">Day</label>
-                    <div class="col-sm-10">
-                        <select name="birthDay" class="form-control" id="birthDay">
+                            </select>
+
+                            <select  name="birthDay" id="birthDay" size="1">
+
                                 <?php if($action == "update"): ?>
                                     <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
                                 <?php endif; ?>
@@ -186,14 +179,10 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                 <?php for($i = 1; $i <=31; $i++): ?>
                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                 <?php endfor; ?>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthYear">Year</label>
-                    <div class="col-sm-10">
-                        <select name="birthYear" class="form-control" id="birthYear">
+                            </select>
+
+                            <select  name="birthYear" id="year" size="1">
 
                                 <?php if($action == "update"): ?>
                                     <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
@@ -204,28 +193,30 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                     <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
                                 <?php endfor; ?>
 
-                        </select>
+                            </select>
+                            </div>
+
+
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="note">Notes</label>
-                    <div class="col-sm-10">
-                            <textarea name="note" class="form-control" id="note"  ><?php
-                                if($action == 'update') {
-                                    echo $updateForm->note;
-                                }
-                                ?></textarea>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="note">Notes</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="note"  ><?php
+                                    if($action == 'update') {
+                                        echo $updateForm->note;
+                                    }
+                                    ?></textarea>
+                        </div>
                     </div>
-                </div>
 
 
-                <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+                    <div class="form-block" style="margin-top: 10px; float: right">
 
-
-                <div class="form-group">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <input class="btn btn-default"  type="submit" name="addNewContact" value="<?php
+                        <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+                        <input type="submit" name="addNewContact" value="<?php
                         if($action == "create") {
                             echo "Create";
                         }elseif($action == "update") {
@@ -241,16 +232,8 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                ?>"
                             />
                     </div>
-                </div>
-
-
-
-
-
-
-
-
-
+                    <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
+                    <div style="clear: both"></div>
 
 
             </form>
@@ -261,7 +244,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
         </section>
             </div>
-
+        </div><!-- end .content -->
 
     <?php
     include("includes/footer.php");
