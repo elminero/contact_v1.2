@@ -24,14 +24,14 @@ $updateForm = null;
 
 if(  isset($_GET['action']) && $_GET['action'] === 'update'  ) {
 
-        $action = "update";
-        $id = (int)$_GET['id'];
+    $action = "update";
+    $id = (int)$_GET['id'];
 
-        $contact = new PersonPDO();
+    $contact = new PersonPDO();
 
-        $updateForm = $contact->getPersonById($id);
-    } else {
-        $action = "create";
+    $updateForm = $contact->getPersonById($id);
+} else {
+    $action = "create";
 }
 
 $error = NULL;
@@ -52,86 +52,77 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     <title>Add a New Contact</title>
 </head>
 <body>
-        <div class="container" >
-            <div class="header"><!-- Start Header -->
-                <?php include("includes/header.php"); ?>
-            </div><!-- end .header -->
+<div class="container" >
+    <div class="header"><!-- Start Header -->
+        <?php include("includes/header.php"); ?>
+    </div><!-- end .header -->
 
 
-                <div class="content">
-                <?php if($action === 'update'):?>
-                <div style="margin-bottom: 9px">
-                    <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $id; ?>" >Profile</a> >> <b>Update</b>
-                </div>
-                    <div style="clear: both"></div>
+    <div class="content">
+        <?php if($action === 'update'):?>
+            <div style="margin-bottom: 9px">
+                <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $id; ?>" >Profile</a> >> <b>Update</b>
+            </div>
+            <div style="clear: both"></div>
 
-<?php
-                    $id = NULL;
+            <?php
+            $id = NULL;
 
-                    if( isset($_GET['id']) )
-                    $id = $_GET['id'];
+            if( isset($_GET['id']) )
+                $id = $_GET['id'];
 
-                    if( isset($_POST['id']) )
-                    $id = $_POST['id'];
+            if( isset($_POST['id']) )
+                $id = $_POST['id'];
 
-                    $contact = new Contact($id);
-                    $contact->getContactById();
-?>
-
-
-                    <!-- div 1 Start Avatar -->
-                        <?php require("avatar.php"); ?>
-                    <!-- End Avatar -->
-
-                    <div style="float: left; width: 200px">
-                        <?php require("name_dob.php"); ?>
-                    </div>
+            $contact = new Contact($id);
+            $contact->getContactById();
+            ?>
 
 
+            <!-- div 1 Start Avatar -->
+            <?php require("avatar.php"); ?>
+            <!-- End Avatar -->
 
-
-
-                <?php if($action == "create"): ?>
-                    <h3>Create a New Contact</h3>
-                <?php endif; ?>
-
-            <div style="<?php  if($action === 'update') echo "float: right" ?>">
-
-                <div class="row">
-                    <section class="col-xs-12">
-
-
-                <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
-
-                    if($action == "update") {
-                        echo "update";
-                    }
-
-                    if($action == "create") {
-                        echo "create";
-                    }
-
-
-                    ?>" method="post" name="addContact">
+            <div style="float: left; width: 200px">
+                <?php require("name_dob.php"); ?>
+            </div>
 
 
 
-                    <?php endif; ?>
-                    <?php if($action == "update"): ?>
-                        <h3 style='float: left'>Update Contact</h3>
-                        <span style='float: right'>
+        <?php endif; ?>
+        <?php if($action == "update"): ?>
+            <h3 style='float: left'>Update Contact</h3>
+            <span style='float: right'>
                     <a id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
                     </span>
-                        <div style="clear: both"></div>
-                    <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if($action == "create"): ?>
+            <h3>Create a New Contact</h3>
+        <?php endif; ?>
+
+        <div style="<?php  if($action === 'update') echo "float: right" ?>">
+            <form action="controllers/PersonController.php?action=<?php
+
+            if($action == "update") {
+                echo "update";
+            }
+
+            if($action == "create") {
+                echo "create";
+            }
 
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                            <div class="col-sm-10">
-                                <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
-                            </div>
+            ?>" method="post" name="addContact">
+
+                <div class="form-content" >
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+                        <div class="col-sm-10">
+                            <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
                         </div>
+                    </div>
 
 
                     <div class="form-group">
@@ -157,103 +148,99 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                         </div>
                     </div>
 
+                    <div  class="form-block">
+                        <span class="form-label">Date of Birth</span>
+                        <div align="center">
 
+                            <select  name="birthMonth" id="birth_month" size="1">
 
-                        <div  class="form-block">
-                            <span class="form-label">Date of Birth</span>
-                            <div align="center">
+                                <?php if($action == "update"): ?>
+                                    <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
+                                <?php endif; ?>
 
-                                <select  name="birthMonth" id="birth_month" size="1">
+                                <?php foreach($months as $value => $month): ?>
+                                    <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
+                                <?php endforeach; ?>
 
-                                    <?php if($action == "update"): ?>
-                                        <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
-                                    <?php endif; ?>
+                            </select>
 
-                                    <?php foreach($months as $value => $month): ?>
-                                        <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
-                                    <?php endforeach; ?>
+                            <select  name="birthDay" id="birth_day" size="1">
 
-                                </select>
+                                <?php if($action == "update"): ?>
+                                    <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
+                                <?php endif; ?>
 
-                                <select  name="birthDay" id="birth_day" size="1">
+                                <option value="0"> </option>
 
-                                    <?php if($action == "update"): ?>
-                                        <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
-                                    <?php endif; ?>
+                                <?php for($i = 1; $i <=31; $i++): ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php endfor; ?>
 
-                                    <option value="0"> </option>
+                            </select>
 
-                                    <?php for($i = 1; $i <=31; $i++): ?>
-                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                    <?php endfor; ?>
+                            <select  name="birthYear" id="year" size="1">
 
-                                </select>
+                                <?php if($action == "update"): ?>
+                                    <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
+                                <?php endif; ?>
 
-                                <select  name="birthYear" id="year" size="1">
+                                <option value="0"> </option>
+                                <?php for ($y = date('Y'); $y >= date('Y') - 110; $y--): ?>
+                                    <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                                <?php endfor; ?>
 
-                                    <?php if($action == "update"): ?>
-                                        <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
-                                    <?php endif; ?>
-
-                                    <option value="0"> </option>
-                                    <?php for ($y = date('Y'); $y >= date('Y') - 110; $y--): ?>
-                                        <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                    <?php endfor; ?>
-
-                                </select>
-                                
-                            </div>
+                            </select>
 
                         </div>
 
-                        <div class="form-block">
-                            <span  class="form-label">Notes</span>
-                            <textarea style="" rows="1" cols="40" name="note" ><?php
-                           if($action == 'update') {
-                               echo $updateForm->note;
-                           }
-                        ?></textarea><br />
-                        </div>
-                        <div style="clear: both"></div>
-                        <div class="form-block" style="margin-top: 10px; float: right">
+                    </div>
 
-                            <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
-                            <input type="submit" name="addNewContact" value="<?php
-                            if($action == "create") {
-                                echo "Create";
-                            }elseif($action == "update") {
-                                echo "Update";
-                            }
-                            ?>"
-                            id="<?php
-                            if($action == "create") {
-                                echo "create";
-                            }elseif($action == "update") {
-                                echo "update";
-                            }
-                            ?>"
-                                />
-                        </div>
-                        <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
-                        <div style="clear: both"></div>
+                    <div class="form-block">
+                        <span  class="form-label">Notes</span>
+                            <textarea style="float: right" rows="1" cols="40" name="note" ><?php
+                                if($action == 'update') {
+                                    echo $updateForm->note;
+                                }
+                                ?></textarea><br />
+                    </div>
+                    <div style="clear: both"></div>
+                    <div class="form-block" style="margin-top: 10px; float: right">
 
+                        <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+                        <input type="submit" name="addNewContact" value="<?php
+                        if($action == "create") {
+                            echo "Create";
+                        }elseif($action == "update") {
+                            echo "Update";
+                        }
+                        ?>"
+                               id="<?php
+                               if($action == "create") {
+                                   echo "create";
+                               }elseif($action == "update") {
+                                   echo "update";
+                               }
+                               ?>"
+                            />
+                    </div>
+                    <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
+                    <div style="clear: both"></div>
 
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
 
-                <div style="clear: both"></div>
-                <?php if($action === 'update') echo "<hr />" . $phoneEmailAddress; ?>
-            </div><!-- end .content -->
+        <div style="clear: both"></div>
+        <?php if($action === 'update') echo "<hr />" . $phoneEmailAddress; ?>
+    </div><!-- end .content -->
 
-                    <div style="clear:both"></div>
-                <?php
-                include("includes/footer.php");
-                ?>
+    <?php
+    include("includes/footer.php");
+    ?>
 
-            </div><!-- end .container -->
-        <script src="js/jquery-1.12.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+</div><!-- end .container -->
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
 </html>
-
