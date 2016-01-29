@@ -115,7 +115,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
             ?>" method="post" name="addContact">
 
-                <div class="form-content" >
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
@@ -148,11 +148,11 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                         </div>
                     </div>
 
-                    <div  class="form-block">
-                        <span class="form-label">Date of Birth</span>
-                        <div align="center">
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label" for="birthMonth" >DOB</label>
 
-                            <select  name="birthMonth" id="birth_month" size="1">
+                            <div class="col-sm-10">
+                            <select  name="birthMonth" id="birthMonth" size="1">
 
                                 <?php if($action == "update"): ?>
                                     <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
@@ -164,7 +164,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                             </select>
 
-                            <select  name="birthDay" id="birth_day" size="1">
+                            <select  name="birthDay" id="birthDay" size="1">
 
                                 <?php if($action == "update"): ?>
                                     <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
@@ -190,20 +190,25 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                                 <?php endfor; ?>
 
                             </select>
+                            </div>
 
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="note">Notes</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="note"  ><?php
+                                    if($action == 'update') {
+                                        echo $updateForm->note;
+                                    }
+                                    ?></textarea>
                         </div>
-
                     </div>
 
-                    <div class="form-block">
-                        <span  class="form-label">Notes</span>
-                            <textarea style="float: right" rows="1" cols="40" name="note" ><?php
-                                if($action == 'update') {
-                                    echo $updateForm->note;
-                                }
-                                ?></textarea><br />
-                    </div>
-                    <div style="clear: both"></div>
+
                     <div class="form-block" style="margin-top: 10px; float: right">
 
                         <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
@@ -226,7 +231,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                     <span style="float: left" id="error"><?php if($error == 1) {echo "* All contacts must have at least one name or alias.";} ?></span>
                     <div style="clear: both"></div>
 
-                </div>
+
             </form>
         </div>
 
