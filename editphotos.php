@@ -25,12 +25,15 @@ $contact->getContactById();
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script src="javascript/event_handlers.js" type="text/javascript"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
     <title>Add Photos</title>
 </head>
 <body>
@@ -64,45 +67,53 @@ $contact->getContactById();
 
             <div style="clear: both"></div>
 
-            <div class="" >
-                <form action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
+            <div class="row" >
+                <section class="col-xs-12">
+                    <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
-                    <div class="form-block">
-                        <span >Avatar</span>
-                        <input name="avatar" type="checkbox" class="" value="" /><br />
-                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="avatar" type="checkbox" value="" />Avatar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="file"><span >File</span><span id="error"></span></label>
+                            <div class="col-sm-10">
+                                <input id="file" name="file" type="file" class=""  />
+                            </div>
+                        </div>
 
-                    <div class="form-block">
-                        <span >File</span><span id="error"></span>
-                        <input name="file" type="file" class=""  /><br />
-                    </div>
-
-
-                    <div class="form-block">
-                        <span>Caption</span><span id="error"></span>
-                        <textarea name="caption" rows="3" cols="30"  ></textarea><br />
-                    </div>
-
-
-
-                    <input type="hidden" name="personId" value="<?php echo $id; ?>" />
-                    <input type="hidden" name="id" value="0" />
-
-                    <div class="form-block" style="margin-top: 10px; float: right">
-                        <input type="submit" name="imageUpLoad" value="Upload Image" />
-                    </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
+                            <div class="col-sm-10">
+                                <textarea id="caption" name="caption" ></textarea>
+                            </div>
+                        </div>
 
 
-                </form>
+
+                        <input type="hidden" name="personId" value="<?php echo $id; ?>" />
+                        <input type="hidden" name="id" value="0" />
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <input class="btn btn-default" type="submit" name="imageUpLoad" value="Upload Image" />
+                            </div>
+                        </div>
+
+                    </form>
+                </section>
             </div>
-
 
         </div>
 
         <div style="clear: both"></div>
-        <hr />
+
 
 <!--
         ["id"]=> int(65)
@@ -111,14 +122,6 @@ $contact->getContactById();
         ["caption"]=> string(11) "pin-up girl"
         ["avatar"]=> int(0) ["visible"]
 -->
-
-
-
-
-
-
-
-
         <?php  if($contact->image):
 
         while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
@@ -126,34 +129,52 @@ $contact->getContactById();
                 <?php // echo var_dump($image); ?>
 
                 <div style="padding: 5px; ">
-                    <a style="margin: 5px; padding-right: 25px; float: left" href="picture.php?id=<?php echo $row->id ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /></a>
-                    <div style="float: left ">
-                        <form style="float: right"
+                    <div class="row">
+                        <hr/>
+                        <div style="float: right" class="form-group"><a class="btn btn-danger" id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
+                        <section class="col-xs-5">
+                    <img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /><br/>
+                        </section>
+
+                        <section class="col-xs-6">
+                        <form class="form-horizontal"
                               action="controllers/ImageController.php?action=update&id=<?php echo $row->person_id;  ?>"
                               method="post" enctype="multipart/form-data" >
 
-                            <div class="form-block">
-                                <span >Avatar</span>
-                                <input name="avatar" type="checkbox" class="" value=""
-                                <?php if($row->avatar == 1) echo "checked"; ?>    />
-                                <br />
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="avatar" type="checkbox" value="" <?php if($row->avatar == 1) echo "checked"; ?>/>Avatar
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-block">
-                                <span>Caption</span><span id="error"></span>
-                                <textarea name="caption" rows="5" cols="40"  ><?php echo $row->caption; ?></textarea><br />
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
+                                <div class="col-sm-10">
+                                    <textarea id="caption" name="caption" ><?php echo $row->caption; ?></textarea>
+                                </div>
                             </div>
 
                             <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
 
                             <input type="hidden" name="personId" value="<?php echo $id; ?>" />
 
-                            <div class="form-block" style="margin-top: 10px; float: right">
-                                <input id="update" type="submit" name="imageUpLoad" value="Update Image" />
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <input class="btn btn-default" type="submit" name="imageUpLoad" value="Update Image" />
+                                </div>
                             </div>
                         </form>
-                    </div><div style="float: right "><a id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
-                    <div style="clear: both"></div>
+
+
+                        </section>
+                    </div>
+
+
+
 
                 </div>
 
@@ -169,5 +190,8 @@ $contact->getContactById();
     ?>
 
 </div><!-- end .container -->
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

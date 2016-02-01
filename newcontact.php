@@ -103,8 +103,8 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
         <?php endif; ?>
         <?php if($action == "update"): ?>
             <h3 style='float: left'>Update Contact</h3>
-            <span style='float: right'>
-                    <a id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+            <span style='float: right; padding-bottom: 12px; padding-left: 12px'>
+                    <a class="btn btn-danger" id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
                     </span>
         <?php endif; ?>
 

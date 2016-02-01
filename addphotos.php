@@ -143,5 +143,8 @@ if ($login->login == 0) {
             ?>
 
         </div><!-- end .container -->
+        <script src="js/jquery-1.12.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
