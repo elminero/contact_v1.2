@@ -29,13 +29,17 @@ if ($login->login == 0) {
     $contact->getContactById();
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/main.css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Add Photos</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <title>Add Photos</title>
+</head>
     <body>
         <div class="container" >
             <div class="header"><!-- Start Header -->
@@ -67,45 +71,58 @@ if ($login->login == 0) {
 
                     <div style="clear: both"></div>
 
-                    <div class="" >
-                    <form action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
+<div class="row" >
+    <section class="col-xs-12">
+        <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
 
-                        <div class="form-block">
-                            <span >Avatar</span>
-                            <input name="avatar" type="checkbox" class="" value="" /><br />
-                        </div>
-
-
-                        <div class="form-block">
-                            <span >File</span><span id="error"></span>
-                            <input name="file" type="file" class=""  /><br />
-                        </div>
-
-
-                        <div class="form-block">
-                            <span>Caption</span><span id="error"></span>
-                            <textarea name="caption" rows="3" cols="30"  ></textarea><br />
-                        </div>
-
-
-                        <input type="hidden" name="personId" value="<?php echo $id; ?>" />
-                        <input type="hidden" name="id" value="0" />
-
-                        <div class="form-block" style="margin-top: 10px; float: right">
-                        <input type="submit" name="imageUpLoad" value="Upload Image" />
-                        </div>
-
-
-                        <?php if($error == 1): ?>
-                        <span style="color: #990000">
-                        * Only jpeg files allowed<br />
-                        * Files must be under 500KB
-                        </span>
-                        <?php endif ?>
-
-                    </form>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <div class="checkbox">
+                        <label>
+                            <input name="avatar" type="checkbox" value="" />Avatar
+                        </label>
                     </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="file"><span >File</span><span id="error"></span></label>
+                <div class="col-sm-10">
+                    <input id="file" name="file" type="file" class=""  />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
+                <div class="col-sm-10">
+                    <textarea id="caption" name="caption" rows="3" cols="30"  ></textarea>
+                </div>
+            </div>
+
+
+            <input type="hidden" name="personId" value="<?php echo $id; ?>" />
+            <input type="hidden" name="id" value="0" />
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <input class="btn btn-default" type="submit" name="imageUpLoad" value="Upload Image" />
+                </div>
+            </div>
+
+
+            <?php if($error == 1): ?>
+            <span style="color: #990000">
+            * Only jpeg files allowed<br />
+            * Files must be under 500KB
+            </span>
+            <?php endif ?>
+
+        </form>
+    </section>
+</div>
 
 
                 </div>
