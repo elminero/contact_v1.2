@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>Login</title>
 </head>
 <body>
 <div class="container">
-    <div class="header"><!-- Start Header -->
+    <div class="header" style="margin: 0 -15px;"><!-- Start Header -->
         <ul  class="nav">
             <li><a href="index.php">Home</a></li>
             <li><a href="login.php">Login</a></li>
         </ul>
     </div><!-- end .header -->
-    <div class="content">
+
     <div class="row">
         <section class="col-xs-12">
             <form class="form-horizontal" action="controllers/LoginController.php" method="post">
@@ -46,7 +46,7 @@
             </form>
         </section>
     </div><!-- row -->
-    </div><!-- end .content -->
+
 
     <?php
     include("includes/footer.php");

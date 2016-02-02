@@ -1,5 +1,5 @@
 <div class="header"><!-- Start Header -->
-    <ul id="nav"  class="nav">
+    <ul id="nav" class="nav">
         <li><a href="listcontacts.php">List of All Contacts</a></li>
         <li><a href="search.php">Search By Name</a></li>
         <li><a href="newcontact.php">New Contact</a></li>

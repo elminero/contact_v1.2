@@ -37,7 +37,7 @@ if ($login->login == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>Add Photos</title>
 </head>
     <body>
@@ -45,7 +45,6 @@ if ($login->login == 0) {
             <div class="header"><!-- Start Header -->
                 <?php include("includes/header.php"); ?>
             </div><!-- end .header -->
-            <div class="content">
                 <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $id; ?>">Profile</a> >> <b>Portfolio</b>
                 </div>
@@ -135,8 +134,6 @@ if ($login->login == 0) {
                 <?php endwhile ?>
 
                     <div style="clear:both" ></div>
-
-            </div><!-- end .content -->
 
             <?php
             include("includes/footer.php");

@@ -48,7 +48,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>Add a New Contact</title>
 </head>
 <body>
@@ -56,16 +56,6 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-
-
-
-
-
-
-
-
-
-
 
         <div class="row">
             <section class="col-xs-12">

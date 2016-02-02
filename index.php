@@ -12,7 +12,7 @@
 <body>
     <div class="container"><!-- start .container -->
 
-        <div class="header">
+        <div class="header" style="margin: 0 -15px;">
             <ul class="nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="login.php">Login</a></li>

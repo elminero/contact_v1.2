@@ -26,7 +26,7 @@ $stmt = $contact->getAllPerson();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>List of All Contacts</title>
 </head>
 <body>
@@ -34,7 +34,7 @@ $stmt = $contact->getAllPerson();
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-    <div class="content">
+
         <div style="margin-bottom: 9px">
             <b>List</b>
         </div>
@@ -47,8 +47,6 @@ $stmt = $contact->getAllPerson();
                 </tr>
             <?php endwhile ?>
         </table>
-    </div><!-- end .content -->
-
     <?php include("includes/footer.php"); ?>
 
 </div><!-- end .container -->
