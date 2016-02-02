@@ -17,8 +17,8 @@ body
 
 /* ~~ This fixed width container surrounds all other divs ~~ 	width: 960px;*/
 .container {
-	width: 850px;
-	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+ background-color: #1b6d85;
+
 }
 
 

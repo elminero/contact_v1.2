@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="container"><!-- start .container -->
+
         <div class="header">
             <ul class="nav">
                 <li><a href="index.php">Home</a></li>

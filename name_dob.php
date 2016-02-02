@@ -12,7 +12,6 @@ $nameDOB =  $contact->nameDOB;
 
 
 <!-- div 2 Start Name and DOB -->
-<div style="margin-left: 10px; float: left;">
     <?php
 
 
@@ -67,7 +66,7 @@ $nameDOB =  $contact->nameDOB;
                 $contact->nameDOB->birth_day) . "<br />";
 
     }
-    $nameDOB.="Note: " . "<div style=\"  width: 615px;   \">" . $contact->nameDOB->note . "</div>";
+    $nameDOB.="Note: " . "<div style=\"    \">" . $contact->nameDOB->note . "</div>";
     ?>
 
     <?php
@@ -86,6 +85,6 @@ $nameDOB =  $contact->nameDOB;
         <a href="newcontact.php?id=<?php echo $contact->nameDOB->id; ?>&action=update"><?php echo $nameDOB ?></a>
     <?php endif; ?>
 
-</div>
-<div style="clear: both;"></div>
+
+
 <!-- End Name and DOB -->

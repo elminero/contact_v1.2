@@ -30,7 +30,7 @@ $contact->getContactById();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>Show Contact</title>
 </head>
 <body>
@@ -38,22 +38,27 @@ $contact->getContactById();
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-        <div class="content">
 
             <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">List</a> >> <b>Profile</b>
             </div>
             <div style="clear: both"></div>
 
-            <!-- div 1 Start Avatar -->
-            <?php require("avatar.php"); ?>
-            <!-- End Avatar -->
+            <div class="row">
+                <div class="col-sm-5" style="padding-right: 12px;">
 
-            <!-- div 2 Start Name and DOB -->
-            <div style="float: left; width: 200px;">
-                <?php require("name_dob.php"); ?>
+                    <p>
+                        <?php require("avatar.php"); ?>
+                    </p>
+                </div>
+                <div class="col-sm-5">
+
+                    <p>
+                        <?php require("name_dob.php"); ?>
+                    </p>
+                </div>
             </div>
-            <!-- End Name and DOB -->
+
 
             <div style="clear: both"></div>
 
@@ -122,7 +127,7 @@ $contact->getContactById();
                     <?php endif; ?>
             </table>
             <!-- End Address -->
-        </div><!-- end .content -->
+
         <?php
         include("includes/footer.php");
         ?>

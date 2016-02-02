@@ -132,11 +132,12 @@ $contact->getContactById();
                     <div class="row">
                         <hr/>
                         <div style="float: right" class="form-group"><a class="btn btn-danger" id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
-                        <section class="col-xs-5">
-                    <img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /><br/>
-                        </section>
 
-                        <section class="col-xs-6">
+                        <div class="col-xs-5">
+                            <img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /><br/>
+                        </div>
+
+                        <div class="col-xs-6">
                         <form class="form-horizontal"
                               action="controllers/ImageController.php?action=update&id=<?php echo $row->person_id;  ?>"
                               method="post" enctype="multipart/form-data" >
@@ -170,7 +171,7 @@ $contact->getContactById();
                         </form>
 
 
-                        </section>
+                        </div>
                     </div>
 
 
