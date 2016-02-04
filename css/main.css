@@ -53,9 +53,6 @@ body
 
 
 
-
-
-
 /* ~~ Element/tag selectors ~~ */
 ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
 	padding: 0;
@@ -85,7 +82,18 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 }
 
 
-
+table a:link {
+	color: #080808;
+	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+table a:visited {
+	color: #080808;
+	text-decoration: none;
+}
+table a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+	color: red;
+}
 
 
 /* ~~ These are the columns for the layout. ~~ 

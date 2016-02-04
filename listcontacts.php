@@ -39,14 +39,20 @@ $stmt = $contact->getAllPerson();
             <b>List</b>
         </div>
         <div style="clear: both"></div>
-        <table>
+<div class="row">
+<section class="col-xs-6">
+        <table class="table table-bordered table-hover table-striped table-responsive" >
+            <tbody >
             <?php while($row = $stmt->fetch(PDO::FETCH_OBJ)): ?>
                 <?php $nameLastFirstMiddle = $row->first_name . " " . $row->middle_name  . " " . $row->last_name ; ?>
-                <tr>
+                <tr class="active" >
                     <td><a href="profile.php?id=<?php echo $row->id; ?>"><?php echo $nameLastFirstMiddle; ?></a></td>
                 </tr>
             <?php endwhile ?>
+            </tbody>
         </table>
+</section>
+</div>
     <?php include("includes/footer.php"); ?>
 
 </div><!-- end .container -->

@@ -18,6 +18,7 @@
                 <li><a href="login.php">Login</a></li>
             </ul>
         </div>
+        <img class="img-responsive center-block img-rounded" src="css/dark_road_forest850c.jpg">
         <div class="row">
             <div class="col-sm-4">
                 <h1>Headline</h1>

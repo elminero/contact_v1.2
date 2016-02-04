@@ -22,7 +22,7 @@ require("models/Contact.php");
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
@@ -75,7 +75,7 @@ require("models/Contact.php");
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-        <div class="content">
+    <h3>Search for a Name</h3>
             <form id="searchForm" action="search.php" method="post" name="search">
                 <div class="form-group">
                     <div class="input-group">
@@ -87,7 +87,6 @@ require("models/Contact.php");
                     </div>
                 </div>
             </form>
-        </div><!-- end .content -->
         <?php include("includes/footer.php"); ?>
     </div><!-- end .container -->
 </body>
