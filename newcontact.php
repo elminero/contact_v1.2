@@ -57,8 +57,8 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
 
-        <div class="row">
-            <section class="col-xs-12">
+
+
 
         <?php if($action === 'update'):?>
             <div style="margin-bottom: 9px">
@@ -80,29 +80,37 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
             ?>
 
 
-            <!-- div 1 Start Avatar -->
-            <?php require("avatar.php"); ?>
-            <!-- End Avatar -->
+                <div class="row">
+                    <section class="col-sm-6">
 
-            <div style="float: left; width: 200px">
-                <?php require("name_dob.php"); ?>
-            </div>
+                        <!-- div 1 Start Avatar -->
+                        <?php require("avatar.php"); ?>
+                        <!-- End Avatar -->
+                        <hr />
 
 
+                        <!-- div 2 Start Name and DOB -->
+                        <div style="float: left; width: 200px">
+                            <?php require("name_dob.php"); ?>
+                        </div>
+                        <div style="clear: both"></div>
+                        <!-- End Name and DOB -->
 
-        <?php endif; ?>
-        <?php if($action == "update"): ?>
-            <h3 style='float: left'>Update Contact</h3>
-            <span style='float: right; padding-bottom: 12px; padding-left: 12px'>
-                    <a class="btn btn-danger" id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
-                    </span>
-        <?php endif; ?>
-
-        <?php if($action == "create"): ?>
-            <h3>Create a New Contact</h3>
+                    </section>
+                    <section class="col-sm-6">
         <?php endif; ?>
 
-        <div style="<?php  if($action === 'update') echo "float: right" ?>">
+
+
+
+
+
+
+
+
+
+
+        <div style="<?php  if($action === 'update') echo "" ?>">
             <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
 
             if($action == "update") {
@@ -115,6 +123,21 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
 
             ?>" method="post" name="addContact">
+
+
+
+                <?php if($action == "update"): ?>
+                    <h3 style="float: left">Update Contact</h3>
+                    <span style='float: right'>
+        <a class="btn btn-danger" id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+    </span><br />
+                    <div style="clear: both"></div>
+                <?php endif; ?>
+
+                <?php if($action == "create"): ?>
+                    <h3>Create a New Contact</h3>
+                <?php endif; ?>
+
 
 
                 <div class="form-group">
@@ -246,11 +269,13 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
             </form>
         </div>
 
-        <div style="clear: both"></div>
+                    </section>
+                </div>
+
+
+                <div style="clear: both"></div>
         <?php if($action === 'update') echo "<hr />" . $phoneEmailAddress; ?>
 
-        </section>
-            </div>
 
 
     <?php

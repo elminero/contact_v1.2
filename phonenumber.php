@@ -45,21 +45,24 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script src="javascript/event_handlers.js" type="text/javascript"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Phone Numbers</title>
-</head>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+     <title>Phone Numbers</title>
+ </head>
 
 <body>
 <div class="container">
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-    <div class="content">
+
         <div style="margin-bottom: 9px">
         <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a> >>
         <b><?php if($action == "update") echo "Update"; if($action == "create") echo "Add"; ?> Phone Number</b>
@@ -81,63 +84,89 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         $contact->getContactById();
         ?>
 
+    <div class="row">
+        <section class="col-sm-6">
 
         <!-- div 1 Start Avatar -->
         <?php require("avatar.php"); ?>
         <!-- End Avatar -->
+<hr />
+
 
         <!-- div 2 Start Name and DOB -->
         <div style="float: left; width: 200px">
             <?php require("name_dob.php"); ?>
         </div>
+            <div style="clear: both"></div>
         <!-- End Name and DOB -->
 
-        <div style="clear: both"></div>
-        <hr />
+        </section>
+        <section class="col-sm-6">
 
-<?php if($action == "update"): ?>
-            <h3 style='float: left'>Update Phone Number</h3>
-            <span style='float: right'>
-            <a id="delete" href="controllers/PhoneNumberController.php?action=delete&id=<?php echo $phoneData->id; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
-            </span>
-<?php endif; ?>
 
-<?php if($action == "create"): ?>
-            <h3>Add Phone Number</h3>
-<?php endif; ?>
-
-<div style="clear: both"></div>
 <!-- array(4) { ["personId"]=> int(37) ["phoneNumber"]=> string(12) "914-331-8584" ["phoneType"]=> int(2) ["note"]=> string(2) "NY" } -->
 
         <div style="margin-top: 10px;">
-        <form action="controllers/PhoneNumberController.php?action=<?php
-
-        if($action == "update") {
-            echo "update";
-        }
-
-        if($action == "create") {
-            echo "create";
-        }
-
-        ?>" method="post" name="addPhone">
 
 
-	Phone Type:
-    <select name="type">
-    	<option <?php if(($action == "update") && ($phoneData->phone_type == 0)) {echo "selected";} ?> value="0"> </option>
-        <option <?php if(($action == "update") && ($phoneData->phone_type == 1)) {echo "selected";} ?> value="1">Business</option>
-        <option <?php if(($action == "update") && ($phoneData->phone_type == 2)) {echo "selected";} ?> value="2">Home</option>
-        <option <?php if(($action == "update") && ($phoneData->phone_type == 3)) {echo "selected";} ?> value="3">Fax</option>
-        <option <?php if(($action == "update") && ($phoneData->phone_type == 4)) {echo "selected";} ?> value="4">Other</option>
-    </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	Phone Number:
-    <input style="width: 175px" name="phone" type="text" value="<?php if($action == "update") {echo $phoneData->phone_number;} ?>"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    Notes:
-    <input style="width: 175px" name="note" type="text" value="<?php if($action == "update") {echo $phoneData->note;} ?>" /><br />
-    
 
-    
+<form class="form-horizontal" action="controllers/PhoneNumberController.php?action=<?php
+
+    if($action == "update") {
+        echo "update";
+    }
+
+    if($action == "create") {
+        echo "create";
+    }
+
+    ?>" method="post" name="addPhone">
+
+
+    <?php if($action == "update"): ?>
+        <h3 style="float: left">Update Phone Number</h3>
+        <span style='float: right'>
+            <a class="btn btn-danger" id="delete" href="controllers/PhoneNumberController.php?action=delete&id=<?php echo $phoneData->id; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
+            </span><br />
+        <div style="clear: both"></div>
+    <?php endif; ?>
+
+    <?php if($action == "create"): ?>
+        <h3>Add Phone Number</h3>
+    <?php endif; ?>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="type">Type</label>
+        <div class="col-sm-10">
+            <select name="type" class="form-control" id="type">
+                <option <?php if(($action == "update") && ($phoneData->phone_type == 0)) {echo "selected";} ?> value="0"> </option>
+                <option <?php if(($action == "update") && ($phoneData->phone_type == 1)) {echo "selected";} ?> value="1">Business</option>
+                <option <?php if(($action == "update") && ($phoneData->phone_type == 2)) {echo "selected";} ?> value="2">Home</option>
+                <option <?php if(($action == "update") && ($phoneData->phone_type == 3)) {echo "selected";} ?> value="3">Fax</option>
+                <option <?php if(($action == "update") && ($phoneData->phone_type == 4)) {echo "selected";} ?> value="4">Other</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="phone">Phone</label>
+        <div class="col-sm-10">
+            <input name="phone" type="text" class="form-control" id="phone"  value="<?php if($action == "update") {echo $phoneData->phone_number;} ?>" /><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="note">Notes</label>
+        <div class="col-sm-10">
+            <textarea name="note" class="form-control" id="note"  ><?php
+            if($action == 'update') {
+                echo $phoneData->note;
+            }
+            ?></textarea>
+        </div>
+    </div>
+
     <input type="hidden" name="personId" value="<?php echo $_GET['id'] ?>" />
     <input type="hidden" name="phoneId" value="<?php echo  $_GET['update'] ?>" />
 
@@ -145,29 +174,44 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         <?php if($validate == "error") {echo "* Phone Number left blank.";} ?>
     </div>
 
-            <div style="float: right; margin-top: 10px;">
-        <input type="submit" name="addPhone"
-               value="<?php if($action == "update"){echo "Update Phone Number"; }
-                            if($action == "create"){echo "Add a Phone Number"; }?>"
-
-               id="<?php if($action == "update"){echo "update"; }
-               if($action == "create"){echo "create"; }?>"
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <input class="btn btn-default"  type="submit" name="addPhone" value="<?php
+            if($action == "create") {
+                echo "Create";
+            }elseif($action == "update") {
+                echo "Update";
+            }
+            ?>"
+            id="<?php
+            if($action == "create") {
+                echo "create";
+            }elseif($action == "update") {
+                echo "update";
+            }
+            ?>"
             />
-        <br />
+        </div>
     </div>
+
 </form>
 
+        </section>
+        </div>
 
-            <div style="clear: both"></div>
-            <?php // if($action === 'update')
-                echo "<hr />" . $phoneEmailAddress; ?>
-    </div>
-    </div><!-- end .content -->
+
+
+<?php echo "<hr />" . $phoneEmailAddress; ?>
+
+
 
     <?php
     include("includes/footer.php");
     ?>
 
 </div><!-- end .container -->
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@ $contact->getContactById();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <title>Add Photos</title>
 </head>
 <body>
@@ -41,34 +41,29 @@ $contact->getContactById();
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-    <div class="content">
         <div style="margin-bottom: 9px">
             <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $id; ?>">Profile</a> >> <b>Edit Photos</b>
         </div>
         <div style="clear: both"></div>
+<div class="row" >
+
+    <section class="col-sm-6">
 
         <!-- div 1 Start Avatar -->
         <?php require("avatar.php"); ?>
         <!-- End Avatar -->
+        <hr />
+
 
         <!-- div 2 Start Name and DOB -->
         <div style="float: left; width: 200px">
             <?php require("name_dob.php"); ?>
         </div>
+        <div style="clear: both"></div>
         <!-- End Name and DOB -->
 
-
-        <div style="float: right">
-
-            <h3 style='float: left'>Add a Photo</h3>
-
-            <br />
-
-
-            <div style="clear: both"></div>
-
-            <div class="row" >
-                <section class="col-xs-12">
+    </section>
+    <section class="col-sm-6">
                     <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
                         <div class="form-group">
@@ -108,9 +103,8 @@ $contact->getContactById();
 
                     </form>
                 </section>
-            </div>
 
-        </div>
+</div><!--end <div class="row">
 
         <div style="clear: both"></div>
 
@@ -183,8 +177,6 @@ $contact->getContactById();
 
         <?php  endif; ?>
         <div style="clear:both" ></div>
-
-    </div><!-- end .content -->
 
     <?php
     include("includes/footer.php");

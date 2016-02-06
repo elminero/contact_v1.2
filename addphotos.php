@@ -50,28 +50,25 @@ if ($login->login == 0) {
                 </div>
                     <div style="clear: both"></div>
 
-                <!-- div 1 Start Avatar -->
-                <?php require("avatar.php"); ?>
-                <!-- End Avatar -->
 
-                <!-- div 2 Start Name and DOB -->
-                <div style="float: left; width: 200px">
-                    <?php require("name_dob.php"); ?>
-                </div>
-                <!-- End Name and DOB -->
+            <div class="row">
+                <section class="col-sm-6">
 
-
-                <div style="float: right">
-
-                    <h3 style='float: left'>Add a Photo</h3>
-
-                    <br />
+                    <!-- div 1 Start Avatar -->
+                    <?php require("avatar.php"); ?>
+                    <!-- End Avatar -->
+                    <hr />
 
 
+                    <!-- div 2 Start Name and DOB -->
+                    <div style="float: left; width: 200px">
+                        <?php require("name_dob.php"); ?>
+                    </div>
                     <div style="clear: both"></div>
+                    <!-- End Name and DOB -->
 
-<div class="row" >
-    <section class="col-xs-12">
+                </section>
+                <section class="col-sm-6">
         <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
 
@@ -97,7 +94,7 @@ if ($login->login == 0) {
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
                 <div class="col-sm-10">
-                    <textarea id="caption" name="caption" rows="3" cols="30"  ></textarea>
+                    <textarea id="caption" name="caption"></textarea>
                 </div>
             </div>
 
@@ -121,7 +118,7 @@ if ($login->login == 0) {
 
         </form>
     </section>
-</div>
+
 
 
                 </div>
