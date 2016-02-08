@@ -86,7 +86,7 @@ $contact->getContactById();
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
                             <div class="col-sm-10">
-                                <textarea id="caption" name="caption" ></textarea>
+                                <textarea name="caption" class="form-control" id="caption"  ></textarea>
                             </div>
                         </div>
 
@@ -122,16 +122,17 @@ $contact->getContactById();
 
                 <?php // echo var_dump($image); ?>
 
-                <div style="padding: 5px; ">
+
                     <div class="row">
                         <hr/>
-                        <div style="float: right" class="form-group"><a class="btn btn-danger" id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
 
-                        <div class="col-xs-5">
-                            <img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /><br/>
+
+                        <div class="col-sm-6">
+                            <img class="img-responsive" alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /><br/>
+                            <div style="" class="form-group"><a class="btn btn-danger" id="delete" href="controllers/ImageController.php?action=delete&id=<?php echo $row->id; ?>&personId=<?php echo $row->person_id; ?>">delete</a></div>
                         </div>
 
-                        <div class="col-xs-6">
+                        <div class="col-sm-6">
                         <form class="form-horizontal"
                               action="controllers/ImageController.php?action=update&id=<?php echo $row->person_id;  ?>"
                               method="post" enctype="multipart/form-data" >
@@ -149,7 +150,7 @@ $contact->getContactById();
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="caption"><span>Caption</span><span id="error"></span></label>
                                 <div class="col-sm-10">
-                                    <textarea id="caption" name="caption" ><?php echo $row->caption; ?></textarea>
+                                    <textarea name="caption" class="form-control" id="caption"  ><?php echo $row->caption; ?></textarea>
                                 </div>
                             </div>
 
@@ -171,7 +172,7 @@ $contact->getContactById();
 
 
 
-                </div>
+
 
             <?php endwhile ?>
 

@@ -100,19 +100,8 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
                     <section class="col-sm-6">
         <?php endif; ?>
 
-
-
-
-
-
-
-
-
-
-
         <div style="<?php  if($action === 'update') echo "" ?>">
-            <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
-
+    <form class="form-horizontal" action="controllers/PersonController.php?action=<?php
             if($action == "update") {
                 echo "update";
             }
@@ -120,153 +109,135 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
             if($action == "create") {
                 echo "create";
             }
-
-
             ?>" method="post" name="addContact">
 
+        <?php if($action == "update"): ?>
+            <h3 style="float: left">Update Contact</h3>
+            <span style='float: right'>
+                <a class="btn btn-danger" id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
+            </span><br />
+            <div style="clear: both"></div>
+        <?php endif; ?>
 
+        <?php if($action == "create"): ?>
+            <h3>Create a New Contact</h3>
+        <?php endif; ?>
 
-                <?php if($action == "update"): ?>
-                    <h3 style="float: left">Update Contact</h3>
-                    <span style='float: right'>
-        <a class="btn btn-danger" id="delete" href="controllers/PersonController.php?action=delete&id=<?php echo $id; ?>">delete</a>
-    </span><br />
-                    <div style="clear: both"></div>
-                <?php endif; ?>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+            <div class="col-sm-10">
+                <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
+            </div>
+        </div>
 
-                <?php if($action == "create"): ?>
-                    <h3>Create a New Contact</h3>
-                <?php endif; ?>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="firstName">First<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+            <div class="col-sm-10">
+                <input name="firstName" type="text" class="form-control" id="firstName"  value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="middleName">Middle<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+            <div class="col-sm-10">
+                <input name="middleName" type="text" class="form-control" id="middleName"  value="<?php if($action == "update") echo $updateForm->middle_name; ?>" /><br />
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="aliasName">Alias<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
+            <div class="col-sm-10">
+                <input name="aliasName" type="text" class="form-control" id="aliasName"  value="<?php if($action == "update") echo $updateForm->alias_name; ?>" /><br />
+            </div>
+        </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="lastName">Last<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="lastName" type="text" class="form-control" id="lastName"  value="<?php if($action == "update") echo $updateForm->last_name; ?>" /><br />
-                    </div>
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="birthMonth">Month</label>
+            <div class="col-sm-10">
+                <select name="birthMonth" class="form-control" id="birthMonth">
+                        <?php if($action == "update"): ?>
+                            <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
+                        <?php endif; ?>
 
+                        <?php foreach($months as $value => $month): ?>
+                            <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
+                        <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="birthDay">Day</label>
+            <div class="col-sm-10">
+                <select name="birthDay" class="form-control" id="birthDay">
+                        <?php if($action == "update"): ?>
+                            <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
+                        <?php endif; ?>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="firstName">First<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="firstName" type="text" class="form-control" id="firstName"  value="<?php if($action == "update") echo $updateForm->first_name; ?>" /><br />
-                    </div>
-                </div>
+                        <option value="0"> </option>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="middleName">Middle<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="middleName" type="text" class="form-control" id="middleName"  value="<?php if($action == "update") echo $updateForm->middle_name; ?>" /><br />
-                    </div>
-                </div>
+                        <?php for($i = 1; $i <=31; $i++): ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                </select>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="birthYear">Year</label>
+            <div class="col-sm-10">
+                <select name="birthYear" class="form-control" id="birthYear">
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="aliasName">Alias<span id="error"><?php if($error == 1) {echo "*";} ?></span></label>
-                    <div class="col-sm-10">
-                        <input name="aliasName" type="text" class="form-control" id="aliasName"  value="<?php if($action == "update") echo $updateForm->alias_name; ?>" /><br />
-                    </div>
-                </div>
+                        <?php if($action == "update"): ?>
+                            <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
+                        <?php endif; ?>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthMonth">Month</label>
-                    <div class="col-sm-10">
-                        <select name="birthMonth" class="form-control" id="birthMonth">
-                                <?php if($action == "update"): ?>
-                                    <option value="<?php echo $updateForm->birth_month; ?>"><?php echo $contact->getMonthNameByNumber($updateForm->birth_month); ?></option>
-                                <?php endif; ?>
+                        <option value="0"> </option>
+                        <?php for ($y = date('Y'); $y >= date('Y') - 110; $y--): ?>
+                            <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                        <?php endfor; ?>
 
-                                <?php foreach($months as $value => $month): ?>
-                                    <option value="<?php echo $value; ?>"><?php echo $month; ?></option>
-                                <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+                </select>
+            </div>
+        </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthDay">Day</label>
-                    <div class="col-sm-10">
-                        <select name="birthDay" class="form-control" id="birthDay">
-                                <?php if($action == "update"): ?>
-                                    <option value="<?php echo $updateForm->birth_day; ?>"><?php echo $updateForm->birth_day; ?></option>
-                                <?php endif; ?>
-
-                                <option value="0"> </option>
-
-                                <?php for($i = 1; $i <=31; $i++): ?>
-                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                <?php endfor; ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="birthYear">Year</label>
-                    <div class="col-sm-10">
-                        <select name="birthYear" class="form-control" id="birthYear">
-
-                                <?php if($action == "update"): ?>
-                                    <option value="<?php echo $updateForm->birth_year; ?>"><?php echo $updateForm->birth_year; ?></option>
-                                <?php endif; ?>
-
-                                <option value="0"> </option>
-                                <?php for ($y = date('Y'); $y >= date('Y') - 110; $y--): ?>
-                                    <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                <?php endfor; ?>
-
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="note">Notes</label>
-                    <div class="col-sm-10">
-                            <textarea name="note" class="form-control" id="note"  ><?php
-                                if($action == 'update') {
-                                    echo $updateForm->note;
-                                }
-                                ?></textarea>
-                    </div>
-                </div>
-
-
-                <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
-
-
-                <div class="form-group">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <input class="btn btn-default"  type="submit" name="addNewContact" value="<?php
-                        if($action == "create") {
-                            echo "Create";
-                        }elseif($action == "update") {
-                            echo "Update";
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="note">Notes</label>
+            <div class="col-sm-10">
+                    <textarea name="note" class="form-control" id="note"  ><?php
+                        if($action == 'update') {
+                            echo $updateForm->note;
                         }
-                        ?>"
-                               id="<?php
-                               if($action == "create") {
-                                   echo "create";
-                               }elseif($action == "update") {
-                                   echo "update";
-                               }
-                               ?>"
-                            />
-                    </div>
-                </div>
+                        ?></textarea>
+            </div>
+        </div>
 
 
+        <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
 
 
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <input class="btn btn-default"  type="submit" name="addNewContact" value="<?php
+                if($action == "create") {
+                    echo "Create";
+                }elseif($action == "update") {
+                    echo "Update";
+                }
+                ?>"
+                       id="<?php
+                       if($action == "create") {
+                           echo "create";
+                       }elseif($action == "update") {
+                           echo "update";
+                       }
+                       ?>"
+                    />
+            </div>
+        </div>
 
+    </form>
 
-
-
-
-
-
-            </form>
         </div>
 
                     </section>
