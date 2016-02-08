@@ -68,7 +68,7 @@ if($contact->emailAddress): ?>
             }
             ?>
             <td style="padding-right: 20px">
-            <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
+            <a style="color: white"  href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
             <?php
             if(($b % 4) == 0)
             {

@@ -90,7 +90,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         <!-- div 1 Start Avatar -->
         <?php require("avatar.php"); ?>
         <!-- End Avatar -->
-<hr />
+        <hr />
 
 
         <!-- div 2 Start Name and DOB -->

@@ -1,23 +1,22 @@
 <?php
 require dirname(__DIR__).'/vendor/autoload.php';
 use Carbon\Carbon;
+
+$ip =  "Current IP Address: " . $_SERVER['REMOTE_ADDR'];
 ?>
 
-<div class="footer">
+<div class="footer row">
+    <section class="col-sm-8">
+        <?php echo $ip; ?>
+    </section>
+    <section class="col-sm-4 ">
     <?php
-    $ip =  "Current IP Address: " . $_SERVER['REMOTE_ADDR'];
- //   $date = date("F j, Y");
+    if (isset($login->login) && ($login->login) == 1) {
+        $timeZone = new UserPDO();
+        echo carbon::now($timeZone->getTimeZoneByUserId($_COOKIE["phpContactId"]))->format('l jS \\of F Y');
+    }
     ?>
-
-    <div style="float:left"><?php echo $ip; ?></div>
-        <div style="float:right"><?php
-            if (isset($login->login) && ($login->login) == 1) {
-                $timeZone = new UserPDO();
-                echo carbon::now($timeZone->getTimeZoneByUserId($_COOKIE["phpContactId"]))->format('l jS \\of F Y');
-            }
-            ?>
-        </div>
-    <div style="clear: both"></div>
+    </section>
 </div>
 
 

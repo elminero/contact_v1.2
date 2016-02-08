@@ -46,6 +46,7 @@ if(isset($_GET['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="statedropdown2.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
@@ -81,35 +82,32 @@ if(isset($_GET['update'])) {
             $contact = new Contact($id);
             $contact->getContactById();
             ?>
+<div class="row">
+
+    <section class="col-sm-6">
+
+        <!-- div 1 Start Avatar -->
+        <?php require("avatar.php"); ?>
+        <!-- End Avatar -->
+        <hr />
+
+        <!-- div 2 Start Name and DOB -->
+        <div style="float: left; width: 200px">
+            <?php require("name_dob.php"); ?>
+        </div>
+        <div style="clear: both"></div>
+        <!-- End Name and DOB -->
+
+    </section>
+    <section class="col-sm-6">
 
 
-            <!-- div 1 Start Avatar -->
-            <?php require("avatar.php"); ?>
-            <!-- End Avatar -->
+        <div style="margin-top: 10px;">
 
-            <div style="float: left; width: 200px">
-                <?php require("name_dob.php"); ?>
-            </div>
 
-            <div style="clear: both" ></div>
-            <hr />
-            <div>
+            <div style="clear: both"></div>
 
-                <?php
-                if($action == "update"): ?>
-                    <h3 style='float: left'>Update Address</h3>
-            <span style='float: right'>
-                    <a id="delete" href="controllers/AddressController.php?action=delete&id=<?php echo $updateId; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
-                    </span>
-                <?php endif; ?>
-
-                <?php if($action == "create"): ?>
-                    <h3>Add an Address</h3>
-                <?php endif; ?>
-
-                <div style="clear: both"></div>
-
-                <form action="controllers/AddressController.php?action=<?php
+            <form class="form-horizontal" action="controllers/AddressController.php?action=<?php
 
                 if($action == "update") {
                     echo "update";
@@ -120,27 +118,49 @@ if(isset($_GET['update'])) {
                 }
 
                 ?>" method="post" name="addAddress">
-                <div class="form-content">
-                    <div class="form-block">
-                        <span class="form-label">Address Type</span>
-                        <div align="center">
-                            <select name="address_type" >
-                                <option <?php if (($action == "update") && ($addressData->address_type == 0)) {echo "selected";} ?> value="0" >  </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 1)) {echo "selected";} ?>  value="1" > Current Street </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 2)) {echo "selected";} ?>  value="2" > Current Mailing </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 3)) {echo "selected";} ?>  value="3" > Previous Street </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 4)) {echo "selected";} ?>  value="4" > Previous Mailing </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 5)) {echo "selected";} ?>  value="5" > Current Crash Pad </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 6)) {echo "selected";} ?>  value="6" > Previous Crash Pad </option>
-                                <option <?php if (($action == "update") && ($addressData->address_type == 7)) {echo "selected";} ?>  value="7" > Other </option>
-                            </select><br />
-                        </div>
-                    </div><!-- end .form-block -->
 
-                    <div class="form-block"><!-- start select country -->
-                        <span class="form-label">Country</span>
-                        <select  id="country" class="input_text" name="country_iso" style="width:245px; background-color:#B8F5B1"    >
 
+
+                <?php if($action == "update"): ?>
+                    <h3 style="float: left">Update Phone Number</h3>
+                    <span style='float: right'>
+            <a class="btn btn-danger"  id="delete" href="controllers/AddressController.php?action=delete&id=<?php echo $updateId; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
+            </span><br />
+                    <div style="clear: both"></div>
+                <?php endif; ?>
+
+                <?php if($action == "create"): ?>
+                    <h3>Add Phone Number</h3>
+                <?php endif; ?>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="type">Type</label>
+                    <div class="col-sm-10">
+                        <select name="address_type" class="form-control" id="address_type">
+                            <option <?php if (($action == "update") && ($addressData->address_type == 0)) {echo "selected";} ?> value="0" >  </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 1)) {echo "selected";} ?>  value="1" > Current Street </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 2)) {echo "selected";} ?>  value="2" > Current Mailing </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 3)) {echo "selected";} ?>  value="3" > Previous Street </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 4)) {echo "selected";} ?>  value="4" > Previous Mailing </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 5)) {echo "selected";} ?>  value="5" > Current Crash Pad </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 6)) {echo "selected";} ?>  value="6" > Previous Crash Pad </option>
+                            <option <?php if (($action == "update") && ($addressData->address_type == 7)) {echo "selected";} ?>  value="7" > Other </option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="country">Country</label>
+                    <div class="col-sm-10">
+                        <select name="country_iso" class="form-control" id="country">
                             <?php if($addressData): ?>
                                 <option value= "<?php echo $addressData->country_iso;  ?> ">
                                     <?php // echo $address->getCountryByISO($addressData->country_iso);
@@ -154,67 +174,106 @@ if(isset($_GET['update'])) {
 
                             <?php while($row = $qCountries->fetch(PDO::FETCH_OBJ) ) : ?>
                                 <option value="<?php echo $address->getCountryByISO($row->iso) ; ?>" >
-                                <?php echo $row->country; ?> </option>
+                                    <?php echo $row->country; ?> </option>
                             <?php endwhile; ?>
+                        </select>
+                    </div>
+                </div>
 
-                        </select><br />
-                    </div><!-- end select country -->
 
 
-                    <div class="form-block" ><!-- start select State -->
-                        <span class="form-label">State:</span>
-                        <select id="stateSelect" class="input_text" name="state" style="width:245px; " >
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="stateSelect">State</label>
+                    <div class="col-sm-10">
+                        <select name="state" class="form-control" id="stateSelect">
                             <option value="<?php if ($action == "update") {echo $addressData->state;}  ?>"><?php if ($action == "update") {echo $addressData->state;}  ?></option>
                             <option value="">Select Country First</option>
-                        </select><br />
-                    </div><!-- end select State -->
-
-                    <div class="form-block" id="city"><!-- start input City -->
-                        <span class="form-label">City</span>
-                        <input style="width:240px;" class="input_text" type="text" name="city" maxlength="40" value="<?php if ($action == "update") {echo $addressData->city;} ?>" /><br />
-                    </div><!-- end input City -->
+                        </select>
+                    </div>
+                </div>
 
 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="city">City</label>
+                    <div class="col-sm-10">
+                        <input name="city" type="text" class="form-control" id="city"  value="<?php if ($action == "update") {echo $addressData->city;} ?>" /><br />
+                    </div>
+                </div>
 
-                    <div class="form-block"><!-- start input Street -->
-                    <span class="form-label">Street</span>
-                    <input style="width: 240px"  class="input_text" type="text" name="street" maxlength="40" value="<?php if ($action == "update") {echo $addressData->street;} ?>" /><br />
-                    </div><!-- end input Street -->
 
 
-                    <div class="form-block">
-                    <span class="form-label">Postal Code</span>
-                    <input style="width: 240px" class="input_text" type="text" name="postal_code" size="37" maxlength="40" value="<?php if ($action == "update") {echo $addressData->postal_code;} ?>" /><br />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="street">Street</label>
+                    <div class="col-sm-10">
+                        <input name="street" type="text" class="form-control" id="street"  value="<?php if ($action == "update") {echo $addressData->street;} ?>" /><br />
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="postal_code">Postal Code</label>
+                    <div class="col-sm-10">
+                        <input name="postal_code" type="text" class="form-control" id="postal_code"  value="<?php if ($action == "update") {echo $addressData->postal_code;} ?>" /><br />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="note">Notes</label>
+                    <div class="col-sm-10">
+            <textarea name="note" class="form-control" id="note"  ><?php if ($action == "update") {echo $addressData->note;} ?></textarea>
+                    </div>
+                </div>
+
+
+
+
+                <input type="hidden" name="personId" value="<?php echo $_GET['id'] ?>" />
+                <input type="hidden" name="id" value="<?php echo  $_GET['update'] ?>" />
+
+
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <input class="btn btn-default"  type="submit" name="addAddress" value="<?php
+                            if($action == "create") {
+                                echo "Create";
+                            }elseif($action == "update") {
+                                echo "Update";
+                            }
+                            ?>"
+                                   id="<?php
+                                   if($action == "create") {
+                                       echo "create";
+                                   }elseif($action == "update") {
+                                       echo "update";
+                                   }
+                                   ?>"
+                                    />
+                        </div>
                     </div>
 
 
-                    <div class="form-block">
-                        <span  class="form-label">Notes</span>
-                        <textarea style="float: right" rows="3" cols="28" name="note" ><?php if ($action == "update") {echo $addressData->note;} ?></textarea><br />
-                    </div>
-                    <div style="clear: both"></div>
-                    <div class="form-block" style="margin-top: 10px; float: right">
 
-                        <input type="hidden" name="personId" value="<?php echo $_GET['id'] ?>" />
-                        <input type="hidden" name="id" value="<?php echo  $_GET['update'] ?>" />
 
-                        <input type="submit" name="addAddress"
-                               value="<?php
-                               if($action == "update"){echo "Update Address"; }
-                               if($action == "create"){echo "Add Addresses"; }?>"
-                               id="<?php echo $action?>"
-                            />
 
-                    </div>
-                </div><!-- end .form-content -->
+
+
             </form>
-            </div>
+        </div><!--<div style="margin-top: 10px;">-->
+    <section>
 
-            <div style="clear: both"></div>
+</div><!--<div class="row">-->
+
+
+
+
+        <div style="clear: both"></div>
             <?php // if($action === 'update')
             echo "<hr />" . $phoneEmailAddress; ?>
 
-
+        <div style="clear: both"></div>
         <?php
         include("includes/footer.php");
         ?>

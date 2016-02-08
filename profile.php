@@ -102,7 +102,7 @@ $contact->getContactById();
             <!-- Start Address -->
             <h3><a href="address.php?id=<?php echo $_GET['id'] ?>">Add Address</a></h3>
 
-            <table>
+            <table >
                 <?php $i = 4; $b = 1; ?>
                 <?php  if($contact->address): ?>
                 <?php while ($row = $contact->address->fetch(PDO::FETCH_OBJ)): ?>
@@ -114,8 +114,8 @@ $contact->getContactById();
                     echo "<tr>";
                 }
                 ?>
-                <td style="padding-right: 20px">
-                    <a href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
+                <td style="padding-right: 20px; color: white">
+                    <a style="color: white" href="address.php?id=<?php  echo $id . "&update=". $row->id; ?>"><?php echo $addressTd; ?></a>
                     <?php
                     if(($b % 4) == 0)
                     {

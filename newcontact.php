@@ -238,7 +238,7 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
     </form>
 
-        </div>
+
 
                     </section>
                 </div>
