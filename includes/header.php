@@ -1,15 +1,30 @@
+
+
 <div class="header"><!-- Start Header -->
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <a href="listcontacts.php"><button type="button" class="btn btn-primary">List</button></a>
+    </div>
+    <div class="btn-group" role="group">
+        <a href="search.php"><button type="button" class="btn btn-primary">Search</button></a>
+    </div>
+    <div class="btn-group" role="group">
+        <a href="newcontact.php"><button type="button" class="btn btn-primary">New</button></a>
+    </div>
+    <div class="btn-group" role="group">
+        <a href="controllers/LoginController.php?action=logout"><button id="timer" type="button" class="btn btn-primary">Logout 5:00</button></a>
+    </div>
+</div>
+<!--
     <ul id="nav" class="nav">
         <li><a href="listcontacts.php">List of All Contacts</a></li>
         <li><a href="search.php">Search By Name</a></li>
         <li><a href="newcontact.php">New Contact</a></li>
         <li ><a style="width: 194px" id="timer" href="controllers/LoginController.php?action=logout">Logout 5:00</a></li>
-
-
-        <!--<li id="timer" style="float: right; margin-right: 10px;">Time Remaining Before Logout 5:00</li>-->
     </ul>
-
-
+-->
+    <!--<li id="timer" style="float: right; margin-right: 10px;">Time Remaining Before Logout 5:00</li>-->
 
 </div><!-- end .header -->
 
