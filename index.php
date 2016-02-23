@@ -21,39 +21,40 @@
         <img class="img-responsive center-block img-rounded" src="css/dark_road_forest850c.jpg">
         <div class="row">
             <div class="col-sm-4">
-                <h1>Headline</h1>
+                <h2>ISIS leaders remain in close contact with Ankara – Lavrov</h2>
                 <p>
-                    Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in
-                    Oregon for the death of an outspoken protester who authorities tried to arrest during a traffic stop
-                    tied to the ordeal.Authorities have not identified the person who was shot and killed during
-                    Tuesday's stop, but others have identified him as LaVoy Finicum. Protest leader Ammon Bundy was
-                    arrested during the same stop. "Multiple agencies put a lot of work into this to put the best
-                    tactical plan that they could to arrest them peacefully," Ward told reporters. "(The death) didn't
-                    have to happen. We all make choices in life. Sometimes our choices go
+                    The leaders of Islamic State maintain a constant liaison with the Turkish government, working out a
+                    new approach to the war in Syria as the Russian Air Force cuts off traditional smuggling routes,
+                    says Russian Foreign Minister Sergey Lavrov. Moscow has intelligence that Islamic State’s (IS,
+                    formerly ISIS/ISIL) command continues to hold backdoor negotiations with the Turkish leadership,
+                    Lavrov told Russian newspaper MK in a vast interview in honor of Diplomats’ Day.
+
+                    The airstrikes of the Russian Air Force in Syria have severely disrupted “traditional smuggling
+                    routes,” so the Turks are discussing in all seriousness creation of “IS-free zones” in Syria.
                 </p>
             </div>
             <div class="col-sm-4">
-                <h1>Headline</h1>
+                <h2>Or your money back: Monsanto execs return $4mn in bonuses after SEC settlement</h2>
                 <p>
-                    Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in
-                    Oregon for the death of an outspoken protester who authorities tried to arrest during a traffic stop
-                    tied to the ordeal.Authorities have not identified the person who was shot and killed during
-                    Tuesday's stop, but others have identified him as LaVoy Finicum. Protest leader Ammon Bundy was
-                    arrested during the same stop. "Multiple agencies put a lot of work into this to put the best
-                    tactical plan that they could to arrest them peacefully," Ward told reporters. "(The death) didn't
-                    have to happen. We all make choices in life. Sometimes our choices go
+                    Two Monsanto executives returned their lavish bonuses, amounting to nearly $4 million, after the
+                    agribusiness giant agreed to pay federal regulators $80 million as part of a settlement over
+                    accounting violations. Monsanto agreed with the Securities Exchange Commission on Tuesday to pay the
+                    sum, settling claims that the company had insufficient accounting controls to track millions of
+                    dollars in rebates it offered to retailers and distributors of Roundup, one of Monsanto’s most
+                    profitable products. The rebate campaign was a response to fierce competition from generic version
+                    of the herbicide.
                 </p>
             </div>
             <div class="col-sm-4">
-                <h1>Headline</h1>
+                <h2>Shubham Banerjee Builds a Better Braille Printer</h2>
                 <p>
-                    Harney County Sheriff David Ward on Wednesday blamed the occupiers of a federal wildlife refuge in
-                    Oregon for the death of an outspoken protester who authorities tried to arrest during a traffic stop
-                    tied to the ordeal.Authorities have not identified the person who was shot and killed during
-                    Tuesday's stop, but others have identified him as LaVoy Finicum. Protest leader Ammon Bundy was
-                    arrested during the same stop. "Multiple agencies put a lot of work into this to put the best
-                    tactical plan that they could to arrest them peacefully," Ward told reporters. "(The death) didn't
-                    have to happen. We all make choices in life. Sometimes our choices go
+                    Around the same time, Banerjee found a pamphlet requesting donations for the blind. Intrigued, he
+                    asked his parents how blind people learned to read. His busy parents directed him to Google.
+
+                    “So I Googled it, ‘how blind people read,’ and I found out about braille, braille printers, how
+                    much they cost,” Banerjee said, shocked that a traditional printer was $2,000. “I’ve been to India
+                    a couple times, and I’ve seen blind people and a lot of poverty everywhere, and it’s very hard for
+                    them.”
                 </p>
             </div>
         </div>
