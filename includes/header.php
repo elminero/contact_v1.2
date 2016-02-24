@@ -2,6 +2,25 @@
 
 <div class="header"><!-- Start Header -->
 
+    <nav class="navbar navbar-default">
+
+            <ul class="nav navbar-nav">
+                <li><a href="listcontacts.php">List</a></li>
+                <li><a href="newcontact.php">New</a></li>
+                <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="search">
+                </div>
+                <button class="btn btn-default">Go</button>
+            </form>
+    </nav>
+
+
+
+
+<!--
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
     <div class="btn-group" role="group">
         <a href="listcontacts.php"><button type="button" class="btn btn-primary">List</button></a>
@@ -16,6 +35,7 @@
         <a href="controllers/LoginController.php?action=logout"><button id="timer" type="button" class="btn btn-primary">Logout 5:00</button></a>
     </div>
 </div>
+-->
 <!--
     <ul id="nav" class="nav">
         <li><a href="listcontacts.php">List of All Contacts</a></li>
