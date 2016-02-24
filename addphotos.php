@@ -38,6 +38,12 @@ if ($login->login == 0) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <title>Add Photos</title>
 </head>
     <body>
@@ -137,7 +143,6 @@ if ($login->login == 0) {
             ?>
 
         </div><!-- end .container -->
-        <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
     </body>

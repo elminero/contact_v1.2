@@ -46,24 +46,13 @@
     </script>
 
 
-
-
-
-
-
-
-
-    <form id="searchForm" action="search.php" method="post" name="search">
-        <div class="form-group">
-            <div class="input-group">
-                <input type="text" id="tags" class="form-control" placeholder="Search For Name" name="name" >
-                <input name="value" type="hidden" id="tagValue" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Search</button>
-                        </span>
-            </div>
-        </div>
-    </form>
+<form class="navbar-form navbar-right" role="search" id="searchForm" action="search.php" method="post" name="search">
+    <div class="form-group">
+        <input type="text" id="tags" class="form-control" placeholder="Search For Name" name="name" >
+        <input name="value" type="hidden" id="tagValue" />
+    </div>
+    <button class="btn btn-default">Go</button>
+</form>
 
 
 
