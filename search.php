@@ -72,7 +72,8 @@ require("models/Contact.php");
     <div class="header"><!-- Start Header -->
         <?php include("includes/header.php"); ?>
     </div><!-- end .header -->
-    <h3>Search for a Name</h3>
+    <h3>Name Not Found</h3>
+    <!--
     <form class="navbar-form navbar-right" role="search" id="searchForm" action="search.php" method="post" name="search">
         <div class="form-group">
             <input type="text" id="tags" class="form-control" placeholder="Search For Name" name="name" >
@@ -80,6 +81,7 @@ require("models/Contact.php");
         </div>
         <button class="btn btn-default">Go</button>
     </form>
+    -->
         <?php include("includes/footer.php"); ?>
     </div><!-- end .container -->
 </body>

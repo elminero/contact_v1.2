@@ -33,6 +33,12 @@ $image->setPreviousNextImageId($id);
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <title>Picture</title>
 </head>
     <body>
@@ -72,7 +78,6 @@ $image->setPreviousNextImageId($id);
             ?>
 
         </div><!-- end .container -->
-        <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
     </body>
