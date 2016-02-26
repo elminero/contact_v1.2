@@ -71,7 +71,7 @@ $nameDOB =  $contact->nameDOB;
 
     <?php
         if (isset($_GET["action"]) &&  $_GET["action"] == "update") {
-            $nameDOB =  wordwrap($nameDOB, 30, "<br />");
+          //  $nameDOB =  wordwrap($nameDOB, 30, "<br />");
         }
     ?>
 

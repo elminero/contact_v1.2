@@ -58,7 +58,6 @@ $contact->getContactById();
                     </p>
                 </div>
                 <div class="col-sm-5">
-
                     <p>
                         <?php require("name_dob.php"); ?>
                     </p>

@@ -53,23 +53,18 @@ $contact->getContactById();
         <div style="clear: both"></div>
 <div class="row" >
 
-    <section class="col-sm-6">
 
-        <!-- div 1 Start Avatar -->
-        <?php require("avatar.php"); ?>
-        <!-- End Avatar -->
-        <hr />
-
-
-        <!-- div 2 Start Name and DOB -->
-        <div style="float: left; width: 200px">
-            <?php require("name_dob.php"); ?>
+        <div class="col-sm-5" style="padding-right: 12px;">
+            <p>
+                <?php require("avatar.php"); ?>
+            </p>
         </div>
-        <div style="clear: both"></div>
-        <!-- End Name and DOB -->
 
-    </section>
-    <section class="col-sm-6">
+
+
+
+        <div class="col-sm-5">
+
                     <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
                         <div class="form-group">
@@ -96,8 +91,6 @@ $contact->getContactById();
                             </div>
                         </div>
 
-
-
                         <input type="hidden" name="personId" value="<?php echo $id; ?>" />
                         <input type="hidden" name="id" value="0" />
 
@@ -108,11 +101,23 @@ $contact->getContactById();
                         </div>
 
                     </form>
-                </section>
+            </div>
 
-</div><!--end <div class="row">
 
-        <div style="clear: both"></div>
+</div><!--end <div class="row">-->
+
+
+<hr/>
+    <div class="row">
+        <!-- div 2 Start Name and DOB -->
+        <div class="col-sm-12">
+            <p>
+                <?php require("name_dob.php"); ?>
+            </p>
+        </div>
+    </div>
+
+
 
 
 <!--
