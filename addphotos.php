@@ -89,7 +89,7 @@ if ($login->login == 0) {
                                 <textarea id="caption" class="form-control"  name="caption"></textarea>
                             </div>
                         </div>
-                        
+
                         <input type="hidden" name="personId" value="<?php echo $id; ?>" />
                         <input type="hidden" name="id" value="0" />
 
