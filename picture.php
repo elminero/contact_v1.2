@@ -42,10 +42,11 @@ $image->setPreviousNextImageId($id);
     <title>Picture</title>
 </head>
     <body>
+        <?php include("includes/header.php"); ?>
         <div class="container" >
-            <div class="header"><!-- Start Header -->
-                <?php include("includes/header.php"); ?>
-            </div><!-- end .header -->
+
+
+
 
                 <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $personId; ?>">

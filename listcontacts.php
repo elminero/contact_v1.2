@@ -25,7 +25,7 @@ $stmt = $contact->getAllPerson();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -33,15 +33,14 @@ $stmt = $contact->getAllPerson();
     <script src="js/jquery-1.12.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-
+    <link rel="stylesheet" href="css/styles.css">
     <title>List of All Contacts</title>
 </head>
 <body>
-<div class="container">
-    <div class="header"><!-- Start Header -->
-        <?php include("includes/header.php"); ?>
-    </div><!-- end .header -->
 
+<?php include("includes/header.php"); ?>
+
+<div class="container">
         <div style="margin-bottom: 9px">
             <b>List</b>
         </div>

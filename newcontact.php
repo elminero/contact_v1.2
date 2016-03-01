@@ -58,13 +58,9 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
     <title>Add a New Contact</title>
 </head>
 <body>
+
+<?php include("includes/header.php"); ?>
 <div class="container" >
-    <div class="header"><!-- Start Header -->
-        <?php include("includes/header.php"); ?>
-    </div><!-- end .header -->
-
-
-
 
         <?php if($action === 'update'):?>
             <div style="margin-bottom: 9px">

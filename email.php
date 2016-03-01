@@ -8,9 +8,6 @@ if ($login->login == 0) {
     header("Location: login.php");
 }
 
-
-
-
 ob_start();
 require("avatarNameDOB.php");
 $avatarNameDOB = ob_get_contents();
@@ -20,7 +17,6 @@ ob_start();
 require("phoneEmailAddress.php");
 $phoneEmailAddress = ob_get_contents();
 ob_end_clean();
-
 
 require_once('models/EmailAddress.php');
 
@@ -37,13 +33,11 @@ if(isset($_GET['update'])) {
     $action = "create";
 }
 
-
 if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     $validate = "error";
 } else {
     $validate = null;
 }
-
 
 ?>
 
@@ -66,10 +60,11 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 </head>
 
     <body>
+        <?php include("includes/header.php"); ?>
         <div class="container">
-            <div class="header"><!-- Start Header -->
-                <?php include("includes/header.php"); ?>
-            </div><!-- end .header -->
+
+
+
                 <div style="margin-bottom: 9px">
                     <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a> >>
                     <b><?php if($action == "update") echo "Update"; if($action == "create") echo "Add"; ?> Email Address</b>
@@ -90,31 +85,14 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                 $contact->getContactById();
                 ?>
 
-
             <div class="row">
-                <section class="col-sm-6">
+                <div class="col-sm-5" style="padding-right: 12px;">
+                    <p>
+                        <?php require("avatar.php"); ?>
+                    </p>
+                </div>
 
-                    <!-- div 1 Start Avatar -->
-                    <?php require("avatar.php"); ?>
-                    <!-- End Avatar -->
-                    <hr />
-
-
-                    <!-- div 2 Start Name and DOB -->
-                    <div style="float: left; width: 200px">
-                        <?php require("name_dob.php"); ?>
-                    </div>
-                    <div style="clear: both"></div>
-                    <!-- End Name and DOB -->
-
-                </section>
-                <section class="col-sm-6">
-
-
-                    <!-- array(4) { ["personId"]=> int(37) ["phoneNumber"]=> string(12) "914-331-8584" ["phoneType"]=> int(2) ["note"]=> string(2) "NY" } -->
-
-                    <div style="margin-top: 10px;">
-
+                <div class="col-sm-5">
 
                     <form class="form-horizontal"  action="controllers/EmailAddressController.php?action=<?php
 
@@ -128,58 +106,52 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
                     ?>" method="post" name="addEmail">
 
+                        <?php if($action == "update"): ?>
+                            <h3 style="float: left">Update E-Mail Address</h3>
+                            <span style='float: right'>
+                                <a class="btn btn-danger" id="delete"
+                                   href="controllers/EmailAddressController.php?action=delete&id=<?php echo $emailData->id; ?>&personId=<?php echo $_GET['id']; ?> ">delete</a>
+                            </span><br />
+                            <div style="clear: both"></div>
+                        <?php endif; ?>
+
+                        <?php if($action == "create"): ?>
+                            <h3>Add E-Mail Address</h3>
+                        <?php endif; ?>
 
 
-
-<?php if($action == "update"): ?>
-    <h3 style="float: left">Update E-Mail Address</h3>
-    <span style='float: right'>
-        <a class="btn btn-danger" id="delete" href="controllers/EmailAddressController.php?action=delete&id=<?php echo $emailData->id; ?>&personId=<?php echo $_GET['id']; ?> ">delete</a>
-    </span><br />
-    <div style="clear: both"></div>
-    <?php endif; ?>
-
-    <?php if($action == "create"): ?>
-    <h3>Add E-Mail Address</h3>
-<?php endif; ?>
-
-
-
-<div class="form-group">
-    <label class="col-sm-2 control-label" for="type">Type</label>
-    <div class="col-sm-10">
-        <select name="type" class="form-control" id="type">
-            <option <?php if(($action == "update") && ($emailData->email_type == 0)) {echo "selected";}  ?> value="0"> </option>
-            <option <?php if(($action == "update") && ($emailData->email_type == 1)) {echo "selected";} ?> value="1">Business</option>
-            <option <?php if(($action == "update") && ($emailData->email_type == 2)) {echo "selected";} ?> value="2">Home</option>
-            <option <?php if(($action == "update") && ($emailData->email_type == 3)) {echo "selected";} ?> value="3">Shared</option>
-            <option <?php if(($action == "update") && ($emailData->email_type == 4)) {echo "selected";} ?> value="4">Previous</option>
-            <option <?php if(($action == "update") && ($emailData->email_type == 5)) {echo "selected";} ?> value="5">Other</option>
-        </select>
-    </div>
-</div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="type">Type</label>
+                            <div class="col-sm-10">
+                                <select name="type" class="form-control" id="type">
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 0)) {echo "selected";}  ?> value="0"> </option>
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 1)) {echo "selected";} ?> value="1">Business</option>
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 2)) {echo "selected";} ?> value="2">Home</option>
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 3)) {echo "selected";} ?> value="3">Shared</option>
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 4)) {echo "selected";} ?> value="4">Previous</option>
+                                    <option <?php if(($action == "update") && ($emailData->email_type == 5)) {echo "selected";} ?> value="5">Other</option>
+                                </select>
+                            </div>
+                        </div>
 
 
-<div class="form-group">
-    <label class="col-sm-2 control-label" for="emailAddress">E-Mail</label>
-    <div class="col-sm-10">
-        <input name="emailAddress" type="text" class="form-control" id="emailAddress"  value="<?php if($action == "update") {echo $emailData->email_address;} ?>" /><br />
-    </div>
-</div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="emailAddress">E-Mail</label>
+                            <div class="col-sm-10">
+                                <input name="emailAddress" type="text" class="form-control" id="emailAddress"  value="<?php if($action == "update") {echo $emailData->email_address;} ?>" /><br />
+                            </div>
+                        </div>
 
-<div class="form-group">
-    <label class="col-sm-2 control-label" for="note">Notes</label>
-    <div class="col-sm-10">
-        <textarea name="note" class="form-control" id="note"  ><?php
-        if($action == 'update') {
-            echo $emailData->note;;
-        }
-        ?></textarea>
-    </div>
-</div>
-
-
-
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="note">Notes</label>
+                            <div class="col-sm-10">
+                                <textarea name="note" class="form-control" id="note"  ><?php
+                                    if($action == 'update') {
+                                        echo $emailData->note;;
+                                    }
+                                    ?></textarea>
+                            </div>
+                        </div>
 
 
                         <input type="hidden" name="emailId" value="<?php echo  $_GET['update'] ?>" />
@@ -190,7 +162,6 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                         <div style="float: left; color: #990000; margin-top: 10px;">
                             <?php if($validate == "error") {echo "* E-Mail Address Is Not Valid.";} ?>
                         </div>
-
 
 
                         <div class="form-group">
@@ -213,16 +184,24 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                             </div>
                         </div>
 
-                </form>
+                    </form>
 
-                </section>
+                </div><!--<div class="col-sm-5">-->
+
+            </div><!--<div class="row">-->
+                    <!-- array(4) { ["personId"]=> int(37) ["phoneNumber"]=> string(12) "914-331-8584" ["phoneType"]=> int(2) ["note"]=> string(2) "NY" } -->
+            <hr/>
+
+            <div class="row">
+                <!-- div 2 Start Name and DOB -->
+                <div class="col-sm-12">
+                    <p>
+                        <?php require("name_dob.php"); ?>
+                    </p>
+                </div>
             </div>
-
-                    <div style="clear: both"></div>
                     <?php // if($action === 'update')
                         echo "<hr />" . $phoneEmailAddress; ?>
-
-
 
             <?php
             include("includes/footer.php");

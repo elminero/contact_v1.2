@@ -60,10 +60,11 @@ if(isset($_GET['update'])) {
 </head>
 
     <body>
+        <?php include("includes/header.php"); ?>
     <div class="container">
-        <div class="header"><!-- Start Header -->
-            <?php include("includes/header.php"); ?>
-        </div><!-- end .header -->
+
+
+
 
 
             <div style="margin-bottom: 9px">

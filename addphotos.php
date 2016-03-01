@@ -47,10 +47,12 @@ if ($login->login == 0) {
     <title>Add Photos</title>
 </head>
     <body>
-        <div class="container" >
-            <div class="header"><!-- Start Header -->
-                <?php include("includes/header.php"); ?>
-            </div><!-- end .header -->
+    <?php include("includes/header.php"); ?>
+
+    <div class="container" >
+
+
+
                 <div style="margin-bottom: 9px">
                 <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $id; ?>">Profile</a> >> <b>Portfolio</b>
                 </div>
@@ -136,7 +138,7 @@ if ($login->login == 0) {
             include("includes/footer.php");
             ?>
 
-        </div><!-- end .container -->
+    </div><!-- end .container -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
     </body>

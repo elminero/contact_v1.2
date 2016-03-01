@@ -1,13 +1,23 @@
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { .home-search { width: 400px; }}
+@media (max-width: 767px) {
+    #searchbar > .navbar-form {
+        width: 100%;
+    }
+}
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) { .home-search { width: 600px; } }
+@media (min-width: 768px) and (max-width: 991px) {
+    #searchbar > .navbar-form {
+        width: 205px;
+    }
+}
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { .home-search { width: 800px; } }
+@media (min-width: 992px) and (max-width: 1199px) {
+    #searchbar > .navbar-form {
+        width: 425px;
+    }
+}
 
-
-.navbar-form .form-control {
-    display: inline-block;
+@media (min-width: 1200px) {
+    #searchbar > .navbar-form {
+        width: 625px;
+    }
 }

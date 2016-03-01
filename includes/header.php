@@ -42,18 +42,31 @@
 </script>
 
 
-<div class="header"><!-- Start Header -->
 
+<div class="container" >
     <nav class="navbar navbar-default">
 
-            <ul class="nav navbar-nav">
-                <li><a href="listcontacts.php">List</a></li>
-                <li><a href="newcontact.php">New</a></li>
-                <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
-            </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Online </a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="searchbar">
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="listcontacts.php">List</a></li>
+            <li><a href="newcontact.php">New</a></li>
+            <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
+        </ul>
+
             <form class="navbar-form navbar-right" role="search" id="searchForm" action="search.php" method="post" name="search">
-                <div class="form-group">
-                    <div class="input-group">
+                <div class="form-group" style="display:inline;">
+                    <div class="input-group" style="display:table;">
+                        <span class="input-group-addon" style="width:1%;"></span>
                         <input type="text" id="tags" class="form-control home-search" placeholder="Search For Name" name="name" >
                         <input name="value" type="hidden" id="tagValue" />
                         <span class="input-group-btn">
@@ -62,9 +75,26 @@
                     </div>
                 </div>
             </form>
-    </nav>
 
+
+        </div>
+
+
+    </nav>
+</div>
 <!--
+
+
+        <form class="navbar-form">
+            <div class="form-group" style="display:inline;">
+                <div class="input-group" style="display:table;">
+                    <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+                    <input class="form-control" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
+                </div>
+            </div>
+        </form>
+
+
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
     <div class="btn-group" role="group">
         <a href="listcontacts.php"><button type="button" class="btn btn-primary">List</button></a>
@@ -90,7 +120,7 @@
 -->
     <!--<li id="timer" style="float: right; margin-right: 10px;">Time Remaining Before Logout 5:00</li>-->
 
-</div><!-- end .header -->
+
 
 <script>
 

@@ -66,7 +66,7 @@ $nameDOB =  $contact->nameDOB;
                 $contact->nameDOB->birth_day) . "<br />";
 
     }
-    $nameDOB.="Note: " . "<div style=\"    \">" . $contact->nameDOB->note . "</div>";
+    $nameDOB.="<div style='float: left'>Note: </div> " . "<div style=\" float: left  \">" . $contact->nameDOB->note . "</div>";
     ?>
 
     <?php
