@@ -63,11 +63,11 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 <div class="container" >
 
         <?php if($action === 'update'):?>
-            <div style="margin-bottom: 9px">
-                <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $id; ?>" >Profile</a> >> <b>Update</b>
-            </div>
-            <div style="clear: both"></div>
-
+<ol class="breadcrumb">
+    <li><a href="listcontacts.php">List</a></li>
+    <li><a href="profile.php?id=<?php echo $id; ?>">Profile</a></li>
+    <li><b>Update</b></li>
+</ol>
             <?php
             $id = NULL;
 
