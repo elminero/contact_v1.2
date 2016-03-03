@@ -52,30 +52,29 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Online </a>
+            <span class="navbar-brand" >Online </span>
         </div>
 
         <div class="navbar-collapse collapse" id="searchbar">
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="listcontacts.php">List</a></li>
-            <li><a href="newcontact.php">New</a></li>
-            <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
-        </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="listcontacts.php">List</a></li>
+                <li><a href="newcontact.php">New</a></li>
+                <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
+            </ul>
 
-            <form class="navbar-form navbar-right" role="search" id="searchForm" action="search.php" method="post" name="search">
-                <div class="form-group" style="display:inline;">
-                    <div class="input-group" style="display:table;">
-                        <span class="input-group-addon" style="width:1%;"></span>
-                        <input type="text" id="tags" class="form-control home-search" placeholder="Search For Name" name="name" >
-                        <input name="value" type="hidden" id="tagValue" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Search</button>
-                        </span>
+                <form class="navbar-form navbar-right" role="search" id="searchForm" action="search.php" method="post" name="search">
+                    <div class="form-group" style="display:inline;">
+                        <div class="input-group" style="display:table;">
+                            <span class="input-group-addon" style="width:1%;"></span>
+                            <input type="text" id="tags" class="form-control home-search" placeholder="Search For Name" name="name" >
+                            <input name="value" type="hidden" id="tagValue" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Search</button>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </form>
-
+                </form>
 
         </div>
 

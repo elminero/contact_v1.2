@@ -45,24 +45,29 @@ $image->setPreviousNextImageId($id);
         <?php include("includes/header.php"); ?>
         <div class="container" >
 
-
-
-
-                <div style="margin-bottom: 9px">
-                <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $personId; ?>">
-
-                    Profile</a> >> <a href="addphotos.php?id=<?php echo $personId; ?>&action=update"> Portfolio</a> >> <b>Picture</b>
-                </div>
-
-                <div style="clear: both"></div>
-
+                    <ol class="breadcrumb">
+                        <li><a href="listcontacts.php">list</a></li>
+                        <li><a href="profile.php?id=<?php echo $personId; ?>">Profile</a></li>
+                        <li><a href="addphotos.php?id=<?php echo $personId; ?>&action=update"> Portfolio</a></li>
+                        <li><b>Picture</b></li>
+                    </ol>
 
                 <a href="addphotos.php?id=<?php echo $personId; ?>">View All</a>
                 <div align="center" style="margin:1px; padding:1px;">
+                    <div style="width: 400px">
+                    <nav >
+                        <ul class="pager" >
+                            <li class="previous" >
+                                <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
+                            </li>
+                            <li class="next">
+                                <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    </div>
                     <div style="padding:10px;">
-                        <a href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
-                        &nbsp; &nbsp;
-                        <a href="picture.php?id=<?php echo $image->nextImageId; ?>" > Next >></a><br />
+
                     </div>
                     <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
                         <img class="img-responsive center-block" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />

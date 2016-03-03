@@ -52,11 +52,11 @@ if ($login->login == 0) {
     <div class="container" >
 
 
-
-                <div style="margin-bottom: 9px">
-                <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $id; ?>">Profile</a> >> <b>Portfolio</b>
-                </div>
-                    <div style="clear: both"></div>
+        <ol class="breadcrumb">
+            <li><a href="listcontacts.php">list</a></li>
+            <li><a href="profile.php?id=<?php echo $id; ?>">Profile</a></li>
+            <li><b>Portfolio</b></li>
+        </ol>
 
             <div class="row">
                 <div class="col-sm-5" style="padding-right: 12px;">

@@ -46,10 +46,12 @@ $contact->getContactById();
 <?php include("includes/header.php"); ?>
 <div class="container" >
 
-        <div style="margin-bottom: 9px">
-            <a href="listcontacts.php">list</a> >> <a href="profile.php?id=<?php echo $id; ?>">Profile</a> >> <b>Edit Photos</b>
-        </div>
-        <div style="clear: both"></div>
+    <ol class="breadcrumb">
+        <li><a href="listcontacts.php">list</a></li>
+        <li><a href="profile.php?id=<?php echo $id; ?>">Profile</a></li>
+        <li><b>Edit Photos</b></li>
+    </ol>
+
 <div class="row" >
 
 

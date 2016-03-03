@@ -41,10 +41,11 @@ $stmt = $contact->getAllPerson();
 <?php include("includes/header.php"); ?>
 
 <div class="container">
-        <div style="margin-bottom: 9px">
-            <b>List</b>
-        </div>
-        <div style="clear: both"></div>
+
+    <ol class="breadcrumb">
+        <li><b>List</b></li>
+    </ol>
+
 <div class="row">
 <section class="col-xs-6">
         <table class="table table-bordered table-hover table-striped table-responsive" >

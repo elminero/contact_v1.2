@@ -44,10 +44,10 @@ $contact->getContactById();
 <?php include("includes/header.php"); ?>
 <div class="container">
 
-            <div style="margin-bottom: 9px">
-                <a href="listcontacts.php">List</a> >> <b>Profile</b>
-            </div>
-            <div style="clear: both"></div>
+    <ol class="breadcrumb">
+        <li><a href="listcontacts.php">list</a></li>
+        <li><b>Profile</b></li>
+    </ol>
 
             <div class="row">
                 <div class="col-sm-5" style="padding-right: 12px;">

@@ -63,14 +63,11 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         <?php include("includes/header.php"); ?>
         <div class="container">
 
-
-
-                <div style="margin-bottom: 9px">
-                    <a href="listcontacts.php">List</a> >> <a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a> >>
-                    <b><?php if($action == "update") echo "Update"; if($action == "create") echo "Add"; ?> Email Address</b>
-                </div>
-                <div style="clear: both"></div>
-
+            <ol class="breadcrumb">
+                <li><a href="listcontacts.php">List</a></li>
+                <li><a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a></li>
+                <li><b><?php if($action == "update") echo "Update"; if($action == "create") echo "Add"; ?> Email Address</b></li>
+            </ol>
 
                 <?php
                 $id = NULL;
