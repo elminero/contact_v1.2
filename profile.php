@@ -50,22 +50,18 @@ $contact->getContactById();
     </ol>
 
             <div class="row">
-                <div class="col-sm-5" style="padding-right: 12px;">
+                <section class="col-sm-6">
+                    <!-- div 1 Start Avatar -->
+                    <?php require("avatar.php"); ?>
+                    <!-- End Avatar -->
+                </section>
 
-                    <p>
-                        <?php require("avatar.php"); ?>
-                    </p>
-                </div>
-                <div class="col-sm-5">
-                    <p>
-                        <?php require("name_dob.php"); ?>
-                    </p>
-                </div>
+                <section class="col-sm-6">
+                    <!-- div 2 Start Name and DOB -->
+                    <?php require("name_dob.php"); ?>
+                    <!-- End Name and DOB -->
+                </section>
             </div>
-
-
-            <div style="clear: both"></div>
-
 
             <hr />
             <!-- Start Phone Numbers -->

@@ -55,16 +55,13 @@ $contact->getContactById();
 <div class="row" >
 
 
-        <div class="col-sm-5" style="padding-right: 12px;">
-            <p>
-                <?php require("avatar.php"); ?>
-            </p>
-        </div>
+    <section class="col-sm-6">
+        <!-- div 1 Start Avatar -->
+        <?php require("avatar.php"); ?>
+        <!-- End Avatar -->
+    </section>
 
-
-
-
-        <div class="col-sm-5">
+    <section class="col-sm-6">
 
                     <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
@@ -102,14 +99,15 @@ $contact->getContactById();
                         </div>
 
                     </form>
-            </div>
+    </section>
 
 
 </div><!--end <div class="row">-->
 
+    <hr/>
 
-<hr/>
     <div class="row">
+
         <!-- div 2 Start Name and DOB -->
         <div class="col-sm-12">
             <p>

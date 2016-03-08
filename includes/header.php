@@ -41,10 +41,14 @@
 
 </script>
 
+<?php $fileName = basename($_SERVER["SCRIPT_FILENAME"], '.php');
+// listcontacts
+// newcontact
 
+?>
 
 <div class="container" >
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default " style="background-color: #1b6d85;" >
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,14 +56,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span class="navbar-brand" >Online </span>
+            <span class="navbar-brand">Online Contacts</span>
         </div>
 
         <div class="navbar-collapse collapse" id="searchbar">
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="listcontacts.php">List</a></li>
-                <li><a href="newcontact.php">New</a></li>
+                <li class="<?php if($fileName === "listcontacts") echo "active"; ?>"><a href="listcontacts.php">List</a></li>
+                <li class="<?php if(($fileName === "newcontact") && ($_GET['action'] !=="update")) echo "active"; ?>"><a href="newcontact.php">New</a></li>
                 <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
             </ul>
 

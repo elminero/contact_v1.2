@@ -30,7 +30,7 @@ if ($login->login == 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,12 +59,12 @@ if ($login->login == 0) {
         </ol>
 
             <div class="row">
-                <div class="col-sm-5" style="padding-right: 12px;">
-                    <p>
-                        <?php require("avatar.php"); ?>
-                    </p>
-                </div>
-                <div class="col-sm-5">
+                <section class="col-sm-6">
+                    <!-- div 1 Start Avatar -->
+                    <?php require("avatar.php"); ?>
+                    <!-- End Avatar -->
+                </section>
+                <section class="col-sm-6">
 
                     <form class="form-horizontal" action="controllers/ImageController.php?action=create" method="post" enctype="multipart/form-data" >
 
@@ -110,7 +110,7 @@ if ($login->login == 0) {
 
                     </form>
 
-                </div><!--<div class="col-sm-5">-->
+                </section><!--<div class="col-sm-6">-->
             </div><!--<div class="row">-->
 
             <hr />

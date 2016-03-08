@@ -84,20 +84,13 @@ if( isset($_GET['validate'])  && ($_GET['validate'] == "error") ) {
 
                 <div class="row">
                     <section class="col-sm-6">
-
                         <!-- div 1 Start Avatar -->
                         <?php require("avatar.php"); ?>
                         <!-- End Avatar -->
                         <hr />
-
-
                         <!-- div 2 Start Name and DOB -->
-                        <div style="float: left; width: 200px">
-                            <?php require("name_dob.php"); ?>
-                        </div>
-                        <div style="clear: both"></div>
+                        <?php require("name_dob.php"); ?>
                         <!-- End Name and DOB -->
-
                     </section>
                     <section class="col-sm-6">
         <?php endif; ?>

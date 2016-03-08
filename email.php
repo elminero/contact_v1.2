@@ -83,13 +83,11 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                 ?>
 
             <div class="row">
-                <div class="col-sm-5" style="padding-right: 12px;">
-                    <p>
+                <section class="col-sm-6">
                         <?php require("avatar.php"); ?>
-                    </p>
-                </div>
+                </section>
 
-                <div class="col-sm-5">
+                <section class="col-sm-6">
 
                     <form class="form-horizontal"  action="controllers/EmailAddressController.php?action=<?php
 
@@ -183,7 +181,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
                     </form>
 
-                </div><!--<div class="col-sm-5">-->
+                </section><!--<div class="col-sm-5">-->
 
             </div><!--<div class="row">-->
                     <!-- array(4) { ["personId"]=> int(37) ["phoneNumber"]=> string(12) "914-331-8584" ["phoneType"]=> int(2) ["note"]=> string(2) "NY" } -->

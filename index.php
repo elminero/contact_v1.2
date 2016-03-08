@@ -11,13 +11,16 @@
 </head>
 <body>
     <div class="container"><!-- start .container -->
+        <nav class="navbar navbar-default navbar-header" style="background-color: #1b6d85;" >
+            <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+        </nav>
+    </div>
 
-        <div class="header" style="margin: 0 -15px;">
-            <ul class="nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </div>
+    <div class="container"><!-- start .container -->
         <img class="img-responsive center-block img-rounded" src="css/dark_road_forest850c.jpg">
         <div class="row">
             <div class="col-sm-4">

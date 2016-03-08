@@ -11,12 +11,18 @@
 </head>
 <body>
 <div class="container">
-    <div class="header" style="margin: 0 -15px;"><!-- Start Header -->
-        <ul  class="nav">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="login.php">Login</a></li>
-        </ul>
-    </div><!-- end .header -->
+<nav class="navbar navbar-default navbar-header" style="background-color: #1b6d85;" >
+        <div class="navbar-header" >
+            <ul class="nav navbar-nav" >
+                <li><a href="index.php">Home</a></li>
+                <li class="active"><a href="login.php">Login</a></li>
+            </ul>
+        </div>
+</nav>
+</div>
+
+<div class="container">
+
 
     <div class="row">
         <section class="col-xs-12">

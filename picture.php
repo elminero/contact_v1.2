@@ -54,17 +54,17 @@ $image->setPreviousNextImageId($id);
 
                 <a href="addphotos.php?id=<?php echo $personId; ?>">View All</a>
                 <div align="center" style="margin:1px; padding:1px;">
-                    <div style="width: 400px">
-                    <nav >
-                        <ul class="pager" >
-                            <li class="previous" >
-                                <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
-                            </li>
-                            <li class="next">
-                                <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div style="width: 275px">
+                        <nav >
+                            <ul class="pager" >
+                                <li class="previous" >
+                                    <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
+                                </li>
+                                <li class="next">
+                                    <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                     <div style="padding:10px;">
 

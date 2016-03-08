@@ -78,7 +78,7 @@ a:visited {
 }
 a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
 	text-decoration: none;
-	color: #6E6C64;
+	color: #000000;
 }
 
 

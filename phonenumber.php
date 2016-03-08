@@ -89,12 +89,14 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
         ?>
 
     <div class="row">
-        <div class="col-sm-5" style="padding-right: 12px;">
-            <p>
+
+            <section class="col-sm-6">
+                <!-- div 1 Start Avatar -->
                 <?php require("avatar.php"); ?>
-            </p>
-        </div>
-        <div class="col-sm-5">
+                <!-- End Avatar -->
+            </section>
+            <section class="col-sm-6">
+
             <form class="form-horizontal" action="controllers/PhoneNumberController.php?action=<?php
 
             if($action == "update") {
@@ -180,7 +182,7 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                 </div>
 
             </form>
-        </div><!--<div class="col-sm-5">-->
+        </section><!--<div class="col-sm-5">-->
     </div><!--<div class="row">-->
 
 
