@@ -58,6 +58,15 @@ $stmt = $contact->getAllPerson();
             <?php endwhile ?>
             </tbody>
         </table>
+        <nav>
+            <ol class="pagination pagination-sm">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="disabled"><a href="#">1</a></li>
+                <li class="disabled"><a href="#">2</a></li>
+                <li class="disabled"><a href="#">3</a></li>
+                <li class="disabled"><a href="#">&raquo;</a></li>
+            </ol>
+        </nav>
 </section>
 </div>
     <?php include("includes/footer.php"); ?>
