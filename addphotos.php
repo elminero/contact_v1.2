@@ -128,6 +128,25 @@ if ($login->login == 0) {
                 <div style="clear: both"></div>
                 <hr />
 
+
+        <div class="row">
+
+            <?php while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
+            <div class="col-xs-6 col-sm-4">
+                <div class="thumbnail">
+                    <a href="picture.php?id=<?php echo $row->id; ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>.jpg" /></a>
+                    <div class="caption">
+                        <?php echo $row->caption ?>
+                    </div>
+                </div>
+            </div>
+            <?php endwhile ?>
+
+        </div>
+
+
+
+
                 <?php while($row = $contact->image->fetch(PDO::FETCH_OBJ)): ?>
                     <a href="picture.php?id=<?php echo $row->id; ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>_t.jpg" /></a>
                 <?php endwhile ?>

@@ -66,16 +66,27 @@ $image->setPreviousNextImageId($id);
                             </ul>
                         </nav>
                     </div>
-                    <div style="padding:10px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
+                                    <img class="img-rounded" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
+                                </a>
 
-                    </div>
-                    <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
-                        <img class="img-responsive center-block" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
-                    </a>
-                    <br />
-                    <div align="center">
-                        <?php echo $image->getImageById($id)->caption ?>
-                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="" style="background-color: white; color: black; ">
+
+
+                                    <div class="caption">
+                                        <?php echo  wordwrap($image->getImageById($id)->caption, 75, "<br />\n");     ?>
+                                    </div>
+
+                            </td>
+
+                        </tr>
+                    </table>
                 </div>
 
 
