@@ -53,40 +53,30 @@ $image->setPreviousNextImageId($id);
                     </ol>
 
                 <a href="addphotos.php?id=<?php echo $personId; ?>">View All</a>
-                <div align="center" style="margin:1px; padding:1px;">
-                    <div style="width: 275px">
-                        <nav >
-                            <ul class="pager" >
-                                <li class="previous" >
-                                    <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
-                                </li>
-                                <li class="next">
-                                    <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>
-                                <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
+
+
+            <div style=" margin: 0 auto; width: <?php echo getimagesize( "images/" . $image->getImageById($id)->path_file . ".jpg" )[0] . "px" ; ?>;">
+
+             <div align="center" >
+                <nav style="width: 275px">
+                    <ul class="pager" >
+                        <li class="previous" >
+                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
+                        </li>
+                        <li class="next">
+                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
                                     <img class="img-rounded" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
                                 </a>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="" style="background-color: white; color: black; ">
-
-
-                                    <div class="caption">
-                                        <?php echo  wordwrap($image->getImageById($id)->caption, 75, "<br />\n");     ?>
+                                    <div class="caption" style="color: black; background-color: white; padding: 10px; margin: 10px 0; ">
+                                        <?php echo  $image->getImageById($id)->caption;     ?>
                                     </div>
-
-                            </td>
-
-                        </tr>
-                    </table>
                 </div>
 
 
