@@ -10,13 +10,10 @@ if ($login->login == 0) {
 
 require("models/Contact.php");
 
-
-
 ob_start();
 require("phoneEmailAddress.php");
 $phoneEmailAddress = ob_get_contents();
 ob_end_clean();
-
 
 require_once('models/Address.php');
 
@@ -31,12 +28,21 @@ if(isset($_GET['update'])) {
     $action = "update";
     $updateId = (int)$_GET['update'];
     $addressData = $address->getAddressById($updateId);
-
-
 } else {
     $action = "create";
     $_GET['update'] = null;
 }
+
+$id = NULL;
+
+if( isset($_GET['id']) )
+    $id = $_GET['id'];
+
+if( isset($_POST['id']) )
+    $id = $_POST['id'];
+
+$contact = new Contact($id);
+$contact->getContactById();
 
 ?>
 
@@ -50,59 +56,36 @@ if(isset($_GET['update'])) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
     <script src="js/jquery-1.12.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
     <title>Address</title>
 </head>
-
     <body>
         <?php include("includes/header.php"); ?>
     <div class="container">
-
         <ol class="breadcrumb">
             <li><a href="listcontacts.php">List</a></li>
             <li><a href="profile.php?id=<?php echo $_GET['id']; ?>" >Profile</a></li>
             <li><b><?php if($action == "update") echo "Update"; if($action == "create") echo "Add"; ?> Address</b></li>
         </ol>
-
-            <?php
-            $id = NULL;
-
-            if( isset($_GET['id']) )
-                $id = $_GET['id'];
-
-            if( isset($_POST['id']) )
-                $id = $_POST['id'];
-
-            $contact = new Contact($id);
-            $contact->getContactById();
-            ?>
 <div class="row">
 
     <section class="col-sm-6">
-
         <!-- div 1 Start Avatar -->
         <?php require("avatar.php"); ?>
         <!-- End Avatar -->
         <hr />
-
         <!-- div 2 Start Name and DOB -->
         <div style="float: left; width: 200px">
             <?php require("name_dob.php"); ?>
         </div>
         <div style="clear: both"></div>
         <!-- End Name and DOB -->
-
     </section>
     <section class="col-sm-6">
 
-
         <div style="margin-top: 10px;">
-
 
             <div style="clear: both"></div>
 
@@ -118,8 +101,6 @@ if(isset($_GET['update'])) {
 
                 ?>" method="post" name="addAddress">
 
-
-
                 <?php if($action == "update"): ?>
                     <h3 style="float: left">Update Phone Number</h3>
                     <span style='float: right'>
@@ -132,11 +113,8 @@ if(isset($_GET['update'])) {
                     <h3>Add Phone Number</h3>
                 <?php endif; ?>
 
-
-
-
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="type">Type</label>
+                    <label class="col-sm-2 control-label" for="address_type">Type</label>
                     <div class="col-sm-10">
                         <select name="address_type" class="form-control" id="address_type">
                             <option <?php if (($action == "update") && ($addressData->address_type == 0)) {echo "selected";} ?> value="0" >  </option>
@@ -150,11 +128,6 @@ if(isset($_GET['update'])) {
                         </select>
                     </div>
                 </div>
-
-
-
-
-
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="country">Country</label>
@@ -179,9 +152,6 @@ if(isset($_GET['update'])) {
                     </div>
                 </div>
 
-
-
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="stateSelect">State</label>
                     <div class="col-sm-10">
@@ -192,15 +162,12 @@ if(isset($_GET['update'])) {
                     </div>
                 </div>
 
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="city">City</label>
                     <div class="col-sm-10">
                         <input name="city" type="text" class="form-control" id="city"  value="<?php if ($action == "update") {echo $addressData->city;} ?>" /><br />
                     </div>
                 </div>
-
-
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="street">Street</label>
@@ -209,15 +176,12 @@ if(isset($_GET['update'])) {
                     </div>
                 </div>
 
-
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="postal_code">Postal Code</label>
                     <div class="col-sm-10">
                         <input name="postal_code" type="text" class="form-control" id="postal_code"  value="<?php if ($action == "update") {echo $addressData->postal_code;} ?>" /><br />
                     </div>
                 </div>
-
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="note">Notes</label>
@@ -226,12 +190,8 @@ if(isset($_GET['update'])) {
                     </div>
                 </div>
 
-
-
-
                 <input type="hidden" name="personId" value="<?php echo $_GET['id'] ?>" />
                 <input type="hidden" name="id" value="<?php echo  $_GET['update'] ?>" />
-
 
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
@@ -253,29 +213,18 @@ if(isset($_GET['update'])) {
                         </div>
                     </div>
 
-
-
-
-
-
-
             </form>
         </div><!--<div style="margin-top: 10px;">-->
     <section>
 
 </div><!--<div class="row">-->
 
-
-
-
         <div style="clear: both"></div>
             <?php // if($action === 'update')
             echo "<hr />" . $phoneEmailAddress; ?>
 
         <div style="clear: both"></div>
-        <?php
-        include("includes/footer.php");
-        ?>
+    <?php include("includes/footer.php"); ?>
 
     </div><!-- end .container -->
     <script src="js/bootstrap.min.js"></script>

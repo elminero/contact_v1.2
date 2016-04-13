@@ -11,19 +11,16 @@
 </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-default navbar-header" style="background-color: #1b6d85;" >
+    <nav class="navbar navbar-default navbar-header" style="background-color: #1b6d85;" >
         <div class="navbar-header" >
             <ul class="nav navbar-nav" >
                 <li><a href="index.php">Home</a></li>
                 <li class="active"><a href="login.php">Login</a></li>
             </ul>
         </div>
-</nav>
+    </nav>
 </div>
-
 <div class="container">
-
-
     <div class="row">
         <section class="col-xs-12">
             <form class="form-horizontal" action="controllers/LoginController.php" method="post">
@@ -42,7 +39,6 @@
                             <input class="form-control" type="password" id="inputEmail" placeholder="Email" value="super8" name="password">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="submit" class="btn btn-default" value="Login" name="login">
@@ -52,12 +48,7 @@
             </form>
         </section>
     </div><!-- row -->
-
-
-    <?php
-    include("includes/footer.php");
-    ?>
-
+    <?php include("includes/footer.php"); ?>
 </div><!-- end .container -->
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
