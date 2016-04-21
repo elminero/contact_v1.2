@@ -1,25 +1,35 @@
 <?php
-ob_start();
-require("models/Contact.php");
 require("controllers/LoginController.php");
-
 $login = new LoginController();
 $login->verifyLogin();
 
 if ($login->login == 0) {
-    header("Location: login.php?");
+    header("Location: login.php");
 }
 
-$id = NULL;
+require("models/Contact.php");
 
-if( isset($_GET['id']) )
-    $id = $_GET['id'];
+if(isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+}
+elseif( !isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
 
-if( isset($_POST['id']) )
-    $id = $_POST['id'];
 
 $contact = new Contact($id);
+
+
+
 $contact->getContactById();
+
+
+
+
+// var_dump($contact->nameDOB);
+
+
+ob_start();
 ?>
 
 <!DOCTYPE html>

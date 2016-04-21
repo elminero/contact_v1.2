@@ -1,8 +1,8 @@
 <?php
-require("models/Contact.php");
+// require("models/Contact.php");
 
-$contact = new Contact($_GET['id']);
-$contact->getContactById();
+// $contact = new Contact($_GET['id']);
+// $contact->getContactById();
 
 $nameDOB =  $contact->nameDOB;
 

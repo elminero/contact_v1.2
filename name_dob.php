@@ -5,11 +5,14 @@
 $contact = new Contact($_GET['id']);
 $contact->getContactById();
 
+
+if($contact->nameDOB == false) {
+    header("Location: listcontacts.php");
+}
+
 $nameDOB =  $contact->nameDOB;
+
 ?>
-
-
-
 
 <!-- div 2 Start Name and DOB -->
     <?php

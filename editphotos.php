@@ -1,6 +1,5 @@
 <?php
 require("controllers/LoginController.php");
-
 $login = new LoginController();
 $login->verifyLogin();
 
@@ -8,15 +7,16 @@ if ($login->login == 0) {
     header("Location: login.php");
 }
 
-ob_start();
-require("avatarNameDOB.php");
-$avatarNameDOB = ob_get_contents();
-ob_end_clean();
-
+require("models/Contact.php");
 
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
+
+ob_start();
+require("avatarNameDOB.php");
+$avatarNameDOB = ob_get_contents();
+ob_end_clean();
 
 
 $contact = new Contact($id);

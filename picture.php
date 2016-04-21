@@ -1,23 +1,23 @@
 <?php
-    require("controllers/LoginController.php");
-    $login = new LoginController();
-    $login->verifyLogin();
+require("controllers/LoginController.php");
+$login = new LoginController();
+$login->verifyLogin();
 
-    if ($login->login == 0) {
-        header("Location: login.php");
-    }
+if ($login->login == 0) {
+    header("Location: login.php");
+}
 
-        ob_start();
-    require("models/Contact.php");
+require("models/Contact.php");
 
-    // This id is the id of the picture.
-    if(isset($_GET['id'])) {
-        $id = (int)$_GET['id'];
-    }
+if(isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+}
 
     $image = new ImagePDO();
     $personId = $image->getPersonIdByImageId($id);
     $image->setPreviousNextImageId($id);
+
+    ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

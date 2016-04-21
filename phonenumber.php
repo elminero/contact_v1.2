@@ -1,12 +1,17 @@
- <?php
- require("controllers/LoginController.php");
+<?php
+require("controllers/LoginController.php");
+$login = new LoginController();
+$login->verifyLogin();
 
- $login = new LoginController();
- $login->verifyLogin();
+if ($login->login == 0) {
+ header("Location: login.php");
+}
 
- if ($login->login == 0) {
-     header("Location: login.php");
- }
+require("models/Contact.php");
+
+if(isset($_GET['id'])) {
+ $id = (int)$_GET['id'];
+}
 
 
 ob_start();
@@ -24,19 +29,11 @@ require_once('models/PhoneNumber.php');
 
 $phone = new PhoneNumberPDO();
 
-$phoneData = null;
-$action = null;
+// $phoneData = null;
+// $action = null;
 
 
-$id = NULL;
 
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
-
-if(isset($_POST['id'])) {
-    $id = $_POST['id'];
-}
 
 $contact = new Contact($id);
 $contact->getContactById();

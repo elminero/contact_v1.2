@@ -1,6 +1,5 @@
 <?php
 require("controllers/LoginController.php");
-
 $login = new LoginController();
 $login->verifyLogin();
 
@@ -9,6 +8,10 @@ if ($login->login == 0) {
 }
 
 require("models/Contact.php");
+
+if(isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+}
 
 ob_start();
 require("phoneEmailAddress.php");
@@ -33,13 +36,7 @@ if(isset($_GET['update'])) {
     $_GET['update'] = null;
 }
 
-$id = NULL;
 
-if( isset($_GET['id']) )
-    $id = $_GET['id'];
-
-if( isset($_POST['id']) )
-    $id = $_POST['id'];
 
 $contact = new Contact($id);
 $contact->getContactById();
@@ -102,7 +99,7 @@ $contact->getContactById();
                 ?>" method="post" name="addAddress">
 
                 <?php if($action == "update"): ?>
-                    <h3 style="float: left">Update Phone Number</h3>
+                    <h3 style="float: left">Update Address</h3>
                     <span style='float: right'>
             <a class="btn btn-danger"  id="delete" href="controllers/AddressController.php?action=delete&id=<?php echo $updateId; ?>&personId=<?php echo $_GET['id']; ?>">delete</a>
             </span><br />
@@ -110,7 +107,7 @@ $contact->getContactById();
                 <?php endif; ?>
 
                 <?php if($action == "create"): ?>
-                    <h3>Add Phone Number</h3>
+                    <h3>Add Address</h3>
                 <?php endif; ?>
 
                 <div class="form-group">
