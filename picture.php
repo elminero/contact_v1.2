@@ -12,10 +12,20 @@ require("models/Contact.php");
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
+elseif(!isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
 
-    $image = new ImagePDO();
-    $personId = $image->getPersonIdByImageId($id);
-    $image->setPreviousNextImageId($id);
+$image = new ImagePDO();
+
+$personId = $image->getPersonIdByImageId($id);
+
+if($personId === null) {
+    header("Location: listcontacts.php");
+}
+
+
+$image->setPreviousNextImageId($id);
 
     ob_start();
 ?>

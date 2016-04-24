@@ -10,9 +10,11 @@ if ($login->login == 0) {
 require("models/Contact.php");
 
 if(isset($_GET['id'])) {
- $id = (int)$_GET['id'];
+    $id = (int)$_GET['id'];
 }
-
+elseif(!isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
 
 ob_start();
 require("avatarNameDOB.php");
@@ -29,25 +31,31 @@ require_once('models/PhoneNumber.php');
 
 $phone = new PhoneNumberPDO();
 
-// $phoneData = null;
-// $action = null;
-
-
-
-
 $contact = new Contact($id);
 $contact->getContactById();
+
+// var_dump($contact->nameDOB);
+
+if ($contact->nameDOB == false) {
+    header("Location: listcontacts.php");
+}
+
+if( (isset($_GET['update'])) &&  ($_GET['update'] === '') ) {
+    header("Location: profile.php?id=" . $_GET["id"]);
+}
 
 if(isset($_GET['update'])) {
     $action = "update";
     $updateId = (int)$_GET['update'];
     $phoneData = $phone->getPhoneNumberById($updateId);
 
+    if($phoneData == null) {
+        header("Location: profile.php?id=" . $_GET["id"]);
+    }
 } else {
     $action = "create";
     $_GET['update'] = null;
 }
-
 
 if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
     $validate = "error";

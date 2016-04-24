@@ -12,22 +12,12 @@ require("models/Contact.php");
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
-elseif( !isset($_GET['id'])) {
+elseif(!isset($_GET['id'])) {
     header("Location: listcontacts.php");
 }
 
-
 $contact = new Contact($id);
-
-
-
 $contact->getContactById();
-
-
-
-
-// var_dump($contact->nameDOB);
-
 
 ob_start();
 ?>

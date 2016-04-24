@@ -19,7 +19,6 @@
                     </ul>
         </nav>
     </div>
-
     <div class="container"><!-- start .container -->
         <img class="img-responsive center-block img-rounded" src="css/dark_road_forest850c.jpg">
         <div class="row">
