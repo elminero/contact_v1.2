@@ -121,7 +121,6 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
                         <h3>Add Phone Number</h3>
                     <?php endif; ?>
 
-
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="type">Type</label>
                         <div class="col-sm-10">

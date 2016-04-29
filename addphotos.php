@@ -12,14 +12,16 @@ require("models/Contact.php");
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
-elseif( !isset($_GET['id'] )) {
+elseif(!isset($_GET['id'])) {
     header("Location: listcontacts.php");
 }
 
+/*
 ob_start();
 require("avatarNameDOB.php");
 $avatarNameDOB = ob_get_contents();
 ob_end_clean();
+*/
 
 if( (isset($_GET['validate']))  &&  ($_GET['validate'] === 'error') ) {
     $error = 1;
@@ -29,6 +31,10 @@ if( (isset($_GET['validate']))  &&  ($_GET['validate'] === 'error') ) {
 
 $contact = new Contact($id);
 $contact->getContactById();
+
+if ($contact->nameDOB === false) {
+    header("Location: listcontacts.php");
+}
 
 ob_start();
 ?>

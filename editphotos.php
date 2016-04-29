@@ -16,14 +16,21 @@ elseif(!isset($_GET['id'])) {
     header("Location: listcontacts.php");
 }
 
+/*
 ob_start();
 require("avatarNameDOB.php");
 $avatarNameDOB = ob_get_contents();
 ob_end_clean();
+*/
 
 
 $contact = new Contact($id);
 $contact->getContactById();
+
+if ($contact->nameDOB === false) {
+    header("Location: listcontacts.php");
+}
+
 
 ?>
 

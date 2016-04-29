@@ -12,6 +12,9 @@ require("models/Contact.php");
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
+elseif(!isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
 
 ob_start();
 require("avatarNameDOB.php");
@@ -30,10 +33,18 @@ $email = new EmailAddressPDO();
 $emailData = null;
 $action = null;
 
+if( (isset($_GET['update'])) &&  ($_GET['update'] === '') ) {
+    header("Location: profile.php?id=" . $_GET["id"]);
+}
+
 if(isset($_GET['update'])) {
     $action = "update";
     $updateId = (int)$_GET['update'];
     $emailData = $email->getEmailAddressById($updateId);
+
+    if($emailData == null) {
+        header("Location: profile.php?id=" . $_GET["id"]);
+    }
 } else {
     $action = "create";
 }
@@ -48,6 +59,10 @@ if( (isset($_GET['validate'])) && ($_GET['validate'] == 'error') ) {
 
 $contact = new Contact($id);
 $contact->getContactById();
+
+if ($contact->nameDOB === false) {
+    header("Location: listcontacts.php");
+}
 
 ?>
 

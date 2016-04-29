@@ -67,7 +67,7 @@ $image->setPreviousNextImageId($id);
                 </nav>
             </div>
             <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
-                <img class="img-rounded" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
+                <img class="img-responsive img-rounded" src="images/<?php echo $image->getImageById($id)->path_file; ?>.jpg"  />
             </a>
             <div class="caption" style="color: black; background-color: white; padding: 10px; margin: 10px 0; ">
                 <?php echo  $image->getImageById($id)->caption;     ?>

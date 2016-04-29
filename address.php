@@ -12,6 +12,9 @@ require("models/Contact.php");
 if(isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 }
+elseif(!isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
 
 ob_start();
 require("phoneEmailAddress.php");
@@ -31,6 +34,9 @@ if(isset($_GET['update'])) {
     $action = "update";
     $updateId = (int)$_GET['update'];
     $addressData = $address->getAddressById($updateId);
+    if($addressData == null) {
+        header("Location: profile.php?id=" . $_GET["id"]);
+    }
 } else {
     $action = "create";
     $_GET['update'] = null;
@@ -40,6 +46,10 @@ if(isset($_GET['update'])) {
 
 $contact = new Contact($id);
 $contact->getContactById();
+
+if ($contact->nameDOB == false) {
+    header("Location: listcontacts.php");
+}
 
 ?>
 
