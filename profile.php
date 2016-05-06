@@ -1,20 +1,6 @@
 <?php
 require("controllers/LoginController.php");
-$login = new LoginController();
-$login->verifyLogin();
-
-if ($login->login == 0) {
-    header("Location: login.php");
-}
-
 require("models/Contact.php");
-
-if(isset($_GET['id'])) {
-    $id = (int)$_GET['id'];
-}
-elseif(!isset($_GET['id'])) {
-    header("Location: listcontacts.php");
-}
 
 $contact = new Contact($id);
 $contact->getContactById();

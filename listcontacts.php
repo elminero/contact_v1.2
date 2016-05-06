@@ -1,13 +1,6 @@
 <?php
-require("models/Person.php");
 require("controllers/LoginController.php");
-
-$login = new LoginController();
-$login->verifyLogin();
-
-if ($login->login == 0) {
-    header("Location: login.php");
-}
+require("models/Person.php");
 
 $contact = new PersonPDO();
 $stmt = $contact->getAllPerson();

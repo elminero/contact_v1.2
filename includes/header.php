@@ -63,7 +63,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="<?php if($fileName === "listcontacts") echo "active"; ?>"><a href="listcontacts.php">List</a></li>
-                <li class="<?php if(($fileName === "newcontact") && ($_GET['action'] !=="update")) echo "active"; ?>"><a href="newcontact.php">New</a></li>
+                <li class="<?php if(($fileName === "newcontact") && ($_GET['action'] !=="update")) echo "active"; ?>"><a href="newcontact.php?id">New</a></li>
                 <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
             </ul>
 

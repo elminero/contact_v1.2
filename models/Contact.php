@@ -95,3 +95,18 @@ class Contact extends PersonPDO
     }
 
 }
+
+
+if(isset($_GET['id']) )  {
+    $id = (int)$_GET['id'];
+}
+elseif(!isset($_GET['id'])) {
+    header("Location: listcontacts.php");
+}
+
+
+if( (isset($_GET['validate']))  &&  ($_GET['validate'] === 'error') ) {
+    $error = 1;
+} else {
+    $error = null;
+}

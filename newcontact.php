@@ -1,13 +1,6 @@
 <?php
 require("controllers/LoginController.php");
 
-$login = new LoginController();
-$login->verifyLogin();
-
-if ($login->login == 0) {
-    header("Location: login.php");
-}
-
 require("models/Contact.php");
 
 

@@ -1,11 +1,5 @@
 <?php
 require("controllers/LoginController.php");
-$login = new LoginController();
-$login->verifyLogin();
-
-if ($login->login == 0) {
-    header("Location: login.php");
-}
 
 require("models/Contact.php");
 
@@ -47,7 +41,7 @@ if(isset($_GET['update'])) {
 $contact = new Contact($id);
 $contact->getContactById();
 
-if ($contact->nameDOB == false) {
+if ($contact->nameDOB === false) {
     header("Location: listcontacts.php");
 }
 

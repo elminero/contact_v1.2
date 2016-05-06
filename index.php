@@ -25,14 +25,10 @@
             <div class="col-sm-4">
                 <h2>ISIS leaders remain in close contact with Ankara – Lavrov</h2>
                 <p>
-                    The leaders of Islamic State maintain a constant liaison with the Turkish government, working out a
-                    new approach to the war in Syria as the Russian Air Force cuts off traditional smuggling routes,
-                    says Russian Foreign Minister Sergey Lavrov. Moscow has intelligence that Islamic State’s (IS,
-                    formerly ISIS/ISIL) command continues to hold backdoor negotiations with the Turkish leadership,
-                    Lavrov told Russian newspaper MK in a vast interview in honor of Diplomats’ Day.
-
-                    The airstrikes of the Russian Air Force in Syria have severely disrupted “traditional smuggling
-                    routes,” so the Turks are discussing in all seriousness creation of “IS-free zones” in Syria.
+                    <?php echo basename(__FILE__, '.php'); ?>
+                </p>
+                <p>
+                    <?php echo get_include_path(); ?>
                 </p>
             </div>
             <div class="col-sm-4">

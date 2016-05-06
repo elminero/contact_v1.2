@@ -33,6 +33,15 @@ class LoginController {
 }
 
 
+$login = new LoginController();
+$login->verifyLogin();
+
+if ($login->login == 0) {
+    header("Location: ../contact_v1.1/login.php");
+}
+
+
+
 if( array_key_exists("login", $_POST) ) {
 
     $password = htmlspecialchars(trim($_POST['password']));
