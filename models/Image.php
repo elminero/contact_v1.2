@@ -240,10 +240,11 @@ class ImagePDO extends db3
         $stmt = $this->pdo->prepare("
                     SELECT id, person_id, path_file, caption, avatar, visible
                     FROM image
-                    WHERE person_id = ?");
+                    WHERE person_id = ? ORDER BY id DESC;");
 
 
             $stmt->execute([$personId]);
+
         return $stmt;
     }
 
