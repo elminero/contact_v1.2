@@ -20,7 +20,7 @@
 */
 
 
-class PersonPDO extends db3
+class PersonPDO extends Db3
 {
 
     private  $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;

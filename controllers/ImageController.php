@@ -1,6 +1,5 @@
 <?php
 require_once(dirname(dirname(__FILE__)).'/models/Image.php');
-
 //tDebug --  Db2 -- User -- Person -- Address -- PhoneNumber -- EmailAddress -- Image
 
 // VARIABLES: $id, $personId, $pathFile, $caption, $avatar, $visible
@@ -67,21 +66,30 @@ class ImageController {
         // Create the folders YY/MM/DD/HH
         $date = explode( "|", date("y|m|d|H") );
         list($y, $m, $d, $h) = $date;
+
         if(!file_exists(self::IMAGE_FOLDER . $y))
         {
-            mkdir(self::IMAGE_FOLDER . $y);
+            mkdir(self::IMAGE_FOLDER . $y, 0777, true);
+            chmod(self::IMAGE_FOLDER . $y, 0777);
         }
+
+
         if(!file_exists(self::IMAGE_FOLDER . $y . "/" . $m))
         {
-            mkdir(self::IMAGE_FOLDER . $y . "/" . $m);
+            mkdir(self::IMAGE_FOLDER . $y . "/" . $m, 0777, true);
+            chmod(self::IMAGE_FOLDER . $y . "/" . $m, 0777);
         }
+
         if(!file_exists(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d))
         {
-            mkdir(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d);
+            mkdir(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d, 0777, true);
+            chmod(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d, 0777);
         }
+
         if(!file_exists(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d . "/" . $h))
         {
-            mkdir(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d . "/" . $h);
+            mkdir(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d . "/" . $h, 0777, true);
+            chmod(self::IMAGE_FOLDER . $y . "/" .  $m . "/" . $d . "/" . $h, 0777);
         }
 
         $this->_imageLocation = $y . "/" .  $m . "/" . $d . "/" . $h . "/";

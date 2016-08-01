@@ -51,7 +51,7 @@ abstract class Db2
 }
 */
 
-abstract class db3
+abstract class Db3
 {
     protected $pdo;
 
@@ -59,11 +59,12 @@ abstract class db3
         $this->personId = $personId;
         $this->pdo = new PDO("mysql:host=localhost;dbname=contact;charset=utf8", "ian", "super1964");
     }
+
+    function __destruct ()
+    {
+        unset($this->pdo);
+    }
 }
 
 
-function __destruct ()
-{
-
-}
 
