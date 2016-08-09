@@ -51,13 +51,72 @@ abstract class Db2
 }
 */
 
+interface crud
+{
+    public function create($data);
+    public function readAll();
+    public function readById($id);
+    public function updateById($data);
+    public function deleteById();
+}
+
+
+
+
 abstract class Db3
 {
     protected $pdo;
 
     function __construct($personId = null) {
         $this->personId = $personId;
-        $this->pdo = new PDO("mysql:host=localhost;dbname=contact;charset=utf8", "ian", "super1964");
+
+        /*
+         * Database localhost
+         */
+
+        if (!defined('DB_SERVER')) {
+            define("DB_SERVER", "localhost");
+        }
+
+        if (!defined('DB_USER')) {
+            define("DB_USER", "ian");
+        }
+
+        if (!defined('DB_PASS')) {
+            define("DB_PASS", "super1964");
+        }
+
+        if (!defined('DB_NAME')) {
+            define("DB_NAME", "contact");
+        }
+
+
+        /*
+         * Database production server
+         */
+
+        /*
+        if (!defined('DB_SERVER')) {
+            define("DB_SERVER", "");
+        }
+
+        if (!defined('DB_USER')) {
+            define("DB_USER", "");
+        }
+
+        if (!defined('DB_PASS')) {
+            define("DB_PASS", "");
+        }
+
+        if (!defined('DB_NAME')) {
+            define("DB_NAME", "contact");
+        }
+        */
+
+
+        // $this->pdo = new PDO("mysql:host=localhost; dbname=contact; charset=utf8", "ian", "super1964");
+
+        $this->pdo = new PDO("mysql:host=" . DB_SERVER . "; dbname=" . DB_NAME . "; charset=utf8", DB_USER, DB_PASS);
     }
 
     function __destruct ()
