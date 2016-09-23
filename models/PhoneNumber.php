@@ -15,7 +15,13 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
         note            text
 */
 
-class PhoneNumberPDO extends Db3  {
+class PhoneNumberPDO extends \contact\Db3  {
+
+    public function create($data){}
+    public function readAll(){}
+    public function readById($id){}
+    public function updateById($data){}
+    public function deleteById(){}
 
     private $_id, $_personId, $_phoneNumber, $_phoneType, $_note;
 

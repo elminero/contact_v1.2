@@ -1,4 +1,6 @@
 <?php
+namespace contact;
+use PDO;
 //tDebug --  (Db2) -- User -- Person -- Address -- PhoneNumber -- EmailAddress -- Image
 
 // require_once(dirname(dirname(__FILE__)).'/models/tDebug.php');
@@ -58,15 +60,9 @@ interface crud
     public function readById($id);
     public function updateById($data);
     public function deleteById();
-
-
-
 }
 
-
-
-
-abstract class Db3
+abstract class Db3 implements crud
 {
     protected $pdo;
 

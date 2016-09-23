@@ -15,9 +15,16 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
         note            string
 */
 
-class EmailAddressPDO extends Db3 {
+class EmailAddressPDO extends \contact\Db3 {
 
     private $_id, $_personId, $_emailAddress, $_type, $_note;
+
+
+    public function create($data){}
+    public function readAll(){}
+    public function readById($id){}
+    public function updateById($data){}
+    public function deleteById(){}
 
     public function setEmailParam (EmailAddressController $email) {
 

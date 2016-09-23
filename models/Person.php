@@ -1,4 +1,5 @@
 <?php
+
 //tDebug --  Db2 -- User -- (Person) -- Address -- PhoneNumber -- EmailAddress -- Image
 
  require_once(dirname(dirname(__FILE__)).'/models/Db.php');
@@ -20,10 +21,17 @@
 */
 
 
-class PersonPDO extends Db3
+class PersonPDO extends \contact\Db3
 {
 
     private  $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;
+
+    public function create($data){}
+    public function readAll(){}
+    public function readById($id){}
+    public function updateById($data){}
+    public function deleteById(){}
+
 
     private function setPersonParam(PersonController $person)
     {

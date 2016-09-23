@@ -19,7 +19,13 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 */
 
 
-class AddressPDO extends Db3 {
+class AddressPDO extends \contact\Db3 {
+
+    public function create($data){}
+    public function readAll(){}
+    public function readById($id){}
+    public function updateById($data){}
+    public function deleteById(){}
 
     private $_id, $_personId, $_addressType, $_countryIso, $_state, $_street, $_city, $_postalCode, $_note;
 
