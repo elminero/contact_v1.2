@@ -200,7 +200,11 @@ $contact->getContactById();
                 </div>
             </div>
 
-            <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+
+            <?php if (isset($updateForm->id)): ?>
+                <input type="hidden" name="personId" value="<?php echo $updateForm->id ?>" />
+            <?php endif ?>
+
 
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">

@@ -37,7 +37,8 @@ $login = new LoginController();
 $login->verifyLogin();
 
 if ($login->login == 0) {
-    header("Location: ../contact_v1.1/login.php");
+
+    header("Location: ../login.php");
 }
 
 
@@ -50,8 +51,7 @@ if( array_key_exists("login", $_POST) ) {
 
 
     $options = [
-        'cost' => 11,
-        'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+        'cost' => 12,
     ];
 
 
@@ -65,8 +65,7 @@ if( array_key_exists("login", $_POST) ) {
     if (password_verify($password, $user->pass_hash)) {
 
         $options = [
-            'cost' => 11,
-            'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+            'cost' => 12,
         ];
         $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
 

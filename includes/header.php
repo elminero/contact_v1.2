@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <script src="../js/jquery-1.12.0.min.js"></script>
+
+
+<script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="   crossorigin="anonymous"></script>
+
+
+
+
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
@@ -63,7 +70,9 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="<?php if($fileName === "listcontacts") echo "active"; ?>"><a href="listcontacts.php">List</a></li>
-                <li class="<?php if(($fileName === "newcontact") && ($_GET['action'] !=="update")) echo "active"; ?>"><a href="newcontact.php?id">New</a></li>
+
+                <li class="<?php if($fileName === "newcontact") echo "active"; ?>"><a href="newcontact.php?id=null">New</a></li>
+
                 <li><a href="controllers/LoginController.php?action=logout"><span id="timer">Logout 5:00</span></a></li>
             </ul>
 

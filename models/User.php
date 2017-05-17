@@ -151,11 +151,21 @@ $userModel = new UserPDO();
 $password = "super8";
 
 
+//$options = [
+//    'cost' => 11,
+//   // 'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+//];
+//$passHash = password_hash($password, PASSWORD_BCRYPT, $options);
+
+
+
 $options = [
-    'cost' => 11,
-    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+    'cost' => 12,
 ];
 $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
+
+
+
 
 
 
