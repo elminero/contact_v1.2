@@ -28,7 +28,7 @@ class Contact extends PersonPDO
 
 
         $emailAddress = new EmailAddressPDO();
-        $this->emailAddress = $emailAddress->getAllEmailAddressByPersonId($this->personId);
+        $this->emailAddress = $emailAddress->readByPersonId($this->personId);
 
 
         $image = new ImagePDO();

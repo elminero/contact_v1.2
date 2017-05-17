@@ -55,13 +55,13 @@ if(array_key_exists('addEmail', $_POST))
 
         if( isset($_GET['action']) && ($_GET['action']  === 'create') ) {
 
-            $model->addEmailAddress($cEmail);
+            $model->create($cEmail);
             header("Location: ../profile.php?id=".$_POST['personId']);
         }
 
         if( isset($_GET['action']) && ($_GET['action'] === 'update') ) {
 
-            $model->updateEmailAddress($cEmail);
+            $model->updateById($cEmail);
             header("Location: ../profile.php?id=".$_POST['personId']);
         }
 
@@ -81,6 +81,6 @@ if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
 
     $deleteId = (int)$_GET['id'];
     $model = new EmailAddressPDO();
-    $model->deleteEmailAddress($deleteId);
+    $model->deleteById($deleteId);
     header("Location: ../profile.php?id=".$_GET['personId']);
 }

@@ -15,7 +15,8 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
         note            text
 */
 
-class PhoneNumberPDO extends \contact\Db3  {
+class PhoneNumberPDO extends \contact\Db3
+{
 
 //    public function create($data){}
 //    public function readAll(){}
@@ -25,7 +26,8 @@ class PhoneNumberPDO extends \contact\Db3  {
 
     private $_id, $_personId, $_phoneNumber, $_phoneType, $_note;
 
-    public function setPhoneParam (PhoneNumberController $phone) {
+    public function setPhoneParam (PhoneNumberController $phone)
+    {
 
         $this->_id = $phone->getId();
         $this->_personId = $phone->getPersonId();

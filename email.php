@@ -35,7 +35,7 @@ if( (isset($_GET['update'])) &&  ($_GET['update'] === '') ) {
 if(isset($_GET['update'])) {
     $action = "update";
     $updateId = (int)$_GET['update'];
-    $emailData = $email->getEmailAddressById($updateId);
+    $emailData = $email->readById($updateId);
 
     if($emailData == null) {
         header("Location: profile.php?id=" . $_GET["id"]);
@@ -148,8 +148,11 @@ if ($contact->nameDOB === false) {
                     </div>
                 </div>
 
-                <input type="hidden" name="emailId" value="<?php echo  $_GET['update'] ?>" />
-                <input type="hidden" name="personId" value="<?php echo $_GET['id'] ?>" />
+                <?php if (isset($_GET['update'])): ?>
+                    <input type="hidden" name="emailId" value="<?php echo  $_GET['update']; ?>" />
+                <?php endif; ?>
+
+                <input type="hidden" name="personId" value="<?php echo $_GET['id']; ?>" />
 
                 <div style="float: left; color: #990000; margin-top: 10px;">
                     <?php if($validate == "error") {echo "* E-Mail Address Is Not Valid.";} ?>
