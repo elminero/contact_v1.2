@@ -24,7 +24,7 @@ class Contact extends PersonPDO
 
 
         $phoneNumber = new PhoneNumberPDO();
-        $this->phoneNumber = $phoneNumber->getAllPhoneNumberByPersonId($this->personId);
+        $this->phoneNumber = $phoneNumber->readByPersonId($this->personId);
 
 
         $emailAddress = new EmailAddressPDO();

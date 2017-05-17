@@ -17,11 +17,11 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
 class PhoneNumberPDO extends \contact\Db3  {
 
-    public function create($data){}
-    public function readAll(){}
-    public function readById($id){}
-    public function updateById($data){}
-    public function deleteById($id){}
+//    public function create($data){}
+//    public function readAll(){}
+//    public function readById($id){}
+//    public function updateById($data){}
+//    public function deleteById($id){}
 
     private $_id, $_personId, $_phoneNumber, $_phoneType, $_note;
 
@@ -35,7 +35,7 @@ class PhoneNumberPDO extends \contact\Db3  {
     }
 
 
-    public function addPhoneNumber(PhoneNumberController $phone)  // class PhoneNumber
+    public function create($phone)  // class PhoneNumber addPhoneNumber(PhoneNumberController $phone)
     {
         self::setPhoneParam($phone);
 
@@ -51,7 +51,46 @@ class PhoneNumberPDO extends \contact\Db3  {
     }
 
 
-    public function updatePhoneNumber($phone)  // class PhoneNumber
+    public function readAll()
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, person_id, phone_number, phone_type, note
+					FROM phone_number
+					");
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public function readById($id)  // class PhoneNumber  getPhoneNumberById($id)
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, person_id, phone_number, phone_type, note
+					FROM phone_number
+					WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public function readByPersonId($personId) // getAllPhoneNumberByPersonId($personId)
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, phone_number, phone_type, note
+					FROM phone_number
+					WHERE person_id = ?");
+
+        $stmt->execute([$personId]);
+
+        return $stmt;
+    }
+
+
+    public function updateById($phone)  // class PhoneNumber  updatePhoneNumber($phone)
     {
         self::setPhoneParam($phone);
 
@@ -69,33 +108,7 @@ class PhoneNumberPDO extends \contact\Db3  {
     }
 
 
-    public function getPhoneNumberById($id)  // class PhoneNumber
-    {
-        $stmt = $this->pdo->prepare("
-					SELECT id, person_id, phone_number, phone_type, note
-					FROM phone_number
-					WHERE id = ?");
-
-        $stmt->execute([$id]);
-
-        return $stmt->fetch(PDO::FETCH_OBJ);
-    }
-
-
-    public function getAllPhoneNumberByPersonId($personId)
-    {
-        $stmt = $this->pdo->prepare("
-					SELECT id, phone_number, phone_type, note
-					FROM phone_number
-					WHERE person_id = ?");
-
-        $stmt->execute([$personId]);
-
-        return $stmt;
-    }
-
-
-    public function deletePhoneNumber($id)  // class PhoneNumber
+    public function deleteById($id)  // class PhoneNumber //deletePhoneNumber($id)
     {
         $stmt = $this->pdo->prepare("
                     DELETE FROM phone_number
