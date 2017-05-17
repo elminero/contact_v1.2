@@ -77,7 +77,7 @@ if(array_key_exists('addNewContact', $_POST))
 if($cPerson->nameFieldValidate()) {
 
     if( isset($_GET['action']) && ($_GET['action']  === 'create') ) {
-        $insertId = $model->addPerson($cPerson);
+        $insertId = $model->create($cPerson);
         header("Location: ../profile.php?id=".(int)$insertId);
     }
 

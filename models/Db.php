@@ -55,7 +55,7 @@ abstract class Db2
 
 interface crud
 {
-    public function create($data);
+    public function create($person);
     public function readAll();
     public function readById($id);
     public function updateById($data);
@@ -66,7 +66,7 @@ abstract class Db3 implements crud
 {
     protected $pdo;
 
-    abstract public function create($data);
+    abstract public function create($person);
     abstract public function readAll();
     abstract public function readById($id);
     abstract public function updateById($data);

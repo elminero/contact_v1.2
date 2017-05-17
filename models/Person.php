@@ -26,8 +26,8 @@ class PersonPDO extends \contact\Db3
 
     private  $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;
 
-    public function create($data){}
-    public function readAll(){}
+//    public function create($data){}
+//    public function readAll(){}
     public function readById($id){}
     public function updateById($data){}
 //    public function deleteById($id){}
@@ -46,20 +46,26 @@ class PersonPDO extends \contact\Db3
         $this->_note = $person->getNote();
     }
 
-    public function getPersonById($id) {
 
-        $stmt =  $this->pdo->prepare("
-            SELECT id, last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note
-            FROM person
-            WHERE id = ?");
+    public function create($person)  // class Person  addPerson(PersonController $person)
+    {
+        self::setPersonParam($person);
 
-        $stmt->execute(array($id));
+        $insertId = null;
 
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        $stmt = $this->pdo->prepare("
+				INSERT INTO person
+				  (last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note)
+				VALUES
+				  (:last_name, :first_name, :middle_name, :alias_name, :birth_month, :birth_day, :birth_year, :note)");
+
+        $stmt->execute(array(':last_name'=>$this->_lastName, ':first_name'=>$this->_firstName, ':middle_name'=>$this->_middleName, ':alias_name'=>$this->_aliasName, ':birth_month'=>$this->_birthMonth, ':birth_day'=>$this->_birthDay, ':birth_year'=>$this->_birthYear, ':note'=>$this->_note));
+
+        return $this->pdo->lastInsertId();
     }
 
 
-    public function getAllPerson()
+    public function readAll() //getAllPerson()
     {
         $sql = "
             SELECT person.id, person.last_name, person.first_name, person.middle_name, person.alias_name,
@@ -76,22 +82,16 @@ class PersonPDO extends \contact\Db3
     }
 
 
-    public function addPerson(PersonController $person)  // class Person
-    {
+    public function getPersonById($id) {
 
-        self::setPersonParam($person);
+        $stmt =  $this->pdo->prepare("
+            SELECT id, last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note
+            FROM person
+            WHERE id = ?");
 
-        $insertId = null;
+        $stmt->execute(array($id));
 
-        $stmt = $this->pdo->prepare("
-				INSERT INTO person
-				  (last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note)
-				VALUES
-				  (:last_name, :first_name, :middle_name, :alias_name, :birth_month, :birth_day, :birth_year, :note)");
-
-        $stmt->execute(array(':last_name'=>$this->_lastName, ':first_name'=>$this->_firstName, ':middle_name'=>$this->_middleName, ':alias_name'=>$this->_aliasName, ':birth_month'=>$this->_birthMonth, ':birth_day'=>$this->_birthDay, ':birth_year'=>$this->_birthYear, ':note'=>$this->_note));
-
-        return $this->pdo->lastInsertId();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
 
