@@ -27,6 +27,7 @@ class UserPDO extends \contact\Db3  {
 //    public function create($data){}
     public function readAll(){}
 //    public function readById($id){}
+    public function readByPersonId($id){}
     public function updateById($data){}
     public function deleteById($id){}
 

@@ -27,9 +27,9 @@ class PersonPDO extends \contact\Db3
 //    public function create($data){}
 //    public function readAll(){}
 //    public function readById($id){}
+      public function readByPersonId($id){}
 //    public function updateById($data){}
 //    public function deleteById($id){}
-
 
     private function setPersonParam(PersonController $person)
     {
@@ -192,7 +192,6 @@ class PersonPDO extends \contact\Db3
         $age = date_create($birthday)->diff(date_create('today'))->y;
         return $age;
     }
-
 
 }
 

@@ -17,9 +17,7 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
 class EmailAddressPDO extends \contact\Db3
 {
-
     private $_id, $_personId, $_emailAddress, $_type, $_note;
-
 
 //    public function create($data){}
 //    public function readAll(){}
@@ -80,6 +78,7 @@ class EmailAddressPDO extends \contact\Db3
 
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
 
     public function updateById($email)  // class EmailAddress
     {

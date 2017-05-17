@@ -58,6 +58,7 @@ interface crud
     public function create($person);
     public function readAll();
     public function readById($id);
+    public function readByPersonId($id);
     public function updateById($data);
     public function deleteById($id);
 }
@@ -69,6 +70,7 @@ abstract class Db3 implements crud
     abstract public function create($person);
     abstract public function readAll();
     abstract public function readById($id);
+    abstract function readByPersonId($id);
     abstract public function updateById($data);
     abstract public function deleteById($id);
 

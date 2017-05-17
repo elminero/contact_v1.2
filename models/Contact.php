@@ -20,7 +20,7 @@ class Contact extends PersonPDO
 
 
         $address = new AddressPDO();
-        $this->address = $address->getAllAddressByPersonId($this->personId);
+        $this->address = $address->readByPersonId($this->personId);
 
 
         $phoneNumber = new PhoneNumberPDO();

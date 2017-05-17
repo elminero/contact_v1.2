@@ -21,11 +21,11 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
 class AddressPDO extends \contact\Db3 {
 
-    public function create($data){}
-    public function readAll(){}
-    public function readById($id){}
-    public function updateById($data){}
-    public function deleteById($id){}
+//    public function create($data){}
+//    public function readAll(){}
+//    public function readById($id){}
+//    public function updateById($data){}
+//    public function deleteById($id){}
 
     private $_id, $_personId, $_addressType, $_countryIso, $_state, $_street, $_city, $_postalCode, $_note;
 
@@ -43,7 +43,7 @@ class AddressPDO extends \contact\Db3 {
     }
 
 
-    public function addAddress($address)  // class Address
+    public function create($address)  // class Address
     {
         self::setAddressParam($address);
 
@@ -59,7 +59,47 @@ class AddressPDO extends \contact\Db3 {
     }
 
 
-    public function updateAddress($address)  // class Address
+    public function readAll()  // class Address
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT person_id, address_type, country_iso, state, street, city, postal_code, note
+					FROM address
+					");
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public function readById($id)  // class Address
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT person_id, address_type, country_iso, state, street, city, postal_code, note
+					FROM address
+					WHERE id = ?");
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public function readByPersonId($personId)  // class Address
+    {
+        $stmt = $this->pdo->prepare("
+					SELECT id, address_type, country_iso, state, street, city, postal_code, note
+					FROM address
+					WHERE person_id = ?");
+
+        $stmt->execute([$personId]);
+
+        return $stmt;
+    }
+
+
+
+    public function updateById($address)  // class Address
     {
         self::setAddressParam($address);
 
@@ -80,20 +120,7 @@ class AddressPDO extends \contact\Db3 {
     }
 
 
-    public function getAddressById($id)  // class Address
-    {
-        $stmt = $this->pdo->prepare("
-					SELECT person_id, address_type, country_iso, state, street, city, postal_code, note
-					FROM address
-					WHERE id = ?");
-
-        $stmt->execute([$id]);
-
-        return $stmt->fetch(PDO::FETCH_OBJ);
-    }
-
-
-    public function deleteAddress($id)  // class Address
+    public function deleteById($id)  // class Address
     {
         $stmt = $this->pdo->prepare("
                     DELETE FROM address
@@ -320,17 +347,5 @@ class AddressPDO extends \contact\Db3 {
         return $stmt;
     }
 
-
-    public function getAllAddressByPersonId($personId)  // class Address
-    {
-        $stmt = $this->pdo->prepare("
-					SELECT id, address_type, country_iso, state, street, city, postal_code, note
-					FROM address
-					WHERE person_id = ?");
-
-        $stmt->execute([$personId]);
-
-        return $stmt;
-    }
 }
 
