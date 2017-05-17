@@ -35,31 +35,17 @@
                 <h2>Or your money back: Monsanto execs return $4mn in bonuses after SEC settlement</h2>
                 <p>
                     <?php
-
-
-
                     $password = "Robert";
-
 
                     $options = [
                         'cost' => 12,
                     ];
                     $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
 
-
-
                     echo $passHash;
-
-
-
-
-
                     ?>
                 </p>
                 <p>
-
-
-
                     Two Monsanto executives returned their lavish bonuses, amounting to nearly $4 million, after the
                     agribusiness giant agreed to pay federal regulators $80 million as part of a settlement over
                     accounting violations. Monsanto agreed with the Securities Exchange Commission on Tuesday to pay the

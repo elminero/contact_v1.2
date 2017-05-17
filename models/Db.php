@@ -70,7 +70,7 @@ abstract class Db3 implements crud
     abstract public function create($person);
     abstract public function readAll();
     abstract public function readById($id);
-    abstract function readByPersonId($id);
+    abstract public function readByPersonId($id);
     abstract public function updateById($data);
     abstract public function deleteById($id);
 

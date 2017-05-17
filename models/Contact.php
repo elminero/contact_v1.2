@@ -33,7 +33,7 @@ class Contact extends PersonPDO
 
         $image = new ImagePDO();
         $this->avatar = $image->getAvatarImageByPersonId($this->personId);
-        $this->image = $image->getAllImageByPersonId($this->personId);
+        $this->image = $image->readByPersonId($this->personId);
     }
 
 

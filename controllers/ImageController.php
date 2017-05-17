@@ -53,7 +53,7 @@ class ImageController {
             $imageFieldValidate["jpeg"] = 0;
         }
 
-        if($this->_fileSize > 400000) {
+        if($this->_fileSize > 1000000) {
             $imageFieldValidate["fileSize"] = 0;
         }
 
@@ -174,10 +174,9 @@ class ImageController {
 
         $model = new ImagePDO();
 
-        $model->addImage($cImage);
+        $model->create($cImage);
 
     }
-
 
 }
 
@@ -233,7 +232,7 @@ if( array_key_exists("imageUpLoad", $_POST)) {
 
     if( (isset($_GET['action'])) && ($_GET['action'] === 'update') ) {
         $model = new ImagePDO();
-        $model->updateImage($cImage);
+        $model->updateById($cImage);
         header("Location: ../editphotos.php?id=".$_POST['personId']."&action=update");
     }
 
@@ -245,7 +244,7 @@ if( isset($_GET['action']) && $_GET['action'] == 'delete' ) {
     $deleteId = (int)$_GET['id'];
 
     $cImage = new ImagePDO();
-    $cImage->deleteImage($deleteId);
+    $cImage->deleteById($deleteId);
 
     header("Location: ../editphotos.php?id=".$_GET['personId']."&action=update");
 
