@@ -16,7 +16,7 @@ class Contact extends PersonPDO
     public function getContactById()
     {
         $person = new PersonPDO();
-        $this->nameDOB = $person->getPersonById($this->personId);
+        $this->nameDOB = $person->readById($this->personId);
 
 
         $address = new AddressPDO();

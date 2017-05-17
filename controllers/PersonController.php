@@ -83,7 +83,7 @@ if($cPerson->nameFieldValidate()) {
 
     if( isset($_GET['action']) && ($_GET['action'] === 'update') ) {
 
-      $model->updatePerson($cPerson);
+      $model->updateById($cPerson);
 
        header("Location: ../profile.php?id=".$_POST['personId']);
     }

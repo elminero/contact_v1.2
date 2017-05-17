@@ -20,16 +20,14 @@
         note            string
 */
 
-
 class PersonPDO extends \contact\Db3
 {
-
     private  $_id, $_lastName, $_firstName, $_middleName, $_aliasName, $_birthMonth, $_birthDay, $_birthYear, $_note;
 
 //    public function create($data){}
 //    public function readAll(){}
-    public function readById($id){}
-    public function updateById($data){}
+//    public function readById($id){}
+//    public function updateById($data){}
 //    public function deleteById($id){}
 
 
@@ -82,8 +80,8 @@ class PersonPDO extends \contact\Db3
     }
 
 
-    public function getPersonById($id) {
-
+    public function readById($id) // getPersonById($id)
+    {
         $stmt =  $this->pdo->prepare("
             SELECT id, last_name, first_name, middle_name, alias_name, birth_month, birth_day, birth_year, note
             FROM person
@@ -95,9 +93,8 @@ class PersonPDO extends \contact\Db3
     }
 
 
-    public function updatePerson($person)  // class Person
+    public function updateById($person)  // class Person  updatePerson($person)
     {
-
         self::setPersonParam($person);
 
         $stmt = $this->pdo->prepare("
@@ -113,7 +110,8 @@ class PersonPDO extends \contact\Db3
                                 note = ?
                                 WHERE id = ? ");
 
-        $stmt->execute([$this->_lastName,
+        $stmt->execute([
+                        $this->_lastName,
                         $this->_firstName,
                         $this->_middleName,
                         $this->_aliasName,
@@ -121,7 +119,8 @@ class PersonPDO extends \contact\Db3
                         $this->_birthDay,
                         $this->_birthYear,
                         $this->_note,
-                        $this->_id]);
+                        $this->_id
+                      ]);
         
                         $affected_rows = $stmt->rowCount();
     }
