@@ -30,7 +30,7 @@ class PersonPDO extends \contact\Db3
     public function readAll(){}
     public function readById($id){}
     public function updateById($data){}
-    public function deleteById(){}
+//    public function deleteById($id){}
 
 
     private function setPersonParam(PersonController $person)
@@ -127,7 +127,7 @@ class PersonPDO extends \contact\Db3
     }
 
 
-    public function deletePerson($id)
+    public function deleteById($id)
     {
         $stmt = $this->pdo->prepare("
                                 DELETE FROM person

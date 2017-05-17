@@ -26,7 +26,7 @@ class ImagePDO extends \contact\Db3
     public function readAll(){}
     public function readById($id){}
     public function updateById($data){}
-    public function deleteById(){}
+    public function deleteById($id){}
 
 
 
