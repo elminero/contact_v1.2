@@ -16,7 +16,7 @@ class LoginController {
 
                 $cUser = new UserPDO();
 
-                $user = $cUser->getUserByid($id);
+                $user = $cUser->readById($id);
 
             if ( $_COOKIE["phpContact"] ===  $user->pass_hash  ) {
 
@@ -57,7 +57,7 @@ if( array_key_exists("login", $_POST) ) {
 
     $cUser = new UserPDO();
 
-    $user = $cUser->getUserByName($userName);
+    $user = $cUser->readByName($userName);
 
 
  //   echo var_dump($user);

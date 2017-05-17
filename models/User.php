@@ -24,13 +24,13 @@ require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
 class UserPDO extends \contact\Db3  {
 
-    public function create($data){}
+//    public function create($data){}
     public function readAll(){}
-    public function readById($id){}
+//    public function readById($id){}
     public function updateById($data){}
     public function deleteById($id){}
 
-    public function addUser($user)  // class Person
+    public function create($user)  // class Person addUser()
     {
         $stmt = $this->pdo->prepare("
 				INSERT INTO user
@@ -43,7 +43,7 @@ class UserPDO extends \contact\Db3  {
         return $this->pdo->lastInsertId();
     }
 
-    public function getUserByName($userName)
+    public function readByName($userName) //getUserByName($userName)
     {
         $stmt = $this->pdo->prepare("
                 SELECT id, username, pass_hash, role, note, date_last_login, ip_last_login
@@ -56,7 +56,7 @@ class UserPDO extends \contact\Db3  {
     }
 
 
-    public function getUserById($id)
+    public function readById($id) //getUserById()
     {
         $stmt = $this->pdo->prepare("
                 SELECT id, username, pass_hash, role, note, date_last_login, ip_last_login
@@ -148,7 +148,7 @@ Hawaii no DST ..... Pacific/Honolulu
 /*
 $userModel = new UserPDO();
 
-$password = "super8";
+$password = "super8j";
 
 
 //$options = [
@@ -175,11 +175,11 @@ $dateLastLogin = $date->format('Y-m-d H:i:s');
 echo $dateLastLogin;
 
 $userField =
-['username'=>'elminero', 'timezone'=>9, 'passHash'=>$passHash, 'role'=>'1', 'note'=>'The sly fox', 'dateLastLogin'=>$dateLastLogin,
+['username'=>'elmineroj', 'timezone'=>9, 'passHash'=>$passHash, 'role'=>'1', 'note'=>'The sly fox', 'dateLastLogin'=>$dateLastLogin,
     'ipLastLogin'=>$_SERVER['REMOTE_ADDR']];
 
 
-$userModel->addUser($userField);
+$userModel->create($userField);
 
 
 
