@@ -43,15 +43,15 @@ ob_start();
                 <nav style="width: 275px">
                     <ul class="pager" >
                         <li class="previous" >
-                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" ><< Previous</a>
+                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" ><< Previous</a>
                         </li>
                         <li class="next">
-                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->nextImageId; ?>" >Next >></a>
+                            <a style="background-color: #1b6d85;" href="picture.php?id=<?php echo $image->previousImageId;  ?>" >Next >></a>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <a href="picture.php?id=<?php echo $image->nextImageId;  ?>" >
+            <a href="picture.php?id=<?php echo $image->previousImageId;  ?>" >
                 <img class="img-responsive img-rounded" src="images/<?php echo $image->readById($id)->path_file; ?>.jpg"  />
             </a>
             <div class="caption" style="color: black; background-color: white; padding: 10px; margin: 10px 0; ">
