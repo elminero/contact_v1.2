@@ -146,7 +146,7 @@ if ($contact->nameDOB === false) {
                             <option value="MX" > Mexico </option>
 
                             <?php while($row = $qCountries->fetch(PDO::FETCH_OBJ) ) : ?>
-                                <option value="<?php echo $address->getCountryByISO($row->iso) ; ?>" >
+                                <option value="<?php echo $row->iso ; ?>" >
                                     <?php echo $row->country; ?> </option>
                             <?php endwhile; ?>
                         </select>
