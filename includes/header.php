@@ -1,11 +1,9 @@
-
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <script src="../js/jquery-1.12.0.min.js"></script>
 
 
-<script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="   crossorigin="anonymous"></script>
 
 
 
@@ -22,7 +20,7 @@
 
             minLength: 2,
 
-            source: "source.php",
+            source: "models/source.php",
 
             focus: function (event, ui) {
                 $("#topics").val(ui.item.label);

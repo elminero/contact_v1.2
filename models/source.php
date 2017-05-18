@@ -1,11 +1,17 @@
 <?php
+require_once(dirname(dirname(__FILE__)).'/models/Db.php');
 
-
-
-require("models/Db.php");
-
-class SearchPDO extends db3
+class SearchPDO extends \contact\Db3
 {
+
+public function create($data){}
+public function readAll(){}
+public function readById($id){}
+public function readByPersonId($id){}
+public function updateById($data){}
+public function deleteById($id){}
+
+
     public function getSearchResults($term)
     {
         $sql = "
