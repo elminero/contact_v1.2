@@ -112,9 +112,12 @@ ob_start();
             <div class="col-xs-6 col-sm-4">
                 <div class="thumbnail">
                     <a href="picture.php?id=<?php echo $row->id; ?>" ><img alt="" src="images/<?php echo $row->path_file; ?>.jpg" /></a>
+                    <?php if($row->caption):  ?>
                     <div class="caption">
-                        <?php echo $row->caption ?>
+                        <?php echo $row->caption; ?>
                     </div>
+                    <?php endif ?>
+
                 </div>
             </div>
             <?php endwhile ?>

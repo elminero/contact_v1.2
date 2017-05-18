@@ -54,9 +54,12 @@ ob_start();
             <a href="picture.php?id=<?php echo $image->previousImageId;  ?>" >
                 <img class="img-responsive img-rounded" src="images/<?php echo $image->readById($id)->path_file; ?>.jpg"  />
             </a>
+            <?php if($image->readById($id)->caption): ?>
             <div class="caption" style="color: black; background-color: white; padding: 10px; margin: 10px 0; ">
                 <?php echo  $image->readById($id)->caption;     ?>
             </div>
+            <?php endif ?>
+
         </div>
         <?php include("includes/footer.php"); ?>
     </div><!-- end .container -->

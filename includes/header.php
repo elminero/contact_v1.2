@@ -81,7 +81,7 @@
                             <input type="text" id="tags" class="form-control home-search" placeholder="Search For Name" name="name" >
                             <input name="value" type="hidden" id="tagValue" />
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Search</button>
+                                <button class="btn btn-default" type="submit" value="Profile" id ="SearchName" name="SearchName">Go</button>
                             </span>
                         </div>
                     </div>

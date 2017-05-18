@@ -44,7 +44,6 @@ while($row = $qResults->fetch(PDO::FETCH_OBJ)) {
         $fullName .= ", ";
     }
 
-
     $fullName .= $row->first_name;
 
     if($row->first_name && $row->middle_name) {
