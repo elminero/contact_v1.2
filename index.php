@@ -33,38 +33,15 @@
             </div>
             <div class="col-sm-4">
                 <h2>Or your money back: Monsanto execs return $4mn in bonuses after SEC settlement</h2>
-                <p>
-                    <?php
-                    $password = "Robert";
 
-                    $options = [
-                        'cost' => 12,
-                    ];
-                    $passHash = password_hash($password, PASSWORD_BCRYPT, $options);
-
-                    echo $passHash;
-                    ?>
-                </p>
                 <p>
-                    Two Monsanto executives returned their lavish bonuses, amounting to nearly $4 million, after the
-                    agribusiness giant agreed to pay federal regulators $80 million as part of a settlement over
-                    accounting violations. Monsanto agreed with the Securities Exchange Commission on Tuesday to pay the
-                    sum, settling claims that the company had insufficient accounting controls to track millions of
-                    dollars in rebates it offered to retailers and distributors of Roundup, one of Monsanto’s most
-                    profitable products. The rebate campaign was a response to fierce competition from generic version
-                    of the herbicide.
+                    Two Monsanto executives returned their lavish bonuses, amounting to nearly $4 million.
                 </p>
             </div>
             <div class="col-sm-4">
                 <h2>Shubham Banerjee Builds a Better Braille Printer</h2>
                 <p>
-                    Around the same time, Banerjee found a pamphlet requesting donations for the blind. Intrigued, he
-                    asked his parents how blind people learned to read. His busy parents directed him to Google.
-
-                    “So I Googled it, ‘how blind people read,’ and I found out about braille, braille printers, how
-                    much they cost,” Banerjee said, shocked that a traditional printer was $2,000. “I’ve been to India
-                    a couple times, and I’ve seen blind people and a lot of poverty everywhere, and it’s very hard for
-                    them.”
+                    Around the same time, Banerjee found a pamphlet requesting donations for the blind.
                 </p>
             </div>
         </div>
